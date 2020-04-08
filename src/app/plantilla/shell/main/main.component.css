@@ -8,18 +8,10 @@
     display: grid;
 }
 
-#sidebar{
-    grid-row: 1;
-    grid-column: 1;
-    width: 70%;
-    height: 95%;
-    margin-bottom: 4%;
-    margin-left: 4%;
-}
 
 #test{
 grid-row: 1;
-grid-column: 2 /span 3;
+grid-column: 1 /span 3;
 background-color: #AEF5EF;
 padding: 5em;
 }

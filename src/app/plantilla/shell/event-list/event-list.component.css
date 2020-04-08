@@ -1,0 +1,22 @@
+table{
+    background-color: #E9FEF3;
+    border-collapse: collapse;
+
+}
+
+thead{
+    background-color: #74F7F7;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+th{
+    border: none;
+}
+
+td{
+    width: 5em;
+
+}
