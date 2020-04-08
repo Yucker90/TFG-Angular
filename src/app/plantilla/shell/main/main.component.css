@@ -1,0 +1,30 @@
+#main{
+    margin-top: 1%;
+    width: 95%;
+    height: 75%;
+    background-color: #C9D8F8; 
+    text-align: center;
+    margin: auto;
+    display: grid;
+}
+
+#sidebar{
+    grid-row: 1;
+    grid-column: 1;
+    width: 70%;
+    height: 95%;
+    margin-bottom: 4%;
+    margin-left: 4%;
+}
+
+#test{
+grid-row: 1;
+grid-column: 2 /span 3;
+background-color: #AEF5EF;
+padding: 5em;
+}
+
+/*
+https://colourco.de/analogic/7/97dca5
+https://javier.xyz/cohesive-colors/?src=594F4F,547980,45ADA8,9DE0AD,E5FCC2&overlay=95d5e6&intensity=1
+*/
