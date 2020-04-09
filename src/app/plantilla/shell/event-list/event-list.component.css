@@ -1,13 +1,18 @@
+#tabla{
+    text-align: center;
+}
+
 table{
     background-color: #E9FEF3;
     border-collapse: collapse;
-
+    font-family: 'Roboto', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 thead{
-    background-color: #74F7F7;
-    color: white;
-    font-weight: bold;
+    background-color: #68848F;
+    color: #E9FEF3;
 }
 
 
@@ -17,6 +22,6 @@ th{
 }
 
 td{
-    width: 5em;
-
+    padding-left: 2em;
+    padding-right: 2em;
 }

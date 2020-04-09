@@ -1,0 +1,57 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+h5{
+    color: darkgrey;
+}
+#datosPersonales {
+  display: grid;
+  border: 1px solid darkgray;
+  padding: 2%;
+  margin-bottom: 1%;
+}
+#datosWeb {
+    display: grid;
+    border: 1px solid darkgray;
+    padding: 2%;
+    margin-bottom: 1%;
+
+  }
+input {
+  width: fit-content;
+}
+
+#divNombre {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+#divApellidos {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+#divEmail {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+}
+
+#email {
+  width: 17em;
+}
+
+#submit {
+  text-align: center;
+  width: fit-content;
+  background-color: #62CAE6;
+  border: none;
+}
+
+#back{
+  margin-left: 5%;
+  border: none;
+  background-color: #F4AA04;
+}

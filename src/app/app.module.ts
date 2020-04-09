@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlantillaModule } from './plantilla/plantilla.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { PlantillaModule } from './plantilla/plantilla.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,PlantillaModule
+    AppRoutingModule,PlantillaModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
