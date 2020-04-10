@@ -1,0 +1,66 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <h5>Datos Personales</h5>
+    <div id="datosPersonales">
+      <div class="form-group" id="divNombre">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          placeholder="Nombre"
+          maxlength="50"
+        />
+      </div>
+      <div class="form-group" id="divApellidos">
+        <label for="apellidos">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="apellidos"
+          placeholder="Apellidos"
+          maxlength="50"
+        />
+      </div>
+
+      <div class="form-group" id="divEmail">
+        <label for="email">Dirección de correo electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+          placeholder="example@mail.com"
+          maxlength="50"
+        />
+      </div>
+    </div>
+    <h5>Datos Web</h5>
+    <div id="datosWeb">
+      <div class="form-group" id="divLogin">
+        <label for="login">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          id="login"
+          placeholder="Usuario"
+          maxlength="10"
+        />
+      </div>
+
+      <div class="form-group" id="divPassword">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+        />
+      </div>
+    </div>
+    <div id="botones">
+    <button id="submit" type="submit" class="btn btn-primary">Registrarse</button>
+    <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button>
+</div>
+</form>
+</div>
