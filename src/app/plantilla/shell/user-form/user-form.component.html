@@ -1,5 +1,6 @@
 <div class="container">
-  <form (ngSubmit)="onSubmit()">
+  <h3>Formulario de registro</h3>
+  <form id="formulario" *ngIf="!submitted">
     <h5>Datos Personales</h5>
     <div id="datosPersonales">
       <div class="form-group" id="divNombre">
@@ -59,8 +60,10 @@
       </div>
     </div>
     <div id="botones">
-    <button id="submit" type="submit" class="btn btn-primary">Registrarse</button>
+    <button id="submit" type="button" (click)="submit()" class="btn btn-primary">Registrarse</button>
     <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button>
 </div>
 </form>
+<div *ngIf="submitted"><p>Se ha enviado un correo electrónico de confirmación a {{Usuario.email}}</p>
+  <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button></div>
 </div>

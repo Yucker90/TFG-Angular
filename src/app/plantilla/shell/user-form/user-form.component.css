@@ -2,6 +2,11 @@ form {
   display: flex;
   flex-direction: column;
   align-content: center;
+  text-align: left;
+}
+
+.container{
+  text-align: center;
 }
 
 h5{
@@ -46,12 +51,12 @@ input {
 #submit {
   text-align: center;
   width: fit-content;
-  background-color: #62CAE6;
+  background-color: #2B757F;
   border: none;
 }
 
 #back{
   margin-left: 5%;
   border: none;
-  background-color: #F4AA04;
+  background-color: #2B6D81;
 }
