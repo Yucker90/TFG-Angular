@@ -10,13 +10,15 @@ import { UserListComponent } from './shell/user-list/user-list.component';
 import { UserFormComponent } from './shell/user-form/user-form.component';
 import { UserDetailsComponent } from './shell/user-details/user-details.component';
 import { EventDetailsComponent } from './shell/event-details/event-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,ReactiveFormsModule
   ],
   exports: [ShellComponent]
 })

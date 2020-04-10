@@ -1,1 +1,95 @@
-<p>user-list works!</p>
+<div class="container">
+  <h4>Listado de usuarios</h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="nombre">Nombre</th>
+        <th scope="col" class="login">Login</th>
+        <th scope="col">Password</th>
+        <th scope="col">Movil</th>
+        <th scope="col">Email</th>
+        <th scope="col">Acceso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--<tr *ngFor="let usuario of usuarios | async">
+            <th scope="row">1</th>
+            <td class="nombre">{{usuario.nombre}}</td>
+            <td class="login">{{usuario.login}}</td>
+            <td>{{usuario.password}}</td>
+            <td>{{usuario.movil}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.acceso}}</td>
+          </tr>-->
+      <tr>
+        <th scope="row">1</th>
+        <td class="nombre">NombrePrueba</td>
+        <td class="login">LoginPrueba</td>
+        <td>PasswordPrueba</td>
+        <td>MovilPrueba</td>
+        <td>EmailPrueba</td>
+        <td>AccesoPrueba</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td class="nombre">NombrePrueba</td>
+        <td class="login">LoginPrueba</td>
+        <td>PasswordPrueba</td>
+        <td>MovilPrueba</td>
+        <td>EmailPrueba</td>
+        <td>AccesoPrueba</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td class="nombre">NombrePrueba</td>
+        <td class="login">LoginPrueba</td>
+        <td>PasswordPrueba</td>
+        <td>MovilPrueba</td>
+        <td>EmailPrueba</td>
+        <td>AccesoPrueba</td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="filtros">
+    <div id="inputText">
+      <form>
+        <label for="textSearch">Búsqueda por nombre</label>
+        <div id="bloqueBuscar">
+          <input
+            class="form-control"
+            type="text"
+            id="textSearch"
+            name="busqueda"
+            placeholder="Búsqueda"
+            [(ngModel)]="busqueda"
+          />
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="busqueda"
+            (click)="buscar()"
+          >
+            Buscar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-group" id="select">
+      <label for="selectAcceso">Filtrar por acceso</label>
+      <select
+        class="form-control"
+        name="selectAcceso"
+        id="selectAcceso"
+        (change)="onChange($event.target.value)"
+      >
+        <option value="3" selected>Todos los usuarios</option>
+        <option value="0">Deshabilitado</option>
+        <option value="1">Usuario</option>
+        <option value="2">Administrador</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-list',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+  usuarios : Observable<Usuario[]>;
+  usuarioSelected = null;
+  public busqueda:string;
+
+  constructor(private usuariosService: UsuarioService) { }
 
   ngOnInit() {
+    this.usuariosService.getUsuarios();
+  }
+
+  onChange(event){
+    console.log(event);
+  }
+
+  buscar(){
+    console.log(this.busqueda);
   }
 
 }
