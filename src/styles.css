@@ -2,5 +2,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body{
-    background-color: #E9FEF3;
+    /*background-color: #E9FEF3;*/
+    background-color: #2B757F;
+    font-family: 'Baloo Paaji 2', cursive;
 }

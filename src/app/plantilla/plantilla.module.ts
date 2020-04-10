@@ -8,11 +8,13 @@ import { NavbarComponent } from './shell/navbar/navbar.component';
 import { EventListComponent } from './shell/event-list/event-list.component';
 import { UserListComponent } from './shell/user-list/user-list.component';
 import { UserFormComponent } from './shell/user-form/user-form.component';
+import { UserDetailsComponent } from './shell/user-details/user-details.component';
+import { EventDetailsComponent } from './shell/event-details/event-details.component';
 
 
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent],
+  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent],
   imports: [
     CommonModule
   ],

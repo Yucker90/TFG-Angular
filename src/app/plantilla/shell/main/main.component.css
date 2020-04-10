@@ -1,22 +1,24 @@
-#main{
-    margin-top: 1%;
-    width: 100%;
-    height: 75%;
-    background-color: #C9D8F8; 
-    text-align: center;
-    margin: auto;
-    display: grid;
+#main {
+  margin-top: 1%;
+  width: 100%;
+  height: 75%;
+  /* Previo background-color: #C9D8F8; */
+  background-color: #2a785e;
+  text-align: center;
+  margin: auto;
+  display: grid;
 }
 
-
-#test{
-grid-row: 1;
-grid-column: 1 /span 3;
-background-color: #AEF5EF;
-padding: 5em;
+#test {
+  grid-row: 1;
+  grid-column: 1 / span 3;
+  background-color: #2a785e;
+  padding: 5em;
+  color: rgb(183, 252, 252);
 }
 
 /*
 https://colourco.de/analogic/7/97dca5
+https://colourco.de/analogic/5/2b7f4a
 https://javier.xyz/cohesive-colors/?src=594F4F,547980,45ADA8,9DE0AD,E5FCC2&overlay=95d5e6&intensity=1
 */

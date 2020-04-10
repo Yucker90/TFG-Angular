@@ -19,7 +19,7 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  submit(){
     this.submitted = true;
     this.crearUsuario();
   }
@@ -28,6 +28,7 @@ export class UserFormComponent implements OnInit {
     this.usuarioService.crearUsuario(this.usuario).subscribe(data => console.log(data), error => console.log(error));
     this.usuario = {nombre:"", apellidos: "", email:"", login:"", password:""};
     this.volver();
+    document.getElementById("formulario").hidden=true;
   }
 
   volver(){

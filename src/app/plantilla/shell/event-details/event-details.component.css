@@ -1,0 +1,36 @@
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+thead {
+  background-color: #2B6383;
+  color: #e9fef3;
+}
+tbody {
+  font-size: 0.9em;
+  color: lightgrey;
+}
+
+th{
+    font-weight: bold;
+    color: darkslategray;
+}
+
+thead > tr > th{
+    color: lightgrey;
+    font-size: 0.93em;
+}
+tr{
+    padding-top: 0.2em;
+}
+
+#detalles{
+    margin-left: 5%;
+}
+
+h4{
+    text-align: center;
+}
