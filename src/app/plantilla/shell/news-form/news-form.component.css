@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: left;
+}
+
+.container {
+  text-align: center;
+}
+
+h5 {
+  color: darkgrey;
+}
+
+input {
+  width: fit-content;
+}
+
+#divTexto{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+#submit {
+  text-align: center;
+  width: fit-content;
+  background-color: #2b757f;
+  border: none;
+}
+
+#back {
+  margin-left: 5%;
+  border: none;
+  background-color: #2b6d81;
+}

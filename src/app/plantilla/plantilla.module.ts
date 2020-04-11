@@ -15,11 +15,13 @@ import { LoginComponent } from './shell/login/login.component';
 import { RouterModule } from '@angular/router';
 import { NewsComponent } from './shell/news/news.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NewsFormComponent } from './shell/news-form/news-form.component';
+import { MainPageComponent } from './shell/main-page/main-page.component';
 
 
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent],
+  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,

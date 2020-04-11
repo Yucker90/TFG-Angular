@@ -40,3 +40,18 @@ a:hover {
   width: 15em;
 }
 */}
+
+button{
+  width: 10em;
+  /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, #2B757F 3%,#2B757F 97%,rgba(2,0,36,1) 100% );*/
+  border: 1px solid
+    linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(44, 78, 135, 1) 100%);
+  color: rgb(170, 248, 253);
+  text-decoration: none;
+  border: none;
+  background-color: #2B6383;
+}
+button:hover{
+  font-weight: 700;
+
+}

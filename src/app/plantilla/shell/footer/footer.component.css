@@ -1,9 +1,17 @@
-div{
-    /*background-color: #62CAE6;*/
-    background-color: #2C4E87;
-    width: 95%;
-    padding-top: 4em;
-    margin: auto;
-    margin-top: 1%;
-    text-align: center;
+div {
+  /*background-color: #62CAE6;*/
+  background-color: #2b6a81;
+  padding-top: 0.5%;
+  margin: auto;
+  text-align: center;
+  color: lightgrey;
+}
+
+
+a{
+    color: lightgrey;
+}
+a:hover{
+    text-decoration: none;
+    color: #551A8B;
 }

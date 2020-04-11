@@ -7,6 +7,8 @@ import { UserFormComponent } from "./plantilla/shell/user-form/user-form.compone
 import { EventDetailsComponent } from './plantilla/shell/event-details/event-details.component';
 import { NewsComponent } from './plantilla/shell/news/news.component';
 import { UserDetailsComponent } from './plantilla/shell/user-details/user-details.component';
+import { NewsFormComponent } from './plantilla/shell/news-form/news-form.component';
+import { MainPageComponent } from './plantilla/shell/main-page/main-page.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,12 @@ const routes: Routes = [
   },
   {
     path: 'userdetails', component: UserDetailsComponent
+  },
+  {
+    path:'newsform', component: NewsFormComponent
+  },
+  {
+    path: '', component: MainPageComponent
   }
 ];
 

@@ -40,3 +40,7 @@ table {
   #detalles{
       margin-left: 5%;
   }
+
+  button{
+    width: fit-content;
+  }
