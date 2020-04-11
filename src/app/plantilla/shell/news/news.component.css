@@ -1,0 +1,46 @@
+div {
+  background-color: #2a775a;
+}
+
+tr {
+  color: rgb(183, 252, 252);
+}
+
+.noticia {
+  border: 1px solid darkgray;
+  margin-bottom: 1%;
+  padding: 2%;
+}
+.custom-pagination .page-number {
+  display: inline-block;
+  /* padding: 5px 12px; */
+  margin: 0px 4px;
+  border-radius: 25px;
+}
+
+.page-number.current {
+  background: #ffffff !important;
+  border: 2px solid #458873;
+}
+
+.page-number span {
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.pagination-previous,
+.pagination-next {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.titulo {
+  font-size: 1.5em;
+}
+
+.autor {
+  font-size: 80%;
+}

@@ -11,14 +11,20 @@ import { UserFormComponent } from './shell/user-form/user-form.component';
 import { UserDetailsComponent } from './shell/user-details/user-details.component';
 import { EventDetailsComponent } from './shell/event-details/event-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './shell/login/login.component';
+import { RouterModule } from '@angular/router';
+import { NewsComponent } from './shell/news/news.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent],
+  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    RouterModule,
+    NgxPaginationModule
   ],
   exports: [ShellComponent]
 })

@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+    width: 75%;
+    margin-left: auto;
+    margin-right: 15%;
+  }
+  
+  thead {
+    background-color: #2b6383;
+    color: #e9fef3;
+  }
+  tbody {
+    font-size: 0.9em;
+    color: lightgrey;
+  }
+  
+  th {
+    font-weight: bold;
+    color: darkslategray;
+  }
+  
+  thead > tr > th {
+    color: lightgrey;
+    font-size: 0.93em;
+  }
+  
+  tbody>tr:hover{
+      background-color:#1f5a46;
+      cursor: pointer;
+  }
+  
+  tr {
+    padding-top: 0.2em;
+  }
+  
+  h4 {
+    text-align: center;
+  }
+  
+  #detalles{
+      margin-left: 5%;
+  }

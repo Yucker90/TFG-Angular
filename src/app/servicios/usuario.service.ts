@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
+
   private baseURl = 'http://localhost:8080/api/v1/usuarios';
 
   constructor(private http: HttpClient) { }
@@ -18,5 +19,9 @@ export class UsuarioService {
 
   getUsuarios(): Observable<any>{
     return this.http.get(`${this.baseURl}`);
+  }
+
+  getUsuarioLogin(userLogin: string, password: string) {
+    return true;
   }
 }

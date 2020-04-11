@@ -1,5 +1,42 @@
-#main{
-    background-color: #62CAE6;
-    margin: 0% 1%;
-    padding-bottom: 2em;
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2B6383;
+  -webkit-box-shadow: inset 0px -2px 2px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px -2px 2px -1px rgba(0,0,0,0.75);
+  box-shadow: inset 0px -2px 2px -1px rgba(0,0,0,0.75);
 }
+
+.navbar-brand{
+    width: 7em;
+    margin-left: 0;
+}
+
+#inicio{
+    width: 7em;
+}
+
+a {
+  width: 10em;
+  /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, #2B757F 3%,#2B757F 97%,rgba(2,0,36,1) 100% );*/
+  border: 1px solid
+    linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(44, 78, 135, 1) 100%);
+  color: rgb(170, 248, 253);
+  /*-webkit-box-shadow: inset 1px 3px 12px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 1px 3px 12px -1px rgba(0,0,0,0.75);
+    box-shadow: inset 1px 3px 12px -1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: inset 0px -2px 11px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px -2px 11px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px -2px 11px -1px rgba(0, 0, 0, 0.75);*/
+}
+a:hover {
+  text-decoration: none;
+  font-weight: 700;
+  /* -webkit-box-shadow: inset 0px 3px 82px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 3px 82px -1px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 3px 82px -1px rgba(0,0,0,0.75);
+}
+.nav-item {
+  width: 15em;
+}
+*/}

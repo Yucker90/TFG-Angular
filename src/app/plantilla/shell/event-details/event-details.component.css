@@ -34,3 +34,8 @@ tr{
 h4{
     text-align: center;
 }
+
+tbody>tr:hover{
+  background-color:#1f5a46;
+  cursor: pointer;
+}

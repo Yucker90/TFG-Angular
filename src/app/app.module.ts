@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { PlantillaModule } from "./plantilla/plantilla.module";
 import { HttpClientModule } from "@angular/common/http";
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,7 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     AppRoutingModule,
     PlantillaModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

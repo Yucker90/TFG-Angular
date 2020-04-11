@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
@@ -14,7 +15,7 @@ export class UserFormComponent implements OnInit {
   ;
   submitted = false;
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private router: Router, private location: Location) { }
 
   ngOnInit() {
   }
@@ -32,7 +33,7 @@ export class UserFormComponent implements OnInit {
   }
 
   volver(){
-    this.router.navigate(['/usuarios']);
+    this.location.back();
   }
 
 

@@ -1,0 +1,35 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  width: 10em;
+}
+
+h4 {
+  text-align: center;
+}
+#formularioLogin {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+#btnLogin {
+  text-align: center;
+  width: fit-content;
+  background-color: #2b757f;
+  border: none;
+}
+
+a{
+    color:whitesmoke;
+}
+
+a:hover{
+    color: #2C5386;
+    text-decoration: none;
+}
