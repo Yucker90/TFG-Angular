@@ -17,11 +17,12 @@ import { NewsComponent } from './shell/news/news.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NewsFormComponent } from './shell/news-form/news-form.component';
 import { MainPageComponent } from './shell/main-page/main-page.component';
+import { EmailConfirmationComponent } from './shell/email-confirmation/email-confirmation.component';
 
 
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent],
+  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,

@@ -38,7 +38,8 @@ table {
   }
   
   #detalles{
-      margin-left: 5%;
+      margin-left: 10%;
+      text-align: left;
   }
 
   button{

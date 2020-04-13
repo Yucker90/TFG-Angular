@@ -1,0 +1,7 @@
+<div class="container">
+    <p *ngIf="tokenOk; else tokenNoOk">Gracias por registrarse.</p>
+    <ng-template #tokenNoOk>
+        <p>Token no válido</p>
+    </ng-template>
+    <button class="btn btn-info" id="volver" (click)="volver()">Volver</button>
+</div>

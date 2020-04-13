@@ -11,6 +11,8 @@
           id="nombre"
           placeholder="Nombre"
           maxlength="50"
+          [(ngModel)]="usuario.nombre"
+          name="nombre"
         />
       </div>
       <div class="form-group" id="divApellidos">
@@ -21,6 +23,8 @@
           id="apellidos"
           placeholder="Apellidos"
           maxlength="50"
+          [(ngModel)]="usuario.apellidos"
+          name="apellidos"
         />
       </div>
 
@@ -33,6 +37,8 @@
           aria-describedby="emailHelp"
           placeholder="example@mail.com"
           maxlength="50"
+          [(ngModel)]="usuario.email"
+          name="email"
         />
       </div>
     </div>
@@ -46,6 +52,8 @@
           id="login"
           placeholder="Usuario"
           maxlength="10"
+          [(ngModel)]="usuario.login"
+        name="login"
         />
       </div>
 
@@ -56,6 +64,8 @@
           class="form-control"
           id="password"
           placeholder="Password"
+          [(ngModel)]="usuario.password"
+          name="password"
         />
       </div>
     </div>
@@ -64,6 +74,6 @@
     <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button>
 </div>
 </form>
-<div *ngIf="submitted"><p>Se ha enviado un correo electrónico de confirmación a {{Usuario.email}}</p>
+<div *ngIf="submitted"><p>Se ha enviado un correo electrónico de confirmación a {{usuario.email}}</p>
   <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button></div>
 </div>

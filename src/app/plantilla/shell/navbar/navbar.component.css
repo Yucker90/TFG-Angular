@@ -53,5 +53,10 @@ button{
 }
 button:hover{
   font-weight: 700;
+  border: none;
+}
 
+button:active{
+  border: none;
+  text-decoration: none;
 }

@@ -4,21 +4,22 @@ import { LoginComponent } from "./plantilla/shell/login/login.component";
 import { EventListComponent } from "./plantilla/shell/event-list/event-list.component";
 import { UserListComponent } from "./plantilla/shell/user-list/user-list.component";
 import { UserFormComponent } from "./plantilla/shell/user-form/user-form.component";
-import { EventDetailsComponent } from './plantilla/shell/event-details/event-details.component';
-import { NewsComponent } from './plantilla/shell/news/news.component';
-import { UserDetailsComponent } from './plantilla/shell/user-details/user-details.component';
-import { NewsFormComponent } from './plantilla/shell/news-form/news-form.component';
-import { MainPageComponent } from './plantilla/shell/main-page/main-page.component';
+import { EventDetailsComponent } from "./plantilla/shell/event-details/event-details.component";
+import { NewsComponent } from "./plantilla/shell/news/news.component";
+import { UserDetailsComponent } from "./plantilla/shell/user-details/user-details.component";
+import { NewsFormComponent } from "./plantilla/shell/news-form/news-form.component";
+import { MainPageComponent } from "./plantilla/shell/main-page/main-page.component";
+import { EmailConfirmationComponent } from "./plantilla/shell/email-confirmation/email-confirmation.component";
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent,
-  },{
-    path: 'news',
-    component: NewsComponent
-  }
-  ,
+  },
+  {
+    path: "news",
+    component: NewsComponent,
+  },
   {
     path: "eventlist",
     component: EventListComponent,
@@ -27,18 +28,27 @@ const routes: Routes = [
   {
     path: "userform",
     component: UserFormComponent,
-  },{
-    path: 'eventdetails', component: EventDetailsComponent
   },
   {
-    path: 'userdetails', component: UserDetailsComponent
+    path: "eventdetails",
+    component: EventDetailsComponent,
   },
   {
-    path:'newsform', component: NewsFormComponent
+    path: "userdetails",
+    component: UserDetailsComponent,
   },
   {
-    path: '', component: MainPageComponent
-  }
+    path: "newsform",
+    component: NewsFormComponent,
+  },
+  {
+    path: "confirm-account",
+    component: EmailConfirmationComponent,
+  },
+  {
+    path: "",
+    component: MainPageComponent,
+  },
 ];
 
 @NgModule({
