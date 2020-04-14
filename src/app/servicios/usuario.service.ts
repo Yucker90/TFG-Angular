@@ -21,7 +21,8 @@ export class UsuarioService {
     return this.http.get(`${this.baseURl}`);
   }
 
-  getUsuarioLogin(userLogin: string, password: string) {
+  postLogin(userLogin: string, password: string) {
+    //return this.http.post(`${this.baseURl}`, userLogin, password);
     return true;
   }
 }
