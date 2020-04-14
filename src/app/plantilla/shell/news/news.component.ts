@@ -33,7 +33,7 @@ post: Post;
 
       this.collection.data.push(
 
-        this.post={titulo: "Hola"+j, autor: {apellidos: "Perez Lopez", nombre: "Jose", email: "aaaaa", login: "1", password: "1"}, texto: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat odit nulla, accusantium alias in, perferendis fuga incidunt est molestiae accusamus officiis rerum beatae veniam! Id repudiandae consectetur dolores possimus quis!"}
+        this.post={titulo: "Hola"+j, autor: {movil: 54191572, apellidos: "Perez Lopez", nombre: "Jose", email: "aaaaa", login: "1", password: "1"}, texto: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat odit nulla, accusantium alias in, perferendis fuga incidunt est molestiae accusamus officiis rerum beatae veniam! Id repudiandae consectetur dolores possimus quis!"}
       );
       j++;
     }
