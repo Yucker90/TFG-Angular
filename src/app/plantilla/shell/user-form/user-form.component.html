@@ -39,6 +39,21 @@
           maxlength="50"
           [(ngModel)]="usuario.email"
           name="email"
+        />      <p id="errorEmail">Este email ya existe</p>
+        
+      </div>
+
+
+      <div class="form-group" id="divMovil">
+        <label for="movil">Teléfono móvil</label>
+        <input
+          type="text"
+          class="form-control"
+          id="movil"
+          placeholder="123456789"
+          maxlength="9"
+          [(ngModel)]="usuario.movil"
+          name="movil"
         />
       </div>
     </div>
