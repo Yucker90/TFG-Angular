@@ -11,9 +11,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ["./user-form.component.css"],
 })
 export class UserFormComponent implements OnInit {
-  public usuario: Usuario = new Usuario();
+  usuario: Usuario = new Usuario();
   submitted = false;
-  public matchPasswordVar: string;
+  matchPasswordVar: string;
 
 
   constructor(
@@ -33,10 +33,18 @@ export class UserFormComponent implements OnInit {
   crearUsuario() {
     //this.usuarioService.crearUsuario(this.usuario).subscribe(data => console.log(data), error => console.log(error));
     console.log(this.usuario);
+    console.log(Date.now)
     document.getElementById("form").hidden = true;
   }
 
   volver() {
     this.location.back();
+  }
+
+  submitBtn(submitBtn: HTMLButtonElement){
+    submitBtn.disabled = true;
+    this.submit();
+    submitBtn.disabled= false;
+
   }
 }

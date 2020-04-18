@@ -4,8 +4,6 @@ export function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
         const control = formGroup.controls[controlName];
         const matchingControl = formGroup.controls[matchingControlName];
-        console.log("Control 1: " + controlName);
-        console.log("Control 2: " + matchingControlName);
 
         // return null if controls haven't initialised yet
         if (!control || !matchingControl) {

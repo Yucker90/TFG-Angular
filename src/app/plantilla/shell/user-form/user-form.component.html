@@ -4,14 +4,12 @@
     name="form"
     id="form"
     #f="ngForm"
-    novalidate=""
+    novalidate
     *ngIf="!submitted"
-    (ngSubmit)="f.form.valid && submit(f)" 
+    (ngSubmit)="f.valid && submit(submitBtn)"
     [mustMatch]="['password', 'matchPassword']"
-    [required]="['nombre']"
-    [required]="['apellidos']"
   >
-  <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
+    <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
 
     <h5>Datos Personales</h5>
     <div id="datosPersonales">
@@ -28,7 +26,6 @@
           required
           #nombre="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && nombre.invalid }"
-
         />
         <div *ngIf="f.submitted && nombre.invalid" class="invalid-feedback">
           <div *ngIf="nombre.errors.required">Introduzca un nombre</div>
@@ -44,10 +41,9 @@
           maxlength="50"
           [(ngModel)]="usuario.apellidos"
           name="apellidos"
-          required
           #apellidos="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && apellidos.invalid }"
-
+          required
         />
         <div *ngIf="f.submitted && apellidos.invalid" class="invalid-feedback">
           <div *ngIf="apellidos.errors.required">Introduzca sus apellidos</div>
@@ -69,40 +65,36 @@
           #email="ngModel"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
           [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
-
         />
-        <div
-          [hidden]="email.valid || email.pristine"
-          class="alert alert-danger"
-        >
-          <div *ngIf="email.errors?.required">
-            Este campo es requerido.
-          </div>
-          <div *ngIf="email.errors?.minlength">
-            Por lo menos caracteres.
-          </div>
-        </div>
         <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
           <div *ngIf="email.errors.required">Introduzca un email</div>
+          <div *ngIf="email.errors.pattern">
+            El formato de email no es válido
+          </div>
         </div>
       </div>
+
+
       <div class="form-group" id="divMovil">
         <label for="movil">Movil</label>
         <input
-          type="text"
+          type="tel"
           class="form-control"
           id="movil"
           placeholder="123456789"
+          minlength="9"
           maxlength="9"
           [(ngModel)]="usuario.movil"
           name="movil"
           required
           #movil="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && movil.invalid }"
-
         />
         <div *ngIf="f.submitted && movil.invalid" class="invalid-feedback">
           <div *ngIf="movil.errors.required">Introduzca su número de movil</div>
+          <div *ngIf="movil.errors.minlength || movil.errors.maxlength">
+            El número debe de tener 9 cifras
+          </div>
         </div>
       </div>
     </div>
@@ -120,9 +112,7 @@
           name="login"
           required
           #login="ngModel"
-          maxlength="10"
           [ngClass]="{ 'is-invalid': f.submitted && login.invalid }"
-
         />
         <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
           <div *ngIf="login.errors.required">
@@ -183,7 +173,7 @@
       </div>
     </div>
     <div id="botones">
-      <button id="submit" (ngSubmit)="submit()" class="btn btn-primary">
+      <button id="submit" type="submit" #submitBtn class="btn btn-primary">
         Registrarse
       </button>
 
