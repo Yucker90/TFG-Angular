@@ -1,7 +1,8 @@
 import { Directive, Input } from '@angular/core';
-import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup } from '@angular/forms';
+import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup, FormControl } from '@angular/forms';
 
 import { Required } from './required';
+import { isNull } from 'util';
 
 @Directive({
     selector: '[required]',
@@ -12,7 +13,10 @@ export class RequiredDirective implements Validator {
 
     res: boolean = true;
 
-    validate(formGroup: FormGroup): ValidationErrors {
-        return Required(this.required[0])(formGroup);
+    validate(control: FormControl) {
+        if(
+            (control.value !== "" || isNull(control)) && (control.dirty || control.touched)
+        )
+        return {'errors': true}
     }
 }

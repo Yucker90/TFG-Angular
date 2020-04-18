@@ -1,5 +1,7 @@
 <div class="container">
   <h3>Formulario de registro</h3>
+  <form [formGroup]="formulario" #formulario="ngForm" (ngSubmit)="submitTest() && formulario.valid" novalidate="">
+    <!--
   <form
     name="form"
     id="form"
@@ -11,9 +13,9 @@
     [required]="['nombre']"
     [required]="['apellidos']"
   >
-  <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
-
+   (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
     <h5>Datos Personales</h5>
+    <!--
     <div id="datosPersonales">
       <div class="form-group" id="divNombre">
         <label for="nombre">Nombre</label>
@@ -182,8 +184,128 @@
         </div>
       </div>
     </div>
+    -->
+
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      formControlName="nombre"
+      [ngClass]="{ 'is-invalid': !formulario.get('nombre')?.valid && formulario.get('nombre').touched }"
+    />
+    <div
+      *ngIf="formulario.get('nombre').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduzca un nombre
+    </div>
+    <br />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Apellidos"
+      formControlName="apellidos"
+      [ngClass]="{ 'is-invalid': !formulario.get('apellidos')?.valid && formulario.get('apellidos').touched  }"
+    />
+    <div
+      *ngIf="formulario.get('apellidos').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduce sus apellidos
+    </div>
+
+    <input
+      type="email"
+      class="form-control"
+      placeholder="example@mail.com"
+      formControlName="email"
+      [ngClass]="{ 'is-invalid': !formulario.get('email')?.valid && formulario.get('email').touched }"
+    />
+    <div
+      *ngIf="formulario.get('email').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduce un email
+    </div>
+    <div
+      *ngIf="formulario.get('email').errors?.pattern"
+      class="invalid-feedback"
+    >
+      El formato no es correcto
+    </div>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Movil"
+      formControlName="movil"
+      [ngClass]="{ 'is-invalid': !formulario.get('movil')?.valid  && formulario.get('movil').touched }"
+    />
+    <div
+      *ngIf="formulario.get('movil').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduzca un móvil
+    </div>
+    <div
+      *ngIf="formulario.get('nombre').errors?.maxlength"
+      class="invalid-feedback"
+    >
+      El móvil no puede tener más de 9 caracteres
+    </div>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Login"
+      formControlName="login"
+      [ngClass]="{ 'is-invalid': !formulario.get('login')?.valid  && formulario.get('login').touched }"
+    />
+    <div
+      *ngIf="formulario.get('login').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduzca un login
+    </div>
+    <div
+      *ngIf="formulario.get('login').errors?.maxlength"
+      class="invalid-feedback"
+    >
+      El login no puede tener más de 10 caracteres
+    </div>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Contraseña"
+      formControlName="password"
+      [ngClass]="{ 'is-invalid': !formulario.get('password')?.valid && formulario.get('password').touched }"
+    />
+    <div
+      *ngIf="formulario.get('password').errors?.required"
+      class="invalid-feedback"
+    >
+      Introduzca una contraseña
+    </div>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Repita contraseña"
+      formControlName="matchPaswordVar"
+      [ngClass]="{ 'is-invalid': !formulario.get('matchPaswordVar')?.valid && formulario.get('matchPasswordVar').touched }"
+    />
+    <div
+      *ngIf="formulario.get('matchPaswordVar').errors?.required"
+      class="invalid-feedback"
+    >
+      Por favor, repita la contraseña
+    </div>
+    <div
+      *ngIf="formulario.get('matchPaswordVar').errors?.matchPassword"
+      class="invalid-feedback"
+    >
+      Las contraseñas no coinciden
+    </div>
+
     <div id="botones">
-      <button id="submit" (ngSubmit)="submit()" class="btn btn-primary">
+      <button id="button" type="submit" [disabled]="!formulario.valid"  (click)="submitTest()" class="btn btn-primary">
         Registrarse
       </button>
 
@@ -195,7 +317,7 @@
       >
         Registrarse
       </button>-->
-      <button id="back" type="button" class="btn btn-info" (click)="volver()">
+      <button id="back" type="submit" class="btn btn-info" (click)="volver()">
         Volver
       </button>
     </div>
