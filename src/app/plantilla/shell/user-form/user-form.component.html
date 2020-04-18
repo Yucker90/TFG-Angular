@@ -61,6 +61,7 @@
           maxlength="50"
           [(ngModel)]="usuario.email"
           name="email"
+
           required
           #email="ngModel"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
@@ -71,7 +72,7 @@
           <div *ngIf="email.errors.pattern">
             El formato de email no es válido
           </div>
-        </div>
+        </div> 
       </div>
 
 
@@ -89,7 +90,6 @@
           required
           #movil="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && movil.invalid }"
-        />
         <div *ngIf="f.submitted && movil.invalid" class="invalid-feedback">
           <div *ngIf="movil.errors.required">Introduzca su número de movil</div>
           <div *ngIf="movil.errors.minlength || movil.errors.maxlength">

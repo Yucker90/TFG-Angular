@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../interfaces/usuario';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,9 +12,11 @@ export class UsuarioService {
   private baseURl = 'http://localhost:8080/api/v1/usuarios';
   private loginURL = 'http://localhost:8080/api/v1/auth';
 
+
   constructor(private http: HttpClient) { }
 
   crearUsuario(usuario: Usuario) {
+    usuario.nombre = usuario.apellidos + ", " + usuario.nombre;
     return this.http.post(`${this.baseURl}`, usuario);
   }
 

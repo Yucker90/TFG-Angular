@@ -35,6 +35,7 @@ export class UserFormComponent implements OnInit {
     console.log(this.usuario);
     console.log(Date.now)
     document.getElementById("form").hidden = true;
+
   }
 
   volver() {
