@@ -3,6 +3,7 @@ import { Usuario } from "src/app/interfaces/usuario";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: "app-user-form",
@@ -12,11 +13,14 @@ import { Location } from "@angular/common";
 export class UserFormComponent implements OnInit {
   public usuario: Usuario = new Usuario();
   submitted = false;
+  public matchPasswordVar: string;
+
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
     private location: Location
+    
   ) {}
 
   ngOnInit() {}
@@ -29,7 +33,7 @@ export class UserFormComponent implements OnInit {
   crearUsuario() {
     //this.usuarioService.crearUsuario(this.usuario).subscribe(data => console.log(data), error => console.log(error));
     console.log(this.usuario);
-    document.getElementById("formulario").hidden = true;
+    document.getElementById("form").hidden = true;
   }
 
   volver() {

@@ -18,16 +18,18 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NewsFormComponent } from './shell/news-form/news-form.component';
 import { MainPageComponent } from './shell/main-page/main-page.component';
 import { EmailConfirmationComponent } from './shell/email-confirmation/email-confirmation.component';
+import { MustMatchDirective } from './validators/mustmatchdirective'
+import { RequiredDirective } from './validators/requiredDirective';
 
 
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent],
+  declarations: [RequiredDirective,MustMatchDirective, ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule                 
   ],
   exports: [ShellComponent]
 })

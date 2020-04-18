@@ -3,5 +3,6 @@ export class Usuario {
     apellidos: string;
     email: string;
     login: string;
-    password: string; 
+    password: string;
+    movil: string;
 }
