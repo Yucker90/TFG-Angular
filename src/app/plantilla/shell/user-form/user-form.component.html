@@ -90,6 +90,7 @@
           required
           #movil="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && movil.invalid }"
+      />
         <div *ngIf="f.submitted && movil.invalid" class="invalid-feedback">
           <div *ngIf="movil.errors.required">Introduzca su número de movil</div>
           <div *ngIf="movil.errors.minlength || movil.errors.maxlength">

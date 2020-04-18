@@ -64,13 +64,3 @@ input {
   border: none;
   background-color: #2B6D81;
 }
-
-#email{
-  border: 2px solid red;
-}
-
-#errorEmail{
-  margin-left: 1%;
-  font-size: 70%;
-  color: rgb(236, 88, 88);
-}
