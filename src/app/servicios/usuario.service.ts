@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
 
-  private baseURl = 'http://localhost:8080/api/v1/register';
+  private baseURl = 'http://localhost:8080/api/v1/usuarios';
+  private loginURL = 'http://localhost:8080/api/v1/auth';
+
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +24,12 @@ export class UsuarioService {
     return this.http.get(`${this.baseURl}`);
   }
 
-  getUsuarioLogin(userLogin: string, password: string) {
-    return true;
+  postLogin(username: string, password: string) {
+    return this.http.post(`${this.loginURL}`, {username, password}).subscribe(res => this.setSession(res));
+  }
+
+  setSession(auth) {
+    console.log(auth);
+    localStorage.setItem('id_token', auth.idtoken);
   }
 }

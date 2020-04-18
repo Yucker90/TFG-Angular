@@ -4,5 +4,6 @@ export class Usuario {
     email: string;
     movil: number;
     login: string;
-    password: string; 
+    password: string;
+    movil: string;
 }

@@ -1,6 +1,16 @@
 <div class="container">
   <h3>Formulario de registro</h3>
-  <form id="formulario" *ngIf="!submitted">
+  <form
+    name="form"
+    id="form"
+    #f="ngForm"
+    novalidate
+    *ngIf="!submitted"
+    (ngSubmit)="f.valid && submit(submitBtn)"
+    [mustMatch]="['password', 'matchPassword']"
+  >
+    <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
+
     <h5>Datos Personales</h5>
     <div id="datosPersonales">
       <div class="form-group" id="divNombre">
@@ -13,7 +23,13 @@
           maxlength="50"
           [(ngModel)]="usuario.nombre"
           name="nombre"
+          required
+          #nombre="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && nombre.invalid }"
         />
+        <div *ngIf="f.submitted && nombre.invalid" class="invalid-feedback">
+          <div *ngIf="nombre.errors.required">Introduzca un nombre</div>
+        </div>
       </div>
       <div class="form-group" id="divApellidos">
         <label for="apellidos">Apellidos</label>
@@ -25,7 +41,13 @@
           maxlength="50"
           [(ngModel)]="usuario.apellidos"
           name="apellidos"
+          #apellidos="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && apellidos.invalid }"
+          required
         />
+        <div *ngIf="f.submitted && apellidos.invalid" class="invalid-feedback">
+          <div *ngIf="apellidos.errors.required">Introduzca sus apellidos</div>
+        </div>
       </div>
 
       <div class="form-group" id="divEmail">
@@ -39,22 +61,41 @@
           maxlength="50"
           [(ngModel)]="usuario.email"
           name="email"
-        />      <p id="errorEmail">Este email ya existe</p>
-        
+
+          required
+          #email="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+        />
+        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Introduzca un email</div>
+          <div *ngIf="email.errors.pattern">
+            El formato de email no es válido
+          </div>
+        </div> 
       </div>
 
 
       <div class="form-group" id="divMovil">
-        <label for="movil">Teléfono móvil</label>
+        <label for="movil">Movil</label>
         <input
-          type="text"
+          type="tel"
           class="form-control"
           id="movil"
           placeholder="123456789"
+          minlength="9"
           maxlength="9"
           [(ngModel)]="usuario.movil"
           name="movil"
-        />
+          required
+          #movil="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && movil.invalid }"
+        <div *ngIf="f.submitted && movil.invalid" class="invalid-feedback">
+          <div *ngIf="movil.errors.required">Introduzca su número de movil</div>
+          <div *ngIf="movil.errors.minlength || movil.errors.maxlength">
+            El número debe de tener 9 cifras
+          </div>
+        </div>
       </div>
     </div>
     <h5>Datos Web</h5>
@@ -68,8 +109,19 @@
           placeholder="Usuario"
           maxlength="10"
           [(ngModel)]="usuario.login"
-        name="login"
+          name="login"
+          required
+          #login="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && login.invalid }"
         />
+        <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
+          <div *ngIf="login.errors.required">
+            El login es requerido
+          </div>
+          <div *ngIf="login.errors.maxlength">
+            El login no puede tener más de 10 caracteres
+          </div>
+        </div>
       </div>
 
       <div class="form-group" id="divPassword">
@@ -78,17 +130,72 @@
           type="password"
           class="form-control"
           id="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           [(ngModel)]="usuario.password"
           name="password"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+          required
+          #password="ngModel"
+          minlength="5"
         />
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+          <div *ngIf="password.errors.required">
+            La contraseña es requerida
+          </div>
+          <div *ngIf="password.errors.minlength">
+            La contraseña debe tener al menos 5 caracteres
+          </div>
+        </div>
+        <label for="password">Repita la contraseña</label>
+
+        <input
+          type="password"
+          class="form-control"
+          id="matchPassword"
+          placeholder="Repita la contraseña"
+          name="matchPassword"
+          [ngClass]="{ 'is-invalid': f.submitted && matchPassword.invalid }"
+          required
+          [(ngModel)]="matchPasswordVar"
+          #matchPassword="ngModel"
+        />
+        <div
+          *ngIf="f.submitted && matchPassword.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="matchPassword.errors.required">
+            Por favor, repita la contraseña
+          </div>
+          <div *ngIf="matchPassword.errors.mustMatch">
+            Las contraseñas no coinciden
+          </div>
+        </div>
       </div>
     </div>
     <div id="botones">
-    <button id="submit" type="button" (click)="submit()" class="btn btn-primary">Registrarse</button>
-    <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button>
-</div>
-</form>
-<div *ngIf="submitted"><p>Se ha enviado un correo electrónico de confirmación a {{usuario.email}}</p>
-  <button id="back" type="button" class="btn btn-info" (click)="volver()">Volver</button></div>
+      <button id="submit" type="submit" #submitBtn class="btn btn-primary">
+        Registrarse
+      </button>
+
+      <!--<button
+        id="submit"
+        type="button"
+      (click)="submit()"
+        class="btn btn-primary"
+      >
+        Registrarse
+      </button>-->
+      <button id="back" type="button" class="btn btn-info" (click)="volver()">
+        Volver
+      </button>
+    </div>
+  </form>
+  <div *ngIf="submitted">
+    <p>
+      Se ha enviado un correo electrónico de confirmación a {{ usuario.email }}
+    </p>
+    <button id="back" type="button" class="btn btn-info" (click)="volver()">
+      Volver
+    </button>
+  </div>
 </div>
