@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   constructor(private usuariosService: UsuarioService) { }
 
   ngOnInit() {
-    this.usuariosService.getUsuarios();
+    this.usuarios = this.usuariosService.getUsuarios();
   }
 
   onChange(event){
