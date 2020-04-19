@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { PlantillaModule } from "./plantilla/plantilla.module";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthInterceptor } from './interceptors/authintercerptor';
 
 
 @NgModule({
@@ -18,7 +19,11 @@ import { HttpClientModule } from "@angular/common/http";
     PlantillaModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

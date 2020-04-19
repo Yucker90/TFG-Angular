@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   login(){
     console.log("login: " + this.userLogin);
     console.log("password: "  + this.password);
-    //this.usuarioService.postLogin(this.userLogin, this.password);
+    this.usuarioService.postLogin(this.userLogin, this.password);
      
     }
 

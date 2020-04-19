@@ -19,7 +19,6 @@ export class RequiredDirective implements Validator {
 
 
         validate(control: FormControl): ValidationErrors {
-            console.log(control);
             if((control.dirty || control.touched) && ( isNull(control.value) || isUndefined(control.value))){
                 return {'Error' : true};
             }

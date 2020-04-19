@@ -14,16 +14,16 @@
       </tr>
     </thead>
     <tbody>
-      <!--<tr *ngFor="let usuario of usuarios | async">
-            <th scope="row">1</th>
+      <tr *ngFor="let usuario of usuarios | async" [routerLink]="['/userdetails', usuario.id]">
+            <th scope="row">{{usuario.id}}</th>
             <td class="nombre">{{usuario.nombre}}</td>
             <td class="login">{{usuario.login}}</td>
-            <td>{{usuario.password}}</td>
+            <td>*********</td>
             <td>{{usuario.movil}}</td>
             <td>{{usuario.email}}</td>
             <td>{{usuario.acceso}}</td>
-          </tr>-->
-      <tr routerLink="/userdetails">
+          </tr>
+      <!--<tr routerLink="/userdetails">
         <th scope="row">1</th>
         <td class="nombre">NombrePrueba</td>
         <td class="login">LoginPrueba</td>
@@ -49,7 +49,7 @@
         <td>MovilPrueba</td>
         <td>EmailPrueba</td>
         <td>AccesoPrueba</td>
-      </tr>
+      </tr>-->
     </tbody>
   </table>
   <div id="filtros">

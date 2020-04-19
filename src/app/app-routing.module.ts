@@ -34,7 +34,7 @@ const routes: Routes = [
     component: EventDetailsComponent,
   },
   {
-    path: "userdetails",
+    path: "userdetails/:id",
     component: UserDetailsComponent,
   },
   {
