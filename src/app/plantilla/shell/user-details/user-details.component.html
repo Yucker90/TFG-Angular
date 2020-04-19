@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="usuario">
     <h4>Detalles del usuario</h4>
     <div id="detalles">
-      <div>Nombre:</div>
-      <div>Email:</div>
-      <div>Login:</div>
-      <div>Contraseña:</div>
-      <div>Nivel de Acceso:</div>
+      <div>Nombre: {{usuario.nombre}}</div>
+      <div>Email: {{usuario.email}}</div>
+      <div>Login: {{usuario.login}}</div>
+      <div>Contraseña: {{usuario.password}}</div>
+      <div>Nivel de Acceso: {{usuario.acceso}}</div>
       <p>Listado de eventos:</p>
     </div>
     
