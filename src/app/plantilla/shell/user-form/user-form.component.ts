@@ -3,7 +3,7 @@ import { Usuario } from "src/app/interfaces/usuario";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { FormGroup } from '@angular/forms';
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-user-form",
@@ -15,12 +15,10 @@ export class UserFormComponent implements OnInit {
   submitted = false;
   matchPasswordVar: string;
 
-
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
     private location: Location
-    
   ) {}
 
   ngOnInit() {}
@@ -31,20 +29,20 @@ export class UserFormComponent implements OnInit {
   }
 
   crearUsuario() {
-    this.usuarioService.crearUsuario(this.usuario).subscribe(data => console.log(data), error => console.log(error));
-
+    this.usuarioService.crearUsuario(this.usuario).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
     document.getElementById("form").hidden = true;
-
   }
 
   volver() {
     this.location.back();
   }
 
-  submitBtn(submitBtn: HTMLButtonElement){
+  submitBtn(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
     this.submit();
-    submitBtn.disabled= false;
-
+    submitBtn.disabled = false;
   }
 }

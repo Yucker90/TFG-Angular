@@ -27,9 +27,6 @@ export class EmailConfirmationComponent implements OnInit {
     } else {
             this.emailService.comprobarToken(this.token);
             this.tokenOk = true;
-            console.log("TokenOk (onInit): " + this.tokenOk);
-            console.log("2");
-            console.log(this.token);
     }
   }
 

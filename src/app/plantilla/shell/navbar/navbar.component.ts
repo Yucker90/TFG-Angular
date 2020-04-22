@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
     if (Cookies.get("TOKEN_ID")) {
       document.getElementById("logout").hidden = false;
       document.getElementById("login").hidden=true;
+      document.getElementById("crearCuenta").hidden=true;
     }
   }
 

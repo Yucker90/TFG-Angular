@@ -20,11 +20,12 @@ import { MainPageComponent } from './shell/main-page/main-page.component';
 import { EmailConfirmationComponent } from './shell/email-confirmation/email-confirmation.component';
 import { MustMatchDirective } from './validators/mustmatchdirective'
 import { RequiredDirective } from './validators/requiredDirective';
+import { EventFormComponent } from './shell/event-form/event-form.component';
 
 
 
 @NgModule({
-  declarations: [RequiredDirective,MustMatchDirective, ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent],
+  declarations: [RequiredDirective,MustMatchDirective, ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent, EventFormComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,

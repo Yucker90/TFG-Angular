@@ -1,0 +1,85 @@
+<h3>Formulario de creación de evento</h3>
+<div class="container">
+  <form
+  name="form"
+  id="form"
+  #f="ngForm"
+  novalidate
+  *ngIf="!submitted"
+  (ngSubmit)="f.valid && submit(submitBtn)"
+  >
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        class="form-control"
+        type="text"
+        name="nombre"
+        id="nombre"
+        placeholder="Nombre del evento"
+        required
+        [(ngModel)]="evento.nombre"
+        #nombre="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && nombre.invalid }"
+      />
+      <div *ngIf="f.submitted && nombre.invalid" class="invalid-feedback">
+        <div *ngIf="nombre.errors.required">Introduzca un nombre</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lugar">Lugar</label>
+      <input
+        type="text"
+        name="lugar"
+        class="form-control"
+        id="lugar"
+        placeholder="Lugar del evento"
+        required
+        [(ngModel)]="evento.lugar"
+        #lugar="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && lugar.invalid }"
+      />
+      <div *ngIf="f.submitted && lugar.invalid" class="invalid-feedback">
+        <div *ngIf="lugar.errors.required">Introduzca un lugar</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fecha">Fecha</label>
+      <input
+        class="form-control"
+        type="date"
+        id="fecha"
+        required
+        [(ngModel)]="evento.fecha"
+        name="fecha"
+        #fecha="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && fecha.invalid }"
+      />
+      <div *ngIf="f.submitted && fecha.invalid" class="invalid-feedback">
+        <div *ngIf="fecha.errors.required">Introduzca una fecha</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="capacidad">Capacidad</label>
+      <input
+        class="form-control"
+        type="number"
+        id="capacidad"
+        min="1"
+        placeholder="Número de trabajadores requeridos"
+        required
+        [(ngModel)]="evento.capacidad"
+        name="capacidad"
+        #capacidad="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && capacidad.invalid }"
+      />
+      <div *ngIf="f.submitted && capacidad.invalid" class="invalid-feedback">
+        <div *ngIf="capacidad.errors.required">Introduzca una capacidad</div>
+      </div>
+    </div>
+
+    <button id="submit" type="submit" #submitBtn class="btn btn-primary">
+      Enviar
+    </button>
+    <button type="button" (click)="submit()">Enviar 2</button>
+  </form>
+</div>

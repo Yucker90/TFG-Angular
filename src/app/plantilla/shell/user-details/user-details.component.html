@@ -1,4 +1,4 @@
-<div class="container" *ngIf="usuario">
+<div class="container" *ngIf="usuario; else error">
     <h4>Detalles del usuario</h4>
     <div id="detalles">
       <div>Nombre: {{usuario.nombre}}</div>
@@ -41,5 +41,12 @@
     </table>
 
     <button class="btn btn-info"><img src="https://cdn4.iconfinder.com/data/icons/file-extension-names-vol-8/512/24-512.png" class="icon" width="25px"/>&nbsp;Descargar datos (PDF)</button>
+  </div>
+
+  <div class="container">
+    <ng-template #error>
+      No tiene los permisos requeridos. Por favor <a routerLink="/login">identifíquese</a> o <a routerLink="/userform">cree una cuenta</a>.
+    </ng-template>
+    <button type="button" id="back" class="btn btn-info"(click)="volver()">Volver</button>
   </div>
   

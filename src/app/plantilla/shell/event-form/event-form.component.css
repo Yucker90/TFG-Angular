@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: left;
+    align-items: center;
+  }
+
+  input {
+    width: fit-content;
+  }
+
+  #submit {
+    text-align: center;
+    width: fit-content;
+    background-color: #2B757F;
+    border: none;
+  }
