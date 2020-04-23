@@ -2,37 +2,48 @@
   <h4>Lista de eventos</h4>
   <table class="table">
     <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Lugar</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Capacidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr routerLink="/eventdetails">
-          <th scope="row">1</th>
-          <td>MangaFest</td>
-          <td>Sevilla</td>
-          <td>07/12/20</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Boda Antonio</td>
-          <td>Mairena del Aljarafe</td>
-          <td>12/09/20</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Comunión Ignacio</td>
-          <td>Brenes</td>
-          <td>10/09/20</td>
-          <td>15</td>
-        </tr>
-      </tbody>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Lugar</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Capacidad</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let evento of eventos | async"
+        
+      >
+        <th scope="row">{{ evento.id }}</th>
+        <td>{{ evento.nombre }}</td>
+        <td>{{ evento.lugar }}</td>
+        <td>{{ evento.fecha | date: "shortDate" }}</td>
+        <td>{{ evento.capacidad }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-info"
+            [routerLink]="['/eventdetails', evento.id]"
+          >
+            Detalles
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="apuntarse(evento.id)"
+          >
+            ¡Quiero ir!
+          </button>
+
+          <button type="button" class="btn btn-info" id="borrar"
+          [hidden]="!adminPrivileges">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
   </table>
-  <button type="button" class="btn btn-info" routerLink="/eventform">Crear evento</button>
+  <button type="button" class="btn btn-info" [hidden]="!adminPrivileges" routerLink="/eventform">
+    Crear evento
+  </button>
 </div>

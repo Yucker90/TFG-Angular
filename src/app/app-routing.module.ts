@@ -31,7 +31,7 @@ const routes: Routes = [
     component: UserFormComponent,
   },
   {
-    path: "eventdetails",
+    path: "eventdetails/:id",
     component: EventDetailsComponent,
   },
   {

@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Usuario } from "../interfaces/usuario";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import * as Cookies from "js-cookie";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -12,8 +11,12 @@ export class UsuarioService {
   private baseURl = "http://localhost:8080/api/v1/usuarios";
   private loginURL = "http://localhost:8080/api/v1/auth";
   private registerURL = "http://localhost:8080/api/v1/register";
+  private rolesURL = "http://localhost:8080/api/v1/roles";
+  private stringUrl = "http://localhost:8080/api/v1/string";
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   crearUsuario(usuario: Usuario) {
     usuario.nombre = usuario.apellidos + ", " + usuario.nombre;
@@ -25,32 +28,23 @@ export class UsuarioService {
   }
 
   getUsuario(id: string): Observable<any> {
-    console.log("ID a buscar: " + id)
+    console.log("ID a buscar: " + id);
     return this.http.get(`${this.baseURl}/${id}`);
   }
-  
+
+  getUsuarioByAccess(access: number): Observable<any>{
+    return this.http.get(`${this.rolesURL}/${access}`)
+  }
 
   postLogin(username: string, password: string) {
-    // Con localstorage
-    //return this.http.post(`${this.loginURL}`, {username, password}).subscribe(res => this.setSession(res));
-
-    return this.http
-      .post(`${this.loginURL}`, { username, password })
-      .subscribe((res) => {
-        this.setCookie(res);
-        //this.setSession(res);    
-        this.router.navigateByUrl('/');
-      });
-  }
-  private setCookie(res) {
-    Cookies.set("TOKEN_ID", res.idtoken);
+    return this.http.post(`${this.loginURL}`, { username, password });
   }
 
-  private setSession(auth) {
-    console.log(auth);
-    localStorage.setItem("id_token", auth.idtoken);
+  getRoles(){
+    return this.http.get(`${this.rolesURL}`);
   }
 
+  getUsuariosByNombre(string: string): Observable<any>{
+    return this.http.get(`${this.stringUrl}/${string}`);
+  }
 }
-
-

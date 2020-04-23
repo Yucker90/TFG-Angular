@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
+    Cookies.remove("USER_ACCESS");
+    Cookies.remove("USER_ID");
     Cookies.remove("TOKEN_ID");
     window.location.reload();
   }

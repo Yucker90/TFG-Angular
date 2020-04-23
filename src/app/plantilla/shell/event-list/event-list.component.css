@@ -40,3 +40,10 @@ table {
   h4{
     margin-bottom: 2%;
   }
+
+  .btn{
+    border: none;
+    margin-right: 0.7%;
+    width: fit-content;
+    height: fit-content;
+  }

@@ -1,40 +1,42 @@
 <div class="container">
-  <h4>Detalles del evento</h4>
-  <div id="detalles">
-    <div>Nombre:</div>
-    <div>Lugar:</div>
-    <div>Fecha:</div>
-    <div>Capacidad: personas</div>
-    <p>Listado de trabajadores:</p>
+  <div *ngIf="evento">
+    <h4>Detalles del evento</h4>
+    <div id="detalles">
+      <div>Nombre: {{ evento.nombre }}</div>
+      <div>Lugar: {{ evento.lugar }}</div>
+      <div>Fecha: {{ evento.fecha | date: "longDate":"es-EA" }}</div>
+      <div>Trabajadores necesarios: {{ evento.capacidad }} trabajadores</div>
+      <p>Listado de trabajadores:</p>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cargo</th>
+          <th scope="col">Horas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr routerLink="/userdetails">
+          <th scope="row">1</th>
+          <td>John Doe</td>
+          <td>Camarero</td>
+          <td>17</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>John Doe</td>
+          <td>Camarero</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>John Doe</td>
+          <td>Camarero</td>
+          <td>17</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cargo</th>
-        <th scope="col">Horas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr routerLink="/userdetails">
-        <th scope="row">1</th>
-        <td>John Doe</td>
-        <td>Camarero</td>
-        <td>17</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>John Doe</td>
-        <td>Camarero</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>John Doe</td>
-        <td>Camarero</td>
-        <td>17</td>
-      </tr>
-    </tbody>
-  </table>
 </div>

@@ -24,5 +24,8 @@ export class EventosService {
     return this.http.post(`${this.baseURl}`, evento);
   }
 
+  getEvento(id: string):Observable<any>{
+    return this.http.get(`${this.baseURl}/${id}`);
+  }
   
 }
