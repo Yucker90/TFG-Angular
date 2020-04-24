@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmailService {
   
-  private baseURl = 'http://localhost:8080/api/v1/confirm-account';
+  private emailURl = 'http://localhost:8080/api/v1/confirm-account';
   constructor(private http: HttpClient) { }
 
   comprobarToken(token: string) {
-    return this.http.get(`${this.baseURl}/${token}`).subscribe(data => console.log(data));
+    return this.http.get(`${this.emailURl}/${token}`);
   }
 }

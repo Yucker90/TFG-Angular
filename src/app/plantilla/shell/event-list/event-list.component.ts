@@ -11,16 +11,16 @@ import * as Cookies from 'js-cookie';
 })
 export class EventListComponent implements OnInit {
 
-  adminPrivileges= parseInt(Cookies.get('USER_ACCESS'))!=1;
+  adminPrivileges= parseInt(Cookies.get('USER_ACCESS'))==1;
+  
   eventos: Observable<Evento[]>;
 
   constructor(private eventosService: EventosService) { }
 
   ngOnInit() {
+    console.log(parseInt(Cookies.get('USER_ACCESS')));
+    console.log(this.adminPrivileges)
     this.eventos = this.eventosService.getEventos();
-    if(parseInt(Cookies.get("USER_ACCESS")) !==1 ){
-
-        }
   }
 
 apuntarse(id: number){

@@ -1,6 +1,6 @@
 import { Usuario } from './usuario';
 
-export interface Post {
+export class Post {
 
     titulo: string;
     autor: Usuario;

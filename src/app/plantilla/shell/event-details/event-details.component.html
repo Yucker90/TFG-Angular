@@ -38,5 +38,25 @@
         </tr>
       </tbody>
     </table>
+    <button type="button" class="btn btn-info" (click)="apuntarse()">
+      ¡Quiero ir!
+    </button>
+    <div id="formTrabajo" hidden>
+      <select name="selectRol" id="selectRol" class="form-control">
+        <option value="">Seleccione un rol</option
+        ><option value="0">Camarero - x€/h</option>
+        <option value="1">Cocinero - x€/h</option>
+        <option value="2">Azafata/o - x€/h</option>
+        <option value="3">Seguridad - x€/h</option></select
+      >
+      <button
+        type="button"
+        class="btn btn-info"
+        (click)="solicitud()"
+        id="btnSolicitud"
+      >
+        Enviar solicitud
+      </button>
+    </div>
   </div>
 </div>

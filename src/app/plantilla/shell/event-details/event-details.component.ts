@@ -10,12 +10,13 @@ import { Evento } from 'src/app/interfaces/evento';
 })
 export class EventDetailsComponent implements OnInit {
   evento: Evento;
+  idEvento: string;
 
   constructor(private route: ActivatedRoute, private eventosService: EventosService) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
-    this.eventosService.getEvento(id).subscribe(
+   this.idEvento= this.route.snapshot.paramMap.get("id");
+    this.eventosService.getEvento(this.idEvento).subscribe(
       (data) => {
         this.evento = data;
       },
@@ -23,6 +24,20 @@ export class EventDetailsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    /* if trabajadores.count >= necesarios{
+        apuntarse.disabled
+    }
+    */
+  }
+
+  apuntarse(){
+    document.getElementById("formTrabajo").hidden = false;
+  }
+
+  solicitud(){
+    //TODO
+    // rolService.enviarTrabajo(evento, idusuario, rol)
   }
 
 }

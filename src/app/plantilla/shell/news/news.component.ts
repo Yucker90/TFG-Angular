@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { getLocaleEraNames } from '@angular/common';
 import { Post } from 'src/app/interfaces/post';
+import { NewsService } from 'src/app/servicios/news.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-news",
@@ -9,10 +11,11 @@ import { Post } from 'src/app/interfaces/post';
 })
 export class NewsComponent implements OnInit {
   config: any;
-  collection = { count: 10, data: [] };
+  collection = { count: 10, data: new Observable<Post[]>() };
 post: Post;
 
   ngOnInit() {
+    this.collection.data= this.newsService.getNews();
     
   }
   public maxSize: number = 7;
@@ -27,20 +30,8 @@ post: Post;
       screenReaderCurrentLabel: `You're on page`};
 
 
-  constructor() {
-    let j = 0;
-    for (var i = 0; i < this.collection.count; i++) {
+  constructor(private newsService: NewsService) {
 
-      this.collection.data.push(
-
-
-        this.post={titulo: "Hola"+j, autor: {movil: "11111111",apellidos: "Perez Lopez", nombre: "Jose", email: "aaaaa", login: "1", password: "1"}, texto: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat odit nulla, accusantium alias in, perferendis fuga incidunt est molestiae accusamus officiis rerum beatae veniam! Id repudiandae consectetur dolores possimus quis!"}
-     
-      );
-      j++;
-    }
-
-    //Create dummy data
     this.config = {
       itemsPerPage: 3,
       currentPage: 1,

@@ -6,7 +6,7 @@
 
 <div class="noticia" *ngFor="let item of collection.data | paginate: config">
     <h5 class="titulo">{{ item.titulo }}</h5>
-    <a class="autor" href="/userdetails">{{item.autor.nombre}} {{item.autor.apellidos}}</a>
+    <a class="autor" href="/userdetails">{{item.autor}}</a>
     <p class="texto">{{item.texto}}</p>
 </div>
 

@@ -1,6 +1,12 @@
 <div class="container">
   <h3>Nueva Entrada</h3>
-  <form id="formulario">
+  <form
+    name="form"
+    id="form"
+    #f="ngForm"
+    novalidate
+    (ngSubmit)="f.valid && submit(submitBtn)"
+  >
     <div class="form-group" id="divTitulo">
       <label for="titulo">Titulo</label>
       <input
@@ -9,20 +15,38 @@
         id="titulo"
         placeholder="Titulo"
         maxlength="50"
+        [(ngModel)]="post.titulo"
+        name="titulo"
+        required
+        #titulo="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }"
       />
+      <div *ngIf="f.submitted && titulo.invalid" class="invalid-feedback">
+        <div *ngIf="titulo.errors.required">Introduzca un título</div>
+      </div>
     </div>
     <div class="form-group" id="divTexto">
-      <label for="texto">Apellidos</label>
-      <textarea id="texto" rows="4" cols="50" placeholder="Contenido"> </textarea>
+      <label for="texto">Cuerpo</label>
+      <textarea
+        id="texto"
+        rows="4"
+        cols="10"
+        placeholder="Contenido"
+        [(ngModel)]="post.texto"
+        name="texto"
+        #texto="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && texto.invalid }"
+        required
+      >
+      </textarea>
+      <div><p>{{255 - post.texto.length}} carácteres restantes</p></div>
+      <div *ngIf="f.submitted && texto.invalid" class="invalid-feedback">
+        <div *ngIf="texto.errors.required">Escriba algo en el texto</div>
+      </div>
     </div>
 
     <div id="botones">
-      <button
-        id="submit"
-        type="button"
-        (click)="submit()"
-        class="btn btn-primary"
-      >
+      <button id="submit" type="submit" #submitBtn class="btn btn-primary">
         Enviar
       </button>
       <button id="back" type="button" class="btn btn-info" (click)="volver()">

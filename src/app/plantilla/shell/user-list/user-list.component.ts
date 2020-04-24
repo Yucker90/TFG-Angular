@@ -30,4 +30,15 @@ export class UserListComponent implements OnInit {
   buscar() {
     this.usuarios = this.usuariosService.getUsuariosByNombre(this.busqueda);
   }
+
+  getAcceso(acceso: number) {
+    switch (acceso) {
+      case 0:
+        return "Deshabilitado";
+      case 1:
+        return "Administrador";
+      case 2:
+        return "Usuario";
+    }
+  }
 }

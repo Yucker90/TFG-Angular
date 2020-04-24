@@ -1,5 +1,6 @@
 <div class="container" id="tabla">
   <h4>Lista de eventos</h4>
+  <div>
   <table class="table">
     <thead>
       <tr>
@@ -29,21 +30,15 @@
           >
             Detalles
           </button>
-          <button
-            type="button"
-            class="btn btn-info"
-            (click)="apuntarse(evento.id)"
-          >
-            ¡Quiero ir!
-          </button>
-
-          <button type="button" class="btn btn-info" id="borrar"
+         <button type="button" class="btn btn-info" id="borrar"
           [hidden]="!adminPrivileges">Borrar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-info" [hidden]="!adminPrivileges" routerLink="/eventform">
-    Crear evento
-  </button>
+</div>
+<button type="button" class="btn btn-info" [hidden]="!adminPrivileges" routerLink="/eventform">
+  Crear evento
+</button>
+
 </div>
