@@ -3,6 +3,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Usuario } from "src/app/interfaces/usuario";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import {Location } from "@angular/common";
+import { TrabajoService } from 'src/app/servicios/trabajo.service';
+import { Observable } from 'rxjs';
+import { Trabajo } from 'src/app/interfaces/trabajo';
 
 @Component({
   selector: "app-user-details",
@@ -11,10 +14,13 @@ import {Location } from "@angular/common";
 })
 export class UserDetailsComponent implements OnInit {
   usuario: Usuario;
+  trabajos: Observable<Trabajo[]>;
+
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private trabajoService: TrabajoService
   ) {}
 
   
@@ -28,6 +34,9 @@ export class UserDetailsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    this.trabajoService.getTrabajoByUser(id).subscribe(
+      data => this.trabajos = data);
   }
 
   volver(){

@@ -62,4 +62,30 @@ button{
   border: none;
 }
 
+#controls{
+  display: flex;
+  flex-direction: row;
 
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+
+#divPuesto{
+  margin-right: 1%;
+}
+
+#divHoras{
+  margin-left: 1%;
+}
+
+#horas{
+  width: 4.4em;
+}
+
+#inputHoras{
+  display: flex;
+  flex-direction: row;
+}

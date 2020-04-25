@@ -21,11 +21,12 @@ import { EmailConfirmationComponent } from './shell/email-confirmation/email-con
 import { MustMatchDirective } from './validators/mustmatchdirective'
 import { RequiredDirective } from './validators/requiredDirective';
 import { EventFormComponent } from './shell/event-form/event-form.component';
+import { RolFormComponent } from './shell/rol-form/rol-form.component';
 
 
 
 @NgModule({
-  declarations: [RequiredDirective,MustMatchDirective, ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent, EventFormComponent],
+  declarations: [RequiredDirective,MustMatchDirective, ShellComponent, HeaderComponent, MainComponent, FooterComponent, NavbarComponent, EventListComponent, UserListComponent, UserFormComponent, UserDetailsComponent, EventDetailsComponent, LoginComponent, NewsComponent, NewsFormComponent, MainPageComponent, EmailConfirmationComponent, EventFormComponent, RolFormComponent],
   imports: [
     CommonModule,
     FormsModule,ReactiveFormsModule,

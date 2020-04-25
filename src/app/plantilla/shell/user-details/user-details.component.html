@@ -19,24 +19,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr routerLink="/eventdetails">
-          <th scope="row">1</th>
-          <td>MangaFest</td>
-          <td>Sevilla</td>
-          <td>Sevilla</td>
+        <tr [routerLink]="['/eventdetails', trabajo.evento.id]" *ngFor="let trabajo of trabajos">
+          <th scope="row">{{trabajo.evento.id}}</th>
+          <td>{{trabajo.evento.nombre}}</td>
+          <td>{{trabajo.rol.nombre}}</td>
+          <td>{{trabajo.horas}}</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Boda Antonio</td>
-          <td>Mairena del Aljarafe</td>
-          <td>Sevilla</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Comunión Ignacio</td>
-          <td>Brenes</td>
-          <td>Sevilla</td>
-        </tr>
+
       </tbody>
     </table>
 

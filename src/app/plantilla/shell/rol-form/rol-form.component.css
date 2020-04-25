@@ -1,0 +1,19 @@
+input{
+    width: fit-content;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#divSueldo{
+    display: flex;
+    flex-direction: row;
+}
+
+#sueldo{
+    width: 60%;
+    margin-left: 10%;
+}

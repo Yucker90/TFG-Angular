@@ -1,4 +1,4 @@
-export class Roles {
+export class Rol {
 
     nombre: string;
 	sueldo: number;

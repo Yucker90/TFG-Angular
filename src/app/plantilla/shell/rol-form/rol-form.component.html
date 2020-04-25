@@ -1,0 +1,52 @@
+<div class="container">
+  <h3>Formulario de creación de rol</h3>
+  <form
+    name="form"
+    id="form"
+    #f="ngForm"
+    novalidate
+    *ngIf="!submitted"
+    (ngSubmit)="f.valid && submit(submitBtn)"
+  >
+    <div class="form-group">
+      <label for="nombre">Nombre del rol:</label>
+      <input
+        class="form-control"
+        placeholder="Nombre"
+        type="text"
+        name="nombre"
+        id="nombre"
+        [(ngModel)]="rol.nombre"
+        #nombre="ngModel"
+        required
+        [ngClass]="{ 'is-invalid': f.submitted && nombre.invalid }"
+      />
+      <div *ngIf="f.submitted && nombre.invalid" class="invalid-feedback">
+        <div *ngIf="nombre.errors.required">Introduzca un nombre</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sueldo">Sueldo:</label>
+      <div id="divSueldo">
+        <input
+          class="form-control"
+          min="1"
+          placeholder="0"
+          type="number"
+          name="sueldo"
+          id="sueldo"
+          [(ngModel)]="rol.sueldo"
+          #sueldo="ngModel"
+          required
+          [ngClass]="{ 'is-invalid': f.submitted && sueldo.invalid }"
+        /> &nbsp;€ / hora
+      </div>
+      <div *ngIf="f.submitted && sueldo.invalid" class="invalid-feedback">
+        <div *ngIf="sueldo.errors.required">Introduzca un sueldo</div>
+      </div>
+    </div>
+    <button id="submit" type="submit" #submitBtn class="btn btn-primary">
+        Enviar
+      </button>
+  </form>
+</div>
