@@ -6,6 +6,8 @@ import {Location } from "@angular/common";
 import { TrabajoService } from 'src/app/servicios/trabajo.service';
 import { Observable } from 'rxjs';
 import { Trabajo } from 'src/app/interfaces/trabajo';
+import * as Cookies from 'js-cookie';
+import { Rol } from 'src/app/interfaces/rol';
 
 @Component({
   selector: "app-user-details",
@@ -15,6 +17,8 @@ import { Trabajo } from 'src/app/interfaces/trabajo';
 export class UserDetailsComponent implements OnInit {
   usuario: Usuario;
   trabajos: Observable<Trabajo[]>;
+  detalles = true;
+  adminPrivileges= parseInt(Cookies.get('USER_ACCESS'))==1;
 
   constructor(
     private location: Location,
@@ -37,9 +41,29 @@ export class UserDetailsComponent implements OnInit {
 
     this.trabajoService.getTrabajoByUser(id).subscribe(
       data => this.trabajos = data);
+      this.detalles= true;
   }
 
   volver(){
     this.location.back();
+  }
+
+  showModificar(){
+    this.detalles= false;
+  }
+
+  showDetalles(){
+    this.detalles= true;
+  }
+
+  getAcceso(acceso: number) {
+    switch (acceso) {
+      case 0:
+        return "Deshabilitado";
+      case 1:
+        return "Administrador";
+      case 2:
+        return "Usuario";
+    }
   }
 }
