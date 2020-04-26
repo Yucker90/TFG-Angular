@@ -19,6 +19,7 @@ export class UserDetailsComponent implements OnInit {
   trabajos: Observable<Trabajo[]>;
   detalles = true;
   adminPrivileges= parseInt(Cookies.get('USER_ACCESS'))==1;
+  iduser: any;
 
   constructor(
     private location: Location,
@@ -38,7 +39,7 @@ export class UserDetailsComponent implements OnInit {
         console.log(error);
       }
     );
-
+      this.iduser = id;
     this.trabajoService.getTrabajoByUser(id).subscribe(
       data => this.trabajos = data);
       this.detalles= true;
@@ -65,5 +66,26 @@ export class UserDetailsComponent implements OnInit {
       case 2:
         return "Usuario";
     }
+  }
+
+
+  submit() {
+    console.log("2");
+    this.actualizarUsuario();
+  }
+
+  actualizarUsuario() {
+    console.log("3");
+    this.usuarioService.putUsuario(this.iduser, this.usuario).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
+  }
+
+  submitBtn(submitBtn: HTMLButtonElement) {
+    console.log("1");
+    submitBtn.disabled = true;
+    this.submit();
+    submitBtn.disabled = false;
   }
 }

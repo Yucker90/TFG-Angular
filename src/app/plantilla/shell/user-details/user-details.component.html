@@ -57,7 +57,6 @@
         id="form"
         #f="ngForm"
         novalidate
-        *ngIf="!submitted"
         (ngSubmit)="f.valid && submit(submitBtn)"
       >
         <div class="form-group">
@@ -120,10 +119,11 @@
             <option value="2">Usuario</option>
           </select>
         </div>
+        <button type="submit" class="btn btn-info" #submitBtn id="submit">Actualizar usuario</button>
+
       </form>
     </div>
 
-    <button type="submit" class="btn btn-info">Actualizar usuario</button>
     <button
       type="button"
       (click)="showDetalles()"

@@ -27,6 +27,11 @@ export class UsuarioService {
     return this.http.get(`${this.baseURl}`);
   }
 
+  putUsuario(userid: string, user: Usuario): Observable<any>{
+    console.log("4");
+    return this.http.put(`${this.baseURl}/${userid}`,user);
+  }
+
   getUsuario(id: string): Observable<any> {
     return this.http.get(`${this.baseURl}/${id}`);
   }
