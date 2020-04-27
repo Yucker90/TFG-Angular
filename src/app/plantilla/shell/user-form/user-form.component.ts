@@ -31,7 +31,11 @@ export class UserFormComponent implements OnInit {
   crearUsuario() {
     this.usuarioService.crearUsuario(this.usuario).subscribe(
       (data) => console.log(data),
-      (error) => console.log(error)
+      (error) => {
+        window.alert(error);
+        error.log()
+        console.log(error);
+      }
     );
     document.getElementById("form").hidden = true;
   }
