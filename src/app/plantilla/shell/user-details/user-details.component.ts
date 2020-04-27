@@ -7,7 +7,6 @@ import { TrabajoService } from 'src/app/servicios/trabajo.service';
 import { Observable } from 'rxjs';
 import { Trabajo } from 'src/app/interfaces/trabajo';
 import * as Cookies from 'js-cookie';
-import { Rol } from 'src/app/interfaces/rol';
 
 @Component({
   selector: "app-user-details",
@@ -76,10 +75,9 @@ export class UserDetailsComponent implements OnInit {
 
   actualizarUsuario() {
     console.log("3");
-    this.usuarioService.putUsuario(this.iduser, this.usuario).subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
+    this.usuario.apellidos = this.usuario.nombre.split(',')[0];
+    this.usuarioService.putUsuario(this.iduser, this.usuario);
+    this.detalles= true;
   }
 
   submitBtn(submitBtn: HTMLButtonElement) {

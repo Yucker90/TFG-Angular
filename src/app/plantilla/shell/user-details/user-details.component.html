@@ -2,12 +2,27 @@
   <div *ngIf="detalles; else modificar">
     <h4>Detalles del usuario</h4>
     <div id="detalles">
-      <div>Nombre: {{ usuario.nombre }}</div>
-      <div>Email: {{ usuario.email }}</div>
-      <div>Login: {{ usuario.login }}</div>
-      <div>Contraseña: ********</div>
-      <div>Nivel de Acceso: {{ getAcceso(usuario.acceso) }}</div>
-      <p>Listado de eventos:</p>
+      <div class="atributo">
+        <div class="titulo">Nombre:</div>
+        {{ usuario.nombre }}
+      </div>
+      <div class="atributo">
+        <div class="titulo">Email:</div>
+        {{ usuario.email }}
+      </div>
+      <div class="atributo">
+        <div class="titulo">Login:</div>
+        {{ usuario.login }}
+      </div>
+      <div class="atributo">
+        <div class="titulo">Contraseña:</div>
+        ********
+      </div>
+      <div class="atributo">
+        <div class="titulo">Nivel de Acceso:</div>
+        {{ getAcceso(usuario.acceso) }}
+      </div>
+      <p class="titulo">Listado de eventos:</p>
     </div>
 
     <table class="table">
@@ -32,7 +47,7 @@
       </tbody>
     </table>
 
-    <button class="btn btn-info">
+    <button class="btn btn-info" id="pdf">
       <img
         src="https://cdn4.iconfinder.com/data/icons/file-extension-names-vol-8/512/24-512.png"
         class="icon"
@@ -40,6 +55,7 @@
       />&nbsp;Descargar datos (PDF)
     </button>
     <button
+      id="modificarUser"
       type="button"
       (click)="showModificar()"
       class="btn btn-info"
@@ -47,17 +63,20 @@
     >
       Modificar usuario
     </button>
+    <button type="button" class="btn btn-info back" (click)="volver()">
+      Volver
+    </button>
   </div>
 
   <ng-template #modificar>
     <h4>Modificar usuario</h4>
-    <div id="modificar">
+    <div id="modificar" *ngIf="usuario">
       <form
         name="form"
         id="form"
         #f="ngForm"
         novalidate
-        (ngSubmit)="f.valid && submit(submitBtn)"
+        (ngSubmit)="submit(submitBtn)"
       >
         <div class="form-group">
           <label for="nombre">Nombre:</label>
@@ -82,7 +101,20 @@
           />
         </div>
         <div class="form-group">
-          <label for="login">Login</label>
+          <label for="movil">Movil:</label>
+          <input
+            class="form-control"
+            type="text"
+            name="movil"
+            id="movil"
+            minlength="9"
+            maxlength="9"
+            [(ngModel)]="usuario.movil"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="login">Login:</label>
           <input
             class="form-control"
             type="text"
@@ -119,19 +151,25 @@
             <option value="2">Usuario</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-info" #submitBtn id="submit">Actualizar usuario</button>
-
+        <div id="botones">
+          <button type="submit" class="btn btn-info" #submitBtn id="submit">
+            Actualizar
+          </button>
+          <button
+            type="button"
+            (click)="showDetalles()"
+            class="btn btn-info"
+            [hidden]="!adminPrivileges"
+            id="detalles"
+          >
+            Detalles
+          </button>
+          <button type="button" class="btn btn-info back" (click)="volver()">
+            Volver
+          </button>
+        </div>
       </form>
     </div>
-
-    <button
-      type="button"
-      (click)="showDetalles()"
-      class="btn btn-info"
-      [hidden]="!adminPrivileges"
-    >
-      Detalles usuario
-    </button>
   </ng-template>
 
   <div class="container">
@@ -140,8 +178,6 @@
       <a routerLink="/login">identifíquese</a> o
       <a routerLink="/userform">cree una cuenta</a>.
     </ng-template>
-    <button type="button" id="back" class="btn btn-info" (click)="volver()">
-      Volver
-    </button>
   </div>
+  
 </div>

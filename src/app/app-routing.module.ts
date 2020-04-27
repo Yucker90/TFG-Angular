@@ -10,8 +10,8 @@ import { UserDetailsComponent } from "./plantilla/shell/user-details/user-detail
 import { NewsFormComponent } from "./plantilla/shell/news-form/news-form.component";
 import { MainPageComponent } from "./plantilla/shell/main-page/main-page.component";
 import { EmailConfirmationComponent } from "./plantilla/shell/email-confirmation/email-confirmation.component";
-import { EventFormComponent } from './plantilla/shell/event-form/event-form.component';
-import { RolFormComponent } from './plantilla/shell/rol-form/rol-form.component';
+import { EventFormComponent } from "./plantilla/shell/event-form/event-form.component";
+import { RolFormComponent } from "./plantilla/shell/rol-form/rol-form.component";
 
 const routes: Routes = [
   {
@@ -52,12 +52,13 @@ const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path:"eventform",
-    component: EventFormComponent
-  },{
-  path:"rolform",
-  component: RolFormComponent
-}
+    path: "eventform",
+    component: EventFormComponent,
+  },
+  {
+    path: "rolform",
+    component: RolFormComponent,
+  }
 ];
 
 @NgModule({
