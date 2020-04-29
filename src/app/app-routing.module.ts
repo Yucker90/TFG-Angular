@@ -12,6 +12,7 @@ import { MainPageComponent } from "./plantilla/shell/main-page/main-page.compone
 import { EmailConfirmationComponent } from "./plantilla/shell/email-confirmation/email-confirmation.component";
 import { EventFormComponent } from "./plantilla/shell/event-form/event-form.component";
 import { RolFormComponent } from "./plantilla/shell/rol-form/rol-form.component";
+import { ErrorComponent } from './plantilla/shell/error/error.component';
 
 const routes: Routes = [
   {
@@ -58,8 +59,10 @@ const routes: Routes = [
   {
     path: "rolform",
     component: RolFormComponent,
-  }
-];
+  },{
+  path:"error/:id",
+component: ErrorComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
