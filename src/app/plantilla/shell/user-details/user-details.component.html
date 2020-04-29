@@ -55,6 +55,15 @@
       />&nbsp;Descargar datos (PDF)
     </button>
     <button
+      id="borrarUser"
+      type="button"
+      (click)="borrarUsuario()"
+      class="btn btn-info"
+      [hidden]="!adminPrivileges"
+    >
+      Borrar usuario
+    </button>
+    <button
       id="modificarUser"
       type="button"
       (click)="showModificar()"
