@@ -6,9 +6,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { PlantillaModule } from "./plantilla/plantilla.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AuthInterceptor } from './interceptors/authintercerptor';
-import localeEsEs from '@angular/common/locales/es-EA';
-import { registerLocaleData } from '@angular/common';
+import { AuthInterceptor } from "./interceptors/authintercerptor";
+import localeEsEs from "@angular/common/locales/es-EA";
+import { registerLocaleData } from "@angular/common";
+import { ErrorInterceptor } from "./interceptors/errorinterceptor";
 
 registerLocaleData(localeEsEs);
 
@@ -20,15 +21,17 @@ registerLocaleData(localeEsEs);
     ReactiveFormsModule,
     AppRoutingModule,
     PlantillaModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [ {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },
-{provide: LOCALE_ID,
-useValue: 'es-EA'}],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: "es-EA" },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

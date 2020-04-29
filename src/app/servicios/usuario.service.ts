@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Usuario } from "../interfaces/usuario";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { Router } from "@angular/router";
+import { catchError } from 'rxjs/operators';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: "root",
@@ -15,12 +17,16 @@ export class UsuarioService {
   private stringUrl = "http://localhost:8080/api/v1/string";
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private error: ErrorService
   ) {}
 
   crearUsuario(usuario: Usuario) {
     usuario.nombre = usuario.apellidos + ", " + usuario.nombre;
-    return this.http.post(`${this.registerURL}`, usuario);
+    //return this.http.post(`${this.registerURL}`, usuario);
+
+    return this.http.post(`${this.registerURL}`, usuario, {responseType: 'text'}).subscribe(data =>
+      this.error.navigateTo(data));
   }
 
   getUsuarios(): Observable<any> {

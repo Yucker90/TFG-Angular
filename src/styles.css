@@ -6,3 +6,10 @@ body{
     background-color: #2B757F;
     font-family: 'Baloo Paaji 2', cursive;
 }
+
+.back{
+    border: none;
+    background-color: #2B6D81;
+    color: whitesmoke;
+    width: fit-content;
+  }
