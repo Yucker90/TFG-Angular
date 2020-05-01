@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Rol } from "src/app/interfaces/rol";
 import { RolService } from "src/app/servicios/rol.service";
+import {Location } from '@angular/common'
 
 @Component({
   selector: "app-rol-form",
@@ -11,7 +12,7 @@ export class RolFormComponent implements OnInit {
   rol: Rol = new Rol();
   submitted = false;
 
-  constructor(private rolService: RolService) {}
+  constructor(private rolService: RolService, private location: Location) {}
 
   ngOnInit() {}
 
@@ -27,5 +28,10 @@ export class RolFormComponent implements OnInit {
 
   crearRol() {
     this.rolService.crearRol(this.rol).subscribe((error) => console.log(error));
+    window.location.reload();
+  }
+
+  volver(){
+    this.location.back();
   }
 }

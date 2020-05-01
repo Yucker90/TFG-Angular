@@ -30,7 +30,6 @@ table {
   
   tbody>tr:hover{
       background-color:#1f5a46;
-      cursor: pointer;
   }
   
   tr {
@@ -46,4 +45,23 @@ table {
     margin-right: 0.7%;
     width: fit-content;
     height: fit-content;
+  }
+
+  .btn-details{
+    background-color:#2B6C81;
+    margin-right: 4px;
+  }
+
+  .btn-details:hover{
+    background-color:rgb(31, 78, 94);
+
+  }
+
+  .btn-delete{
+    background-color: #2C5985;
+    margin-left: 4px;
+  }
+
+  .btn-delete:hover{
+    background-color: rgb(33, 66, 100);
   }

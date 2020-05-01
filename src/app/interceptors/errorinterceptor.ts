@@ -8,13 +8,14 @@ import {
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { Router } from '@angular/router';
 
 Injectable();
 export class ErrorInterceptor implements HttpInterceptor {
-  //constructor(private router: Router) {}
+  constructor(private router: Router) {}
   service;
-  constructor() {
-  }
+  //constructor() {}
+
 
   intercept(
     req: HttpRequest<any>,
@@ -26,6 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 catchError(error => {
                   //handle specific errors 
                   //default case: print, log, toast, etc...
+                  this.router.navigateByUrl('/error/'+error.status);
                   return throwError(error.message || error);
                 })
               );

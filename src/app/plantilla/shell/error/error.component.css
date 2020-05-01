@@ -16,3 +16,12 @@ margin-top: 5%;
 button{
     margin-top: 5%;
 }
+
+a{
+  color: #2C5386;
+}
+
+a:hover{
+  font-weight: bold;
+  text-decoration: none;
+}

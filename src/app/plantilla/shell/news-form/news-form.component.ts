@@ -4,6 +4,7 @@ import { NewsService } from "src/app/servicios/news.service";
 import * as Cookies from "js-cookie";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Router } from '@angular/router';
+import { EncryptService } from 'src/app/servicios/encrypt.service';
 
 @Component({
   selector: "app-news-form",
@@ -17,7 +18,8 @@ export class NewsFormComponent implements OnInit {
   constructor(
     private newsService: NewsService,
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private encrypt: EncryptService
   ) {}
 
   ngOnInit() {
@@ -52,8 +54,8 @@ export class NewsFormComponent implements OnInit {
   crearPost() {
     console.log("crearPost");
 
-    let usuarioid = Cookies.get("USER_ID");
-    this.usuarioService.getUsuario(usuarioid).subscribe((data) => {
+    let usuarioid = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID"))) -30;
+    this.usuarioService.getUsuario(usuarioid.toString()).subscribe((data) => {
       this.post.autor = data;
       this.newsService.enviarNews(this.post);
     });

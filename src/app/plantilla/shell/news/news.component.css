@@ -44,3 +44,17 @@ tr {
 .autor {
   font-size: 80%;
 }
+
+button{
+  background-color:#2B6C81;
+  border: none;
+}
+
+button:hover{
+  background-color:rgb(31, 78, 94);
+
+}
+
+.autor{
+  color: aquamarine;
+}

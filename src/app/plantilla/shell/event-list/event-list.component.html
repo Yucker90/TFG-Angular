@@ -25,22 +25,22 @@
         <td>
           <button
             type="button"
-            class="btn btn-info"
+            class="btn btn-info btn-details"
             [routerLink]="['/eventdetails', evento.id]"
           >
             Detalles
           </button>
-         <button type="button" class="btn btn-info" id="borrar"
+         <button type="button" class="btn btn-info btn-delete" id="borrar"
           [hidden]="!adminPrivileges">Borrar</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<button type="button" class="btn btn-info" [hidden]="!adminPrivileges" routerLink="/eventform">
+<button type="button" class="btn btn-info btn-details" [hidden]="!adminPrivileges" routerLink="/eventform">
   Crear evento
 </button>
-<button type="button" class="btn btn-info" [hidden]="!adminPrivileges" routerLink="/rolform">
+<button type="button" class="btn btn-info btn-details" [hidden]="!adminPrivileges" routerLink="/rolform">
   Crear rol
 </button>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as Cookies from "js-cookie";
+import { isNullOrUndefined } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-navbar",
@@ -7,13 +9,15 @@ import * as Cookies from "js-cookie";
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    if (Cookies.get("TOKEN_ID")) {
+    if (!isNullOrUndefined(Cookies.get("TOKEN_ID"))) {
       document.getElementById("logout").hidden = false;
       document.getElementById("login").hidden=true;
       document.getElementById("crearCuenta").hidden=true;
+    }else{
+      this.router.navigateByUrl('/login');
     }
   }
 

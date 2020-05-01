@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Router } from "@angular/router";
 import * as Cookies from "js-cookie";
-import { JsonPipe } from '@angular/common';
+import { EncryptService } from 'src/app/servicios/encrypt.service';
 
 @Component({
   selector: "app-login",
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   userLogin: string;
   password: string;
   error: boolean = false;
-  constructor(private usuarioService: UsuarioService, private router: Router) {}
+  constructor(private usuarioService: UsuarioService, private router: Router, private encrypt: EncryptService) {}
 
   ngOnInit() {
     if (Cookies.get("TOKEN_ID")) {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     Cookies.set("TOKEN_ID", res.idtoken);
     console.log(res.user);
     let user = JSON.parse(res.user);
-    Cookies.set("USER_ID", user.id);
-    Cookies.set("USER_ACCESS", user.acceso);   
+    Cookies.set("USER_ID", this.encrypt.encrypt(user.id));
+    Cookies.set("USER_ACCESS", this.encrypt.encrypt(user.acceso));   
   }
 }

@@ -7,9 +7,17 @@ body{
     font-family: 'Baloo Paaji 2', cursive;
 }
 
+button{
+border: none;
+}
+
 .back{
     border: none;
     background-color: #2B6D81;
     color: whitesmoke;
     width: fit-content;
+  }
+
+.back:hover{
+    background-color: rgb(28, 72, 85);
   }

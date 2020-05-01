@@ -10,6 +10,7 @@ import { AuthInterceptor } from "./interceptors/authintercerptor";
 import localeEsEs from "@angular/common/locales/es-EA";
 import { registerLocaleData } from "@angular/common";
 import { ErrorInterceptor } from "./interceptors/errorinterceptor";
+import { Router } from '@angular/router';
 
 registerLocaleData(localeEsEs);
 
@@ -29,7 +30,9 @@ registerLocaleData(localeEsEs);
       useClass: AuthInterceptor,
       multi: true,
     },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor,  useFactory: function(router: Router) {
+      return new ErrorInterceptor(router);
+    }, multi: true, deps: [Router] },
     { provide: LOCALE_ID, useValue: "es-EA" },
   ],
   bootstrap: [AppComponent],
