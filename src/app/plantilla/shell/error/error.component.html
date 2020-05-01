@@ -3,6 +3,11 @@
 
   <div id="divImagen"></div>
   <p class="error" id="errorMensaje"></p>
+  <div id="errorAuth" *ngIf="errorAut">
+    No tiene los permisos requeridos. Por favor
+    <a routerLink="/login">identifíquese</a> o
+    <a routerLink="/userform">cree una cuenta</a>, o contacte con un administrador.
+  </div>
 
   <button class="back btn btn-info" (click)="volver()">Volver</button>
 </div>

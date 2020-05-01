@@ -44,6 +44,7 @@ h4 {
 
 button {
   width: fit-content;
+  border: none;
 }
 
 a {
@@ -108,4 +109,58 @@ form{
 
 .back{
   margin-left: 2%;
+}
+
+.back:hover{
+  background-color: rgb(28, 72, 85);
+
+}
+
+#botonesMenuBorrar{
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  margin-top: 2%;
+}
+
+#borrar{
+  margin-right: 4%;
+  background-color: #2A7445;
+}
+
+#borrar:hover{
+  background-color: rgb(28, 75, 45);
+}
+
+#cancelar{
+  margin-left: 4%;
+  background-color: #2C5386;
+}
+
+#cancelar:hover{
+  background-color: rgb(26, 50, 80);
+}
+
+#borrarUser{
+  background-color: #2C5985;
+}
+
+#borrarUser:hover{
+  background-color: rgb(33, 66, 100);
+}
+
+#pdf{
+  background-color: rgb(48, 101, 136);
+}
+#pdf:hover{
+  background-color: rgb(36, 77, 104);
+}
+
+#modificarUser{
+  background-color:#2B6C81;
+  margin-right: 2%;
+}
+
+#modificarUser:hover{
+  background-color:rgb(31, 78, 94);
 }

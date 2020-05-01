@@ -29,8 +29,11 @@ input {
   border: none;
 }
 
-#back {
-  margin-left: 5%;
-  border: none;
-  background-color: #2b6d81;
+#submit:hover{
+  background-color: #1b4a50;
+
+}
+
+.back{
+  margin-left: 2%;
 }

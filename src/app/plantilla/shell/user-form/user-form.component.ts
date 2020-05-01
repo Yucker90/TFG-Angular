@@ -3,7 +3,7 @@ import { Usuario } from "src/app/interfaces/usuario";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { FormGroup } from "@angular/forms";
+import { EncryptService } from 'src/app/servicios/encrypt.service';
 
 @Component({
   selector: "app-user-form",
@@ -18,7 +18,8 @@ export class UserFormComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private encrypt: EncryptService
   ) {}
 
   ngOnInit() {}
@@ -29,7 +30,11 @@ export class UserFormComponent implements OnInit {
   }
 
   crearUsuario() {
-    this.usuarioService.crearUsuario(this.usuario);
+    this.usuario.password = this.encrypt.encryptWithKey(this.usuario.password);
+    this.usuarioService.crearUsuario(this.usuario).subscribe(
+      data=> console.log(data),
+      error => console.log(error)
+    );
     document.getElementById("form").hidden = true;
   }
 

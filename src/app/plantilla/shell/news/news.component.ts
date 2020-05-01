@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { getLocaleEraNames } from '@angular/common';
 import { Post } from 'src/app/interfaces/post';
 import { NewsService } from 'src/app/servicios/news.service';
 import { Observable } from 'rxjs';
@@ -15,7 +14,9 @@ export class NewsComponent implements OnInit {
 post: Post;
 
   ngOnInit() {
-    this.collection.data= this.newsService.getNews();
+    this.newsService.getNews().subscribe( data =>
+      data = this.collection.data = data
+    );
     
   }
   public maxSize: number = 7;

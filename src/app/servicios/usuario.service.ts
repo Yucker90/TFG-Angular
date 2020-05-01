@@ -2,9 +2,8 @@ import { Injectable } from "@angular/core";
 import { Usuario } from "../interfaces/usuario";
 import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-import { Router } from "@angular/router";
-import { catchError } from 'rxjs/operators';
-import { ErrorService } from './error.service';
+import { ErrorService } from "./error.service";
+import * as Cookies from 'js-cookie';
 
 @Injectable({
   providedIn: "root",
@@ -16,44 +15,54 @@ export class UsuarioService {
   private accessURL = "http://localhost:8080/api/v1/access";
   private stringUrl = "http://localhost:8080/api/v1/string";
 
-  constructor(
-    private http: HttpClient,
-    private error: ErrorService
-  ) {}
+  constructor(private http: HttpClient, private error: ErrorService) {}
 
   crearUsuario(usuario: Usuario) {
     usuario.nombre = usuario.apellidos + ", " + usuario.nombre;
     //return this.http.post(`${this.registerURL}`, usuario);
 
-    return this.http.post(`${this.registerURL}`, usuario, {responseType: 'text'}).subscribe(data =>
-      this.error.navigateTo(data));
+    return this.http.post(`${this.registerURL}`, usuario);
   }
 
   getUsuarios(): Observable<any> {
     return this.http.get(`${this.baseURl}`);
   }
 
-  putUsuario(userid: string, user: Usuario){
-    return this.http.put(`${this.baseURl}/${userid}`,user).subscribe(data => console.log(data));
+  putUsuario(userid: string, user: Usuario) {
+    return this.http
+      .put(`${this.baseURl}/${userid}`, user)
+      .subscribe((data) => console.log(data));
   }
 
   getUsuario(id: string): Observable<any> {
     return this.http.get(`${this.baseURl}/${id}`);
   }
 
-  getUsuarioByAccess(access: number): Observable<any>{
-    return this.http.get(`${this.accessURL}/${access}`)
+  getUsuarioByAccess(access: number): Observable<any> {
+    return this.http.get(`${this.accessURL}/${access}`);
+  }
+
+  delete(usuarioId: number){
+    console.log("Usuario a borrar (servicio): " + usuarioId);
+    return this.http.delete(`${this.baseURl}/${usuarioId}`);
   }
 
   postLogin(username: string, password: string) {
     return this.http.post(`${this.loginURL}`, { username, password });
   }
 
-  getRoles(){
+  getRoles() {
     return this.http.get(`${this.accessURL}`);
   }
 
-  getUsuariosByNombre(string: string): Observable<any>{
+  getUsuariosByNombre(string: string): Observable<any> {
     return this.http.get(`${this.stringUrl}/${string}`);
+  }
+
+  logoutForzoso(){
+    Cookies.remove("USER_ID");
+    Cookies.remove("USER_ACCESS");
+    Cookies.remove("TOKEN_ID");
+    
   }
 }

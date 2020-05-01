@@ -39,14 +39,20 @@
           #sueldo="ngModel"
           required
           [ngClass]="{ 'is-invalid': f.submitted && sueldo.invalid }"
-        /> &nbsp;€ / hora
+        />
+        &nbsp;€ / hora
       </div>
       <div *ngIf="f.submitted && sueldo.invalid" class="invalid-feedback">
         <div *ngIf="sueldo.errors.required">Introduzca un sueldo</div>
       </div>
     </div>
-    <button id="submit" type="submit" #submitBtn class="btn btn-primary">
+    <div id="botones">
+      <button id="submit" type="submit" #submitBtn class="btn btn-primary">
         Enviar
       </button>
+      <button id="volver" (click)="volver()" type="button" class="btn btn-info back">
+        Volver
+      </button>
+    </div>
   </form>
 </div>

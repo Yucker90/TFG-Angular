@@ -1,69 +1,61 @@
-<div class="container" *ngIf="usuario; else error">
-  <div *ngIf="detalles; else modificar">
-    <h4>Detalles del usuario</h4>
-    <div id="detalles">
-      <div class="atributo">
-        <div class="titulo">Nombre:</div>
-        {{ usuario.nombre }}
+<div class="container" *ngIf="usuario">
+  <div *ngIf="menuDetalles; else menuBorrar">
+    <div *ngIf="detalles; else modificar">
+      <h4>Detalles del usuario</h4>
+      <div id="detalles">
+        <div class="atributo">
+          <div class="titulo">Nombre:</div>
+          {{ usuario.nombre }}
+        </div>
+        <div class="atributo">
+          <div class="titulo">Email:</div>
+          {{ usuario.email }}
+        </div>
+        <div class="atributo">
+          <div class="titulo">Login:</div>
+          {{ usuario.login }}
+        </div>
+        <div class="atributo">
+          <div class="titulo">Contraseña:</div>
+          ********
+        </div>
+        <div class="atributo">
+          <div class="titulo">Nivel de Acceso:</div>
+          {{ getAcceso(usuario.acceso) }}
+        </div>
+        <p class="titulo">Listado de eventos:</p>
       </div>
-      <div class="atributo">
-        <div class="titulo">Email:</div>
-        {{ usuario.email }}
-      </div>
-      <div class="atributo">
-        <div class="titulo">Login:</div>
-        {{ usuario.login }}
-      </div>
-      <div class="atributo">
-        <div class="titulo">Contraseña:</div>
-        ********
-      </div>
-      <div class="atributo">
-        <div class="titulo">Nivel de Acceso:</div>
-        {{ getAcceso(usuario.acceso) }}
-      </div>
-      <p class="titulo">Listado de eventos:</p>
-    </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Cargo</th>
-          <th scope="col">Horas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          [routerLink]="['/eventdetails', trabajo.evento.id]"
-          *ngFor="let trabajo of trabajos"
-        >
-          <th scope="row">{{ trabajo.evento.id }}</th>
-          <td>{{ trabajo.evento.nombre }}</td>
-          <td>{{ trabajo.rol.nombre }}</td>
-          <td>{{ trabajo.horas }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            [routerLink]="['/eventdetails', trabajo.evento.id]"
+            *ngFor="let trabajo of trabajos"
+          >
+            <th scope="row">{{ trabajo.evento.id }}</th>
+            <td>{{ trabajo.evento.nombre }}</td>
+            <td>{{ trabajo.rol.nombre }}</td>
+            <td>{{ trabajo.horas }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button class="btn btn-info" id="pdf">
-      <img
-        src="https://cdn4.iconfinder.com/data/icons/file-extension-names-vol-8/512/24-512.png"
-        class="icon"
-        width="25px"
-      />&nbsp;Descargar datos (PDF)
-    </button>
-    <button
-      id="borrarUser"
-      type="button"
-      (click)="borrarUsuario()"
-      class="btn btn-info"
-      [hidden]="!adminPrivileges"
-    >
-      Borrar usuario
-    </button>
-    <button
+      <button class="btn btn-info" id="pdf" (click)="enviarPDF()">
+        <img
+          src="https://cdn4.iconfinder.com/data/icons/file-extension-names-vol-8/512/24-512.png"
+          class="icon"
+          width="25px"
+        />&nbsp;Descargar datos (PDF)
+      </button>
+      <button
       id="modificarUser"
       type="button"
       (click)="showModificar()"
@@ -72,121 +64,135 @@
     >
       Modificar usuario
     </button>
-    <button type="button" class="btn btn-info back" (click)="volver()">
-      Volver
-    </button>
-  </div>
-
-  <ng-template #modificar>
-    <h4>Modificar usuario</h4>
-    <div id="modificar" *ngIf="usuario">
-      <form
-        name="form"
-        id="form"
-        #f="ngForm"
-        novalidate
-        (ngSubmit)="submit(submitBtn)"
+      <button
+        id="borrarUser"
+        type="button"
+        (click)="borrarUsuario()"
+        class="btn btn-info"
+        [hidden]="!adminPrivileges"
       >
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input
-            type="text"
-            name="nombre"
-            id="nombre"
-            [(ngModel)]="usuario.nombre"
-            class="form-control"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input
-            class="form-control"
-            type="email"
-            name="email"
-            id="email"
-            [(ngModel)]="usuario.email"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="movil">Movil:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="movil"
-            id="movil"
-            minlength="9"
-            maxlength="9"
-            [(ngModel)]="usuario.movil"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="login">Login:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="login"
-            id="login"
-            maxlength="10"
-            [(ngModel)]="usuario.login"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña:</label>
-          <input
-            class="form-control"
-            type="password"
-            name="password"
-            id="password"
-            maxlength="10"
-            [(ngModel)]="usuario.password"
-            required
-          />
-        </div>
-        <div class="from-group">
-          <label for="acceso">Nivel de acceso:</label>
-          <select
-            class="form-control"
-            name="acceso"
-            id="acceso"
-            [(ngModel)]="usuario.acceso"
-            required
-          >
-            <option value="0">Deshabilitado</option>
-            <option value="1">Administrador</option>
-            <option value="2">Usuario</option>
-          </select>
-        </div>
-        <div id="botones">
-          <button type="submit" class="btn btn-info" #submitBtn id="submit">
-            Actualizar
-          </button>
-          <button
-            type="button"
-            (click)="showDetalles()"
-            class="btn btn-info"
-            [hidden]="!adminPrivileges"
-            id="detalles"
-          >
-            Detalles
-          </button>
-          <button type="button" class="btn btn-info back" (click)="volver()">
-            Volver
-          </button>
-        </div>
-      </form>
-    </div>
-  </ng-template>
+        Borrar usuario
+      </button>
 
-  <div class="container">
-    <ng-template #error>
-      No tiene los permisos requeridos. Por favor
-      <a routerLink="/login">identifíquese</a> o
-      <a routerLink="/userform">cree una cuenta</a>.
+      <button type="button" class="btn btn-info back" (click)="volver()">
+        Volver
+      </button>
+    </div>
+
+    <ng-template #modificar>
+      <h4>Modificar usuario</h4>
+      <div id="modificar" *ngIf="usuario">
+        <form
+          name="form"
+          id="form"
+          #f="ngForm"
+          novalidate
+          (ngSubmit)="submit(submitBtn)"
+        >
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              [(ngModel)]="usuario.nombre"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              [(ngModel)]="usuario.email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="movil">Movil:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="movil"
+              id="movil"
+              minlength="9"
+              maxlength="9"
+              [(ngModel)]="usuario.movil"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="login">Login:</label>
+            <input
+              class="form-control"
+              type="text"
+              name="login"
+              id="login"
+              maxlength="10"
+              [(ngModel)]="usuario.login"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="password"
+              maxlength="10"
+              [(ngModel)]="usuario.password"
+              required
+            />
+          </div>
+          <div class="from-group">
+            <label for="acceso">Nivel de acceso:</label>
+            <select
+              class="form-control"
+              name="acceso"
+              id="acceso"
+              [(ngModel)]="usuario.acceso"
+              required
+            >
+              <option value="0">Deshabilitado</option>
+              <option value="1">Administrador</option>
+              <option value="2">Usuario</option>
+            </select>
+          </div>
+          <div id="botones">
+            <button type="submit" class="btn btn-info" #submitBtn id="submit">
+              Actualizar
+            </button>
+            <button
+              type="button"
+              (click)="showDetalles()"
+              class="btn btn-info"
+              [hidden]="!adminPrivileges"
+              id="detalles"
+            >
+              Detalles
+            </button>
+            <button type="button" class="btn btn-info back" (click)="volver()">
+              Volver
+            </button>
+          </div>
+        </form>
+      </div>
     </ng-template>
   </div>
-  
+  <ng-template #menuBorrar>
+    <div id="menuConfirmarBorrar">
+      Por favor, confirme que quiere borrar a <b>{{ usuario.nombre }}</b>.
+      <br>
+      Se borrarán todas sus publicaciones y trabajos asociados.
+      <div id="botonesMenuBorrar"></div>
+      <button type="button" id="borrar" class="btn btn-info" (click)="borrar()">Borrar</button
+      ><button type="button" id="cancelar" class="btn btn-info"(click)="cancelar()">
+        Cancelar
+      </button>
+    </div></ng-template
+  >
 </div>

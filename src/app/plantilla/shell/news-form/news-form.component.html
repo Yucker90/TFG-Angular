@@ -39,7 +39,7 @@
         required
       >
       </textarea>
-      <div><p>{{255 - post.texto.length}} carácteres restantes</p></div>
+      <div><p>{{post.texto.length}} carácteres</p></div>
       <div *ngIf="f.submitted && texto.invalid" class="invalid-feedback">
         <div *ngIf="texto.errors.required">Escriba algo en el texto</div>
       </div>
@@ -49,7 +49,7 @@
       <button id="submit" type="submit" #submitBtn class="btn btn-primary">
         Enviar
       </button>
-      <button id="back" type="button" class="btn btn-info" (click)="volver()">
+      <button type="button" class="btn btn-info back" (click)="volver()">
         Volver
       </button>
     </div>

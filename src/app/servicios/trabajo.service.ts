@@ -17,10 +17,10 @@ private trabajoURL="http://localhost:8080/api/v1/trabajos"
   }
 
   getTrabajoByUser(id: string):Observable<any> {
-    return this.http.get(`${this.trabajoURL}?user=${id}`);
+    return this.http.get(`${this.trabajoURL}/user/${id}`);
   }
 
   getTrabajoByEvento(id: string):Observable<any>{
-    return this.http.get(`${this.trabajoURL}?event=${id}`);
+    return this.http.get(`${this.trabajoURL}/event/${id}`);
   }
 }

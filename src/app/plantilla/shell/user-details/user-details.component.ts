@@ -1,12 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Usuario } from "src/app/interfaces/usuario";
 import { UsuarioService } from "src/app/servicios/usuario.service";
-import {Location } from "@angular/common";
+import {Location, getLocaleDateFormat } from "@angular/common";
 import { TrabajoService } from 'src/app/servicios/trabajo.service';
 import { Observable } from 'rxjs';
 import { Trabajo } from 'src/app/interfaces/trabajo';
 import * as Cookies from 'js-cookie';
+import { EncryptService } from 'src/app/servicios/encrypt.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: "app-user-details",
@@ -17,19 +19,24 @@ export class UserDetailsComponent implements OnInit {
   usuario: Usuario;
   trabajos: Observable<Trabajo[]>;
   detalles = true;
-  adminPrivileges= parseInt(Cookies.get('USER_ACCESS'))==1;
+  adminPrivileges= false;
   iduser: any;
+  menuDetalles= true;
 
   constructor(
     private location: Location,
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
-    private trabajoService: TrabajoService
+    private trabajoService: TrabajoService,
+    private encrypt: EncryptService,
+    private router: Router
   ) {}
 
   
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
+    if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
+   this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get('USER_ACCESS')))==31;
     this.usuarioService.getUsuario(id).subscribe(
       (data) => {
         this.usuario = data;
@@ -38,10 +45,15 @@ export class UserDetailsComponent implements OnInit {
         console.log(error);
       }
     );
+    console.log(id);
       this.iduser = id;
+
     this.trabajoService.getTrabajoByUser(id).subscribe(
       data => this.trabajos = data);
       this.detalles= true;
+    }else{
+      this.router.navigateByUrl('/error/403');
+    }
   }
 
   volver(){
@@ -76,6 +88,7 @@ export class UserDetailsComponent implements OnInit {
   actualizarUsuario() {
     console.log("3");
     this.usuario.apellidos = this.usuario.nombre.split(',')[0];
+    this.usuario.password = this.encrypt.encrypt(this.usuario.password);
     this.usuarioService.putUsuario(this.iduser, this.usuario);
     this.detalles= true;
   }
@@ -86,4 +99,27 @@ export class UserDetailsComponent implements OnInit {
     this.submit();
     submitBtn.disabled = false;
   }
+
+  borrarUsuario(){
+    this.menuDetalles= false;
+  }
+
+  cancelar(){
+    this.menuDetalles= true;
+  }
+
+  borrar(){
+    console.log("Usuario a borrar: " + this.iduser);
+    this.usuarioService.delete(this.iduser).subscribe((data) =>{
+      console.log(data);
+      //let body = JSON.parse(data);
+      //console.log(body.get("Borrado"));
+    });
+    this.router.navigateByUrl('/userlist');
+  }
+
+  enviarPDF(){
+    alert("EN DESARROLLO");
+  }
+
 }
