@@ -6,7 +6,7 @@
     #f="ngForm"
     novalidate
     *ngIf="!submitted"
-    (ngSubmit)="f.valid && submit(submitBtn)"
+    (ngSubmit)="f.valid && submit()"
     [mustMatch]="['password', 'matchPassword']"
   >
     <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->

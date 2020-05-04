@@ -81,12 +81,10 @@ export class UserDetailsComponent implements OnInit {
 
 
   submit() {
-    console.log("2");
     this.actualizarUsuario();
   }
 
   actualizarUsuario() {
-    console.log("3");
     this.usuario.apellidos = this.usuario.nombre.split(',')[0];
     this.usuario.password = this.encrypt.encrypt(this.usuario.password);
     this.usuarioService.putUsuario(this.iduser, this.usuario);
@@ -94,7 +92,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   submitBtn(submitBtn: HTMLButtonElement) {
-    console.log("1");
     submitBtn.disabled = true;
     this.submit();
     submitBtn.disabled = false;

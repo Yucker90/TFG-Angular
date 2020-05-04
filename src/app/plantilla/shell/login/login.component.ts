@@ -25,8 +25,6 @@ export class LoginComponent implements OnInit {
     if (Cookies.get("TOKEN_ID")) {
       this.router.navigateByUrl("/");
     } else {
-      console.log("login: " + this.userLogin);
-      console.log("password: " + this.password);
       this.usuarioService.postLogin(this.userLogin, this.password).subscribe(
         (res) => {          
           this.setCookie(res);
@@ -38,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
   private setCookie(res) {
     Cookies.set("TOKEN_ID", res.idtoken);
-    console.log(res.user);
     let user = JSON.parse(res.user);
     Cookies.set("USER_ID", this.encrypt.encrypt(user.id));
     Cookies.set("USER_ACCESS", this.encrypt.encrypt(user.acceso));   

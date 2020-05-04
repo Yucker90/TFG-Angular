@@ -13,7 +13,7 @@ import { isNullOrUndefined } from "util";
 })
 export class EventListComponent implements OnInit {
   adminPrivileges = false;
-
+  menuListado=true;
   eventos: Observable<Evento[]>;
 
   constructor(
@@ -23,12 +23,8 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
-      let token= this.encrypt.decrypt(Cookies.get("USER_ACCESS"));
-      console.log(token);
-
       this.adminPrivileges =
         parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
-      console.log(this.adminPrivileges);
     }
     this.eventos = this.eventosService.getEventos();
   }

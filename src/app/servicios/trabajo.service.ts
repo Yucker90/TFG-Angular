@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TrabajoService {
 
-private trabajoURL="http://localhost:8080/api/v1/trabajos"
+private trabajoURL="http://localhost:8082/api/v1/trabajos"
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ private trabajoURL="http://localhost:8080/api/v1/trabajos"
     return this.http.get(`${this.trabajoURL}/user/${id}`);
   }
 
-  getTrabajoByEvento(id: string):Observable<any>{
-    return this.http.get(`${this.trabajoURL}/event/${id}`);
+  getTrabajoByEvento(id: string){
+    return this.http.get<any[]>(`${this.trabajoURL}/event/${id}`);
   }
 }

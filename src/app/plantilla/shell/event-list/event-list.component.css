@@ -57,11 +57,3 @@ table {
 
   }
 
-  .btn-delete{
-    background-color: #2C5985;
-    margin-left: 4px;
-  }
-
-  .btn-delete:hover{
-    background-color: rgb(33, 66, 100);
-  }

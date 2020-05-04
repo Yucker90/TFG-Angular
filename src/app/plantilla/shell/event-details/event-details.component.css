@@ -71,6 +71,7 @@ button{
 .form-group{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #divPuesto{
@@ -88,4 +89,72 @@ button{
 #inputHoras{
   display: flex;
   flex-direction: row;
+}
+
+input{
+  width: 15em;
+}
+
+#submit{
+  background-color: #2C5985;
+
+}
+
+#submit:hover{
+  background-color: rgb(29, 58, 87);
+}
+
+
+#btnQuieroIr{
+  background-color: #2C5985;
+  margin-right: 2%;
+}
+
+#btnQuieroIr:hover{
+  background-color: rgb(29, 58, 87);
+}
+
+#btnShowModificar{
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: #2C5985;
+}
+
+#btnShowModificar:hover{
+  background-color: rgb(29, 58, 87);
+}
+
+#btnSolicitud{
+  background-color: #2C5985;
+}
+
+#btnSolicitud:hover{
+  background-color: rgb(29, 58, 87);
+}
+
+.btn-delete{
+  background-color: #2C5985;
+  margin-left: 2%;
+}
+
+.btn-delete:hover{
+  background-color: rgb(33, 66, 100);
+}
+
+#btnBorrarEv{
+  margin-right: 4%;
+  background-color: #2A7445;
+}
+
+#btnBorrarEv:hover{
+  background-color: rgb(28, 75, 45);
+}
+
+#cancelar{
+  margin-left: 4%;
+  background-color: #2C5386;
+}
+
+#cancelar:hover{
+  background-color: rgb(26, 50, 80);
 }
