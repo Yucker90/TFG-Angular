@@ -32,7 +32,7 @@ export class UserFormComponent implements OnInit {
   crearUsuario() {
     this.usuario.password = this.encrypt.encryptWithKey(this.usuario.password);
     this.usuarioService.crearUsuario(this.usuario).subscribe(
-      data=> console.log(data),
+       data => data,
       error => console.log(error)
     );
     document.getElementById("form").hidden = true;

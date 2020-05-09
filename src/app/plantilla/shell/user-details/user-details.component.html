@@ -2,7 +2,7 @@
   <div *ngIf="menuDetalles; else menuBorrar">
     <div *ngIf="detalles; else modificar">
       <h4>Detalles del usuario</h4>
-      <div id="detalles">
+      <div id="divDetalles">
         <div class="atributo">
           <div class="titulo">Nombre:</div>
           {{ usuario.nombre }}
@@ -10,6 +10,10 @@
         <div class="atributo">
           <div class="titulo">Email:</div>
           {{ usuario.email }}
+        </div>
+        <div class="atributo">
+          <div class="titulo">Movil:</div>
+          {{ usuario.movil }}
         </div>
         <div class="atributo">
           <div class="titulo">Login:</div>
@@ -148,7 +152,7 @@
               required
             />
           </div>
-          <div class="from-group">
+          <div class="form-group">
             <label for="acceso">Nivel de acceso:</label>
             <select
               class="form-control"
@@ -192,7 +196,7 @@
       <button type="button" id="borrar" class="btn btn-info" (click)="borrar()">Borrar</button
       ><button type="button" id="cancelar" class="btn btn-info"(click)="cancelar()">
         Cancelar
-      </button>
-    </div></ng-template
+      </button></div>
+    </ng-template
   >
 </div>

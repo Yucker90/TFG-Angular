@@ -6,4 +6,6 @@ export class Usuario {
     password: string;
     movil: string;
     acceso: number;
+    id?: any;
+
 }

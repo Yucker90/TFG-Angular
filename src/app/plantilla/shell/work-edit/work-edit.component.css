@@ -1,0 +1,26 @@
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select{
+    width: 20em;
+}
+
+input{
+    width: 5em;
+}
+
+.back{
+    margin-left: 2%;
+}
+
+.modify{
+    background-color: #2C5985;
+}
+
+.modify:hover{
+    background-color: rgb(29, 58, 87);
+
+}

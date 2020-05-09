@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  private newsURl = 'http://localhost:8082/api/v1/news';
+  private newsURl = 'http://localhost:8080/fenixapp/api/v1/news';
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +20,17 @@ export class NewsService {
   getNews(): Observable<any>{
     return this.http.get<Post[]>(`${this.newsURl}`);
   }
+
+  deleteNew(id: string) {
+    return this.http.delete(`${this.newsURl}/${id}`);
+  }
+
+  updateNew(id: string, post: Post){
+    return this.http.put(`${this.newsURl}/${id}`, post);
+  }
+
+  getNew(idPost: string):Observable<any> {
+    return this.http.get(`${this.newsURl}/${idPost}`);
+  }
+
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Rol } from "src/app/interfaces/rol";
 import { RolService } from "src/app/servicios/rol.service";
-import {Location } from '@angular/common'
+import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-rol-form",
@@ -12,7 +13,11 @@ export class RolFormComponent implements OnInit {
   rol: Rol = new Rol();
   submitted = false;
 
-  constructor(private rolService: RolService, private location: Location) {}
+  constructor(
+    private rolService: RolService,
+    private location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -27,11 +32,14 @@ export class RolFormComponent implements OnInit {
   }
 
   crearRol() {
-    this.rolService.crearRol(this.rol).subscribe((error) => console.log(error));
-    window.location.reload();
+    this.rolService.crearRol(this.rol).subscribe(
+      (data) => data,
+      (error) => console.log(error)
+    );
+    this.router.navigateByUrl("/rollist");
   }
 
-  volver(){
+  volver() {
     this.location.back();
   }
 }

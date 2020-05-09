@@ -28,6 +28,10 @@ export class EventDetailsComponent implements OnInit {
   detalles = true;
   menuDetalles = true;
   adminPrivileges = false;
+  idTrabajo: string;
+  varBorrarTrabajo = false;
+  trabajo: Trabajo;
+  userPrivileges= false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +48,6 @@ export class EventDetailsComponent implements OnInit {
     this.eventosService.getEvento(this.idEvento).subscribe(
       (data) => {
         this.evento = data;
-        console.log(data);
         this.trabajoService
           .getTrabajoByEvento(this.idEvento)
           .subscribe((data) => (this.trabajos = data));
@@ -54,10 +57,9 @@ export class EventDetailsComponent implements OnInit {
       }
     );
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
-      let token = this.encrypt.decrypt(Cookies.get("USER_ACCESS"));
-
-      this.adminPrivileges =
-        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
+      let access = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")));
+      this.adminPrivileges = access == 31;
+      this.userPrivileges = access > 30;
     }
     this.rolService.getRoles().subscribe((data) => (this.roles = data));
   }
@@ -123,5 +125,31 @@ export class EventDetailsComponent implements OnInit {
 
   cancelar() {
     this.menuDetalles = true;
+  }
+
+  modificarTrabajo(id: string) {
+    this.router.navigateByUrl("/workedit/" + id);
+  }
+
+  showMenuBorrarTrabajo(id: string) {
+    this.varBorrarTrabajo = true;
+    this.trabajos.forEach((element) => {
+      if (element.id === id) {
+        this.trabajo = element;
+      }
+    });
+  }
+
+  borrarTrabajo(id: string) {
+    this.trabajoService.deleteTrabajo(id).subscribe(
+      (data) => console.log("Trabajo borrado:" + data),
+      (error) => console.log(error)
+    );
+    this.cancelarBorrarTrabajo();
+  }
+
+  cancelarBorrarTrabajo() {
+    this.varBorrarTrabajo = false;
+    window.location.reload();
   }
 }

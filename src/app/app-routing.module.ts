@@ -12,7 +12,11 @@ import { MainPageComponent } from "./plantilla/shell/main-page/main-page.compone
 import { EmailConfirmationComponent } from "./plantilla/shell/email-confirmation/email-confirmation.component";
 import { EventFormComponent } from "./plantilla/shell/event-form/event-form.component";
 import { RolFormComponent } from "./plantilla/shell/rol-form/rol-form.component";
-import { ErrorComponent } from './plantilla/shell/error/error.component';
+import { ErrorComponent } from "./plantilla/shell/error/error.component";
+import { RolListComponent } from './plantilla/shell/rol-list/rol-list.component';
+import { RoldetailsComponent } from './plantilla/shell/roldetails/roldetails.component';
+import { NewseditComponent } from './plantilla/shell/newsedit/newsedit.component';
+import { WorkEditComponent } from './plantilla/shell/work-edit/work-edit.component';
 
 const routes: Routes = [
   {
@@ -59,14 +63,33 @@ const routes: Routes = [
   {
     path: "rolform",
     component: RolFormComponent,
+  },
+  {
+    path: "error/:id",
+    component: ErrorComponent,
+  },
+  {
+    path: "rollist",
+    component: RolListComponent
   },{
-  path:"error/:id",
-component: ErrorComponent
-},
-{
-  path: "**",
-  component: ErrorComponent
-}];
+    path: "roldetails/:id",
+    component: RoldetailsComponent
+  },
+  {
+    path: "newsedit/:id",
+    component: NewseditComponent
+  }
+  ,{
+    path: "workedit/:id"
+    , component: WorkEditComponent
+  }
+  ,
+  {
+    path: "**",
+    component: ErrorComponent,
+  },
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

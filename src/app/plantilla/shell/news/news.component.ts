@@ -14,7 +14,7 @@ export class NewsComponent implements OnInit {
   config: any;
   collection: { count: number; data: Post[] } = { count: 5, data: [] };
   post: Post;
-  adminPrivileges= false;
+  adminPrivileges = false;
 
   ngOnInit() {
     this.newsService
@@ -24,7 +24,6 @@ export class NewsComponent implements OnInit {
       this.adminPrivileges =
         parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
     }
-    console.log(this.adminPrivileges);
   }
   public maxSize: number = 7;
   public directionLinks: boolean = true;
@@ -51,5 +50,13 @@ export class NewsComponent implements OnInit {
 
   onPageChanged(event) {
     this.config.currentPage = event;
+  }
+
+  borrarNews(id: string) {
+    this.newsService.deleteNew(id).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
+    window.location.reload();
   }
 }

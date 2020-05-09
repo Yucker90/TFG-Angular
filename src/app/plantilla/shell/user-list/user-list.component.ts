@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { UsuarioService } from "src/app/servicios/usuario.service";
 import { Usuario } from "src/app/interfaces/usuario";
 import { Observable } from "rxjs";
+import { EncryptService } from 'src/app/servicios/encrypt.service';
+import { isNullOrUndefined } from 'util';
+import * as Cookies from 'js-cookie';
 
 @Component({
   selector: "app-user-list",
@@ -12,11 +15,15 @@ export class UserListComponent implements OnInit {
   usuarios: Observable<Usuario[]>;
   usuarioSelected = null;
   public busqueda: string;
+  adminPrivileges = false;
 
-  constructor(private usuariosService: UsuarioService) {}
+  constructor(private usuariosService: UsuarioService, private encrypt: EncryptService) {}
 
   ngOnInit() {
     this.usuarios = this.usuariosService.getUsuarios();
+    if(!isNullOrUndefined(Cookies.get("USER_ACCESS"))){
+      this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")))== 31;
+    }
   }
 
   onChange(event) {

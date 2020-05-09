@@ -1,0 +1,33 @@
+form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titulo{
+    width: 15em;
+}
+
+#texto{
+    width: 40em;
+    height: 7em;
+}
+
+#botonesNews{
+    display: flex;
+    flex-direction: row;
+}
+
+#submit{
+    margin-right: 2%;
+    background-color: #2B757F;
+}
+
+#submit:hover{
+    background-color: rgb(26, 71, 77);
+
+}
+
+#back{
+    margin-left: 2%;
+}

@@ -37,7 +37,7 @@ h4 {
   text-align: center;
 }
 
-#detalles {
+#divDetalles {
   margin-left: 10%;
   text-align: left;
 }
@@ -78,6 +78,8 @@ a:hover{
 
 #modificarUser{
   margin-left: 1%;
+  background-color:#2B6C81;
+  margin-right: 2%;
 }
 
 input{
@@ -113,13 +115,9 @@ form{
 
 .back:hover{
   background-color: rgb(28, 72, 85);
-
 }
 
 #botonesMenuBorrar{
-  display: flex;
-  align-content: center;
-  flex-direction: row;
   margin-top: 2%;
 }
 
@@ -156,11 +154,22 @@ form{
   background-color: rgb(36, 77, 104);
 }
 
-#modificarUser{
-  background-color:#2B6C81;
-  margin-right: 2%;
-}
-
 #modificarUser:hover{
   background-color:rgb(31, 78, 94);
+}
+
+#submit{
+  background-color: #2B757F;
+}
+
+#submit:hover{
+  background-color:rgb(31, 78, 94);
+}
+
+#detalles{
+  background-color: #2B757F;
+}
+
+#detalles:hover{
+ background-color:rgb(31, 78, 94);
 }

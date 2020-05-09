@@ -1,8 +1,19 @@
+.atributo{
+  display: flex;
+  flex-direction: row;
+}
+
+.titulo{
+  margin-right: 1%;
+  font-weight: bold;
+  color: rgb(236, 184, 167);
+}
+
 table {
   border-collapse: collapse;
   width: 70%;
   margin-left: auto;
-  margin-right: 15%;
+  margin-right: 20%;
 }
 
 thead {
@@ -38,7 +49,6 @@ h4{
 
 tbody>tr:hover{
   background-color:#1f5a46;
-  cursor: pointer;
 }
 
 #formTrabajo{
@@ -104,6 +114,10 @@ input{
   background-color: rgb(29, 58, 87);
 }
 
+#btnEventDetails{
+  align-items: center;
+  margin-left: 30%;
+}
 
 #btnQuieroIr{
   background-color: #2C5985;
@@ -157,4 +171,31 @@ input{
 
 #cancelar:hover{
   background-color: rgb(26, 50, 80);
+}
+
+#btnBack{
+  margin-top: 2%;
+}
+
+#datosBorrado{
+  display: flex;
+  flex-direction: column;
+justify-content: left;
+  text-align: left;
+  margin-left: 40%;
+}
+
+#fecha{
+  margin-left: 10px;
+}
+
+.btn-accion{
+  height: 2.3em;
+  font-size: 85%;
+  margin-left: 2%;
+  background-color: #2B6D81;
+}
+
+.btn-accion:hover{
+  background-color: rgb(28, 72, 85);
 }

@@ -58,3 +58,29 @@ button:hover{
 .autor{
   color: aquamarine;
 }
+
+#createNew{
+  margin-top: 1%;
+}
+
+
+#editNews{
+  margin-right: 1%;
+  background-color: transparent;
+  color: whitesmoke;
+  outline:none;
+  background-repeat:no-repeat;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+#btnBorrar{
+  background-color: transparent;
+  color: whitesmoke;
+  outline:none;
+  background-repeat:no-repeat;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+}

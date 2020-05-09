@@ -3,4 +3,5 @@ export class Evento{
     lugar: string;
     fecha: Date;
     capacidad: number;
+    id?: any;
 }

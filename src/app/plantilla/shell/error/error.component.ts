@@ -22,6 +22,9 @@ export class ErrorComponent implements OnInit {
       case "460":
         this.errorLogin();
         break;
+      case "461":
+        this.errorTrabajo();
+        break;
       case "404":
         this.errorNotFound();
         break;
@@ -35,6 +38,10 @@ export class ErrorComponent implements OnInit {
         this.errorNotFound();
         break;
     }
+  }
+  errorTrabajo() {
+    let text = document.createTextNode("Lo sentimos, ya se ha registrado en este evento");
+    document.getElementById("errorMensaje").appendChild(text);
   }
 
   errorServer() {
@@ -50,10 +57,8 @@ export class ErrorComponent implements OnInit {
   errorLogin() {
     let text = document.createTextNode("Ya existe un usuario con ese login");
     document.getElementById("errorMensaje").appendChild(text);
-  }
-
-  volver() {
-    this.router.back();
+    document.getElementById("btnVolver").toggleAttribute("routerLink", false);
+    document.getElementById("btnVolver").setAttribute("routerLink","/userform");
   }
 
   errorNotFound() {
