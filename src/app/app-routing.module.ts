@@ -17,6 +17,7 @@ import { RolListComponent } from './plantilla/shell/rol-list/rol-list.component'
 import { RoldetailsComponent } from './plantilla/shell/roldetails/roldetails.component';
 import { NewseditComponent } from './plantilla/shell/newsedit/newsedit.component';
 import { WorkEditComponent } from './plantilla/shell/work-edit/work-edit.component';
+import { ResetPasswordComponent } from './plantilla/shell/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
   ,{
     path: "workedit/:id"
     , component: WorkEditComponent
+  },
+  {
+    path: 'login/reset-password',
+    component: ResetPasswordComponent
   }
   ,
   {

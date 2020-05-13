@@ -10,14 +10,18 @@ export class EncryptService {
   constructor() { }
 
   encrypt(textToEncrypt: string): string{
-    return CryptoJS.AES.encrypt(textToEncrypt.trim(), "fenixDataEncrypt").toString();
+    return CryptoJS.AES.encrypt(textToEncrypt, "fenixDataEncrypt").toString();
   }
 
   decrypt(textToDecrypt: string):string{
-    return CryptoJS.AES.decrypt(textToDecrypt.trim(), "fenixDataEncrypt").toString();
+    return CryptoJS.AES.decrypt(textToDecrypt, "fenixDataEncrypt").toString(CryptoJS.enc.Utf8);
   }
 
-  encryptWithKey(textToEncrypt: string){
-    return CryptoJS.AES.encrypt(textToEncrypt.trim(), Date.now().toString()).toString();
+  private parseKey(): string{
+    return CryptoJS.enc.Utf8.parse("fenixDataEncrypt");
+  }
+
+  private parseText(text: string): string{
+    return CryptoJS.enc.Base64.parse(text);
   }
 }

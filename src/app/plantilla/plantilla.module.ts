@@ -27,6 +27,7 @@ import { RolListComponent } from "./shell/rol-list/rol-list.component";
 import { RoldetailsComponent } from "./shell/roldetails/roldetails.component";
 import { NewseditComponent } from "./shell/newsedit/newsedit.component";
 import { WorkEditComponent } from './shell/work-edit/work-edit.component';
+import { ResetPasswordComponent } from './shell/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { WorkEditComponent } from './shell/work-edit/work-edit.component';
     RoldetailsComponent,
     NewseditComponent,
     WorkEditComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

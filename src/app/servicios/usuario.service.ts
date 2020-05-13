@@ -9,11 +9,11 @@ import * as Cookies from 'js-cookie';
   providedIn: "root",
 })
 export class UsuarioService {
-  private baseURl = "http://localhost:8080/fenixapp/api/v1/usuarios";
-  private loginURL = "http://localhost:8080/fenixapp/api/v1/auth";
-  private registerURL = "http://localhost:8080/fenixapp/api/v1/register";
-  private accessURL = "http://localhost:8080/fenixapp/api/v1/access";
-  private stringUrl = "http://localhost:8080/fenixapp/api/v1/string";
+  private baseURl = "http://localhost:8082/api/v1/usuarios";
+  private loginURL = "http://localhost:8082/api/v1/auth";
+  private registerURL = "http://localhost:8082/api/v1/register";
+  private accessURL = "http://localhost:8082/api/v1/access";
+  private stringUrl = "http://localhost:8082/api/v1/string";
 
   constructor(private http: HttpClient, private error: ErrorService) {}
 

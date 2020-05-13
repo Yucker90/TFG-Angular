@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmailService {
   
-  private emailURl = 'http://localhost:8080/fenixapp/api/v1/confirm-account';
+  private emailURl = 'http://localhost:8082/api/v1/confirm-account';
   constructor(private http: HttpClient) { }
 
   comprobarToken(token: string) {
