@@ -9,7 +9,6 @@
     (ngSubmit)="f.valid && submit()"
     [mustMatch]="['password', 'matchPassword']"
   >
-    <!-- (ngSubmit)="f.form.valid && submit(f)" [mustMatch]="['password', 'matchPassword']"-->
 
     <h5>Datos Personales</h5>
     <div id="datosPersonales">
@@ -139,10 +138,14 @@
           required
           #password="ngModel"
           minlength="5"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
         />
         <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
           <div *ngIf="password.errors.required">
             La contraseña es requerida
+          </div>
+          <div *ngIf="password.errors.pattern">
+            La contraseña debe contener al menos un número y una letra
           </div>
           <div *ngIf="password.errors.minlength">
             La contraseña debe tener al menos 5 caracteres
@@ -179,14 +182,6 @@
         Registrarse
       </button>
 
-      <!--<button
-        id="submit"
-        type="button"
-      (click)="submit()"
-        class="btn btn-primary"
-      >
-        Registrarse
-      </button>-->
       <button id="back" type="button" class="btn btn-info" (click)="volver()">
         Volver
       </button>
