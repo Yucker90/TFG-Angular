@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Evento } from "src/app/interfaces/evento";
 import { EventosService } from "src/app/servicios/eventos.service";
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-event-form",
@@ -12,7 +13,7 @@ export class EventFormComponent implements OnInit {
   evento: Evento = new Evento();
   submitted = false;
 
-  constructor(private eventoService: EventosService, private router: Router) {}
+  constructor(private eventoService: EventosService, private router: Router, private location: Location) {}
 
   ngOnInit() {}
 
@@ -29,9 +30,9 @@ export class EventFormComponent implements OnInit {
 
   crearEvento() {
     this.eventoService.createEvento(this.evento).subscribe(
-      (data) =>(data),
+      (data) =>(sessionStorage.setItem('reload', 'true')),
       (error) => console.log(error)
     );
-    this.router.navigateByUrl('/eventlist');
+    this.location.back();
   }
 }

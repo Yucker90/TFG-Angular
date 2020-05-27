@@ -45,7 +45,7 @@ export class NewsFormComponent implements OnInit {
   crearPost() {
     console.log("crearPost");
 
-    let usuarioid = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID"))) - 30;
+    let usuarioid = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID")));
     this.usuarioService.getUsuario(usuarioid.toString()).subscribe((data) => {
       this.post.autor = data;
       console.log(this.post);

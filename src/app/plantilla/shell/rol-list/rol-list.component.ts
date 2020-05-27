@@ -10,12 +10,12 @@ import { Location } from '@angular/common';
   styleUrls: ["./rol-list.component.css"],
 })
 export class RolListComponent implements OnInit {
-  roles: Observable<Rol[]>;
+  roles: Rol[];
 
   constructor(private rolService: RolService, private route: Location) {}
 
   ngOnInit() {
-   this.roles = this.rolService.getRoles();
+   this.rolService.getRoles().subscribe(data => this.roles = data)
   }
 
   volver(){

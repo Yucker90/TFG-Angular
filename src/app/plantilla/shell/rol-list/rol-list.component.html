@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let rol of roles | async" [routerLink]="['/roldetails', rol.id]">
+      <tr *ngFor="let rol of roles" [routerLink]="['/roldetails', rol.id]">
         <th scope="row">{{ rol.id }}</th>
         <td>{{ rol.nombre }}</td>
         <td>{{ rol.sueldo }} €/h</td>

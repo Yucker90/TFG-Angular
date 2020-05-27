@@ -28,6 +28,7 @@ import { RoldetailsComponent } from "./shell/roldetails/roldetails.component";
 import { NewseditComponent } from "./shell/newsedit/newsedit.component";
 import { WorkEditComponent } from './shell/work-edit/work-edit.component';
 import { ResetPasswordComponent } from './shell/reset-password/reset-password.component';
+import { NextEventsComponent } from './shell/next-events/next-events.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ResetPasswordComponent } from './shell/reset-password/reset-password.co
     NewseditComponent,
     WorkEditComponent,
     ResetPasswordComponent,
+    NextEventsComponent,
   ],
   imports: [
     CommonModule,

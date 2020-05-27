@@ -1,0 +1,14 @@
+<h5>Próximos Eventos</h5>
+<div *ngIf="events; else noEvents">
+  <p id="textoEventos"></p>
+  <div
+    class="eventos"
+    *ngFor="let item of events | async"
+    [routerLink]="['/eventdetails', item.id]"
+  >
+    {{ item.fecha | date: "shortDate" }} - {{ item.nombre }}
+  </div>
+</div>
+<ng-template #noEvents>
+  <p style="margin-top: 30px;">No hay próximos eventos</p>
+</ng-template>

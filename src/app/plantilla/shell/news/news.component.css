@@ -1,5 +1,10 @@
 div {
-  background-color: #2a775a;
+  background-color: #2a785e;
+}
+
+h3{
+  border-bottom: lightgray 1px solid;
+
 }
 
 tr {
@@ -7,9 +12,11 @@ tr {
 }
 
 .noticia {
-  border: 1px solid darkgray;
-  margin-bottom: 1%;
+/*   border: 1px solid darkgray;
+ */  margin-bottom: 5%;
   padding: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .custom-pagination .page-number {
   display: inline-block;
@@ -39,6 +46,9 @@ tr {
 
 .titulo {
   font-size: 1.5em;
+  border-bottom: dashed 1px lightgreen;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .autor {
@@ -83,4 +93,12 @@ button:hover{
   border: none;
   font-size: inherit;
   font-weight: inherit;
+}
+
+pagination-template{
+  margin-top: 10%;
+}
+
+#createNew{
+margin-top: 5%;
 }

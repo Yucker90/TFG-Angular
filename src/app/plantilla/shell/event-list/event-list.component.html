@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let evento of eventos | async" [routerLink]="['/eventdetails', evento.id]">
+          <tr *ngFor="let evento of eventos" [routerLink]="['/eventdetails', evento.id]">
             <th scope="row">{{ evento.id }}</th>
             <td>{{ evento.nombre }}</td>
             <td>{{ evento.lugar }}</td>

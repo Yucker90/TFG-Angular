@@ -35,4 +35,8 @@ export class EventosService {
   deleteEvento(id: string): any{
     return this.http.delete(`${this.baseURl}/${id}`);
   }
+
+  getNextEventos() {
+    return this.http.get<any[]>(`${this.baseURl}/next`);
+  }
 }

@@ -36,7 +36,7 @@ export class RolFormComponent implements OnInit {
       (data) => data,
       (error) => console.log(error)
     );
-    this.router.navigateByUrl("/rollist");
+    this.volver();
   }
 
   volver() {
