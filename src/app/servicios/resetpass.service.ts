@@ -6,7 +6,7 @@ import { EncryptService } from './encrypt.service';
 export class ResetPass {
   constructor(private httpClient: HttpClient, private encrypt: EncryptService) {}
 
-  private resetUrl = "http://localhost:8082/api/v1/reset";
+  private resetUrl = "http://localhost:8080/fenixapp/api/v1/reset";
 
   resetPassword(email: string) {
     return this.httpClient.post(`${this.resetUrl}`,email);
