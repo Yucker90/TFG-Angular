@@ -36,7 +36,7 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
-   this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get('USER_ACCESS')))==31;
+   this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get('USER_ACCESS')))== 1;
     this.usuarioService.getUsuario(id).subscribe(
       (data) => {
         this.usuario = data;

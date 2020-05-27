@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.usuarios = this.usuariosService.getUsuarios();
     if(!isNullOrUndefined(Cookies.get("USER_ACCESS"))){
-      this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")))== 31;
+      this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")))== 1;
     }
   }
 

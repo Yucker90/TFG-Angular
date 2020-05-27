@@ -24,7 +24,7 @@ export class EventListComponent implements OnInit {
   ngOnInit() {
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       this.adminPrivileges =
-        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
+        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
     this.eventos = this.eventosService.getEventos();
   }

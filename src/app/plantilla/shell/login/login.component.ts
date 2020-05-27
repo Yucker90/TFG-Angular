@@ -37,8 +37,9 @@ export class LoginComponent implements OnInit {
         (res) => {          
           this.setCookie(res);
           if(this.rememberMe){
-            console.log(this.userLogin + " / " + this.password);
             Cookies.set("RMBR", this.encrypt.encrypt(this.userLogin+'/'+this.password));
+          }else{
+            Cookies.remove("RMBR");
           }
           window.location.reload();
         },

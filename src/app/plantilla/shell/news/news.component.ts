@@ -22,7 +22,7 @@ export class NewsComponent implements OnInit {
       .subscribe((data) => (data = this.collection.data = data));
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       this.adminPrivileges =
-        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
+        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
   }
   public maxSize: number = 7;

@@ -1,27 +1,33 @@
-import { Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';  
-
+import { Injectable } from "@angular/core";
+import * as CryptoJS from "crypto-js";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class EncryptService {
+  constructor() {}
 
-  constructor() { }
-
-  encrypt(textToEncrypt: string): string{
+  encrypt(textToEncrypt: string): string {
     return CryptoJS.AES.encrypt(textToEncrypt, "fenixDataEncrypt").toString();
   }
 
-  decrypt(textToDecrypt: string):string{
-    return CryptoJS.AES.decrypt(textToDecrypt, "fenixDataEncrypt").toString(CryptoJS.enc.Utf8);
+  decrypt(textToDecrypt: string): string {
+    return CryptoJS.AES.decrypt(textToDecrypt, "fenixDataEncrypt").toString(
+      CryptoJS.enc.Utf8
+    );
   }
 
-  private parseKey(): string{
-    return CryptoJS.enc.Utf8.parse("fenixDataEncrypt");
+  encrypt2(textToEncrypt: string): string {
+    return CryptoJS.AES.encrypt(
+      textToEncrypt,
+      "pjsZCQs75TupyZOR0pmAFYPkU1TY4QyF"
+    ).toString();
   }
 
-  private parseText(text: string): string{
-    return CryptoJS.enc.Base64.parse(text);
+  decrypt2(textToDecrypt: string): string {
+    return CryptoJS.AES.decrypt(
+      textToDecrypt,
+      "pjsZCQs75TupyZOR0pmAFYPkU1TY4QyF"
+    ).toString(CryptoJS.enc.Utf8);
   }
 }

@@ -13,7 +13,6 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   enviarNews(post: Post){
-    console.log("Servicio");
     return this.http.post(`${this.newsURl}`, post);
   }
 

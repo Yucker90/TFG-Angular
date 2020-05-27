@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EmailService } from "src/app/servicios/email.service";
-import { isUndefined } from 'util';
+import { isUndefined } from "util";
 
 @Component({
   selector: "app-email-confirmation",
@@ -20,25 +20,20 @@ export class EmailConfirmationComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.token = params["token"];
     });
-    if (isUndefined(this.token) || this.token == "") {
-      console.log("Token undefined");
-
-    } else {
-            this.emailService.comprobarToken(this.token);
-            this.tokenOk = true;
+    if (!(isUndefined(this.token) || this.token == "")) {
+      this.emailService.comprobarToken(this.token);
+      this.tokenOk = true;
     }
   }
 
   ngOnInit() {
-   
     if (!isUndefined(this.token) || this.token !== "") {
       this.emailService.comprobarToken(this.token);
       this.tokenOk = true;
     } else this.tokenOk = false;
-    
   }
 
-  volver(){
+  volver() {
     this.router.navigateByUrl("/");
   }
 }

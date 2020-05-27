@@ -58,8 +58,8 @@ export class EventDetailsComponent implements OnInit {
     );
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       let access = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")));
-      this.adminPrivileges = access == 31;
-      this.userPrivileges = access > 30;
+      this.adminPrivileges = access == 1;
+      this.userPrivileges = access > 0;
     }
     this.rolService.getRoles().subscribe((data) => (this.roles = data));
   }
