@@ -7,4 +7,5 @@ export class Trabajo {
     usuario: Usuario;
     horas: number;
     rol: Rol;
+    id?: string;
 }

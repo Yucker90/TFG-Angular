@@ -1,3 +1,24 @@
 img{
     text-align: center;
 }
+
+.grid{
+    display: flex;
+    flex-direction: row;
+}
+
+#elems{
+    width: 30%;
+    border-right: 1px solid lightgray;
+    padding: 15px;
+    margin-right: 5%;
+}
+
+#texto{
+    width: 60%;
+    margin-left: 5%;
+    padding: 15px;
+    border-left: 1px solid lightgray;
+
+
+}

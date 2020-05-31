@@ -8,12 +8,12 @@ import { Evento } from '../interfaces/evento';
 })
 export class EventosService {
 
-  private baseURl = "http://localhost:8080/api/v1/eventos";
+  private baseURl = "http://localhost:8080/fenixapp/api/v1/eventos";
   
   constructor(private http: HttpClient) { }
 
-  getEventos(): Observable<any>{
-    return this.http.get(`${this.baseURl}`);
+  getEventos() {
+    return this.http.get<any[]>(`${this.baseURl}`);
   }
 
   getEventosByUser(id: string){
@@ -27,5 +27,16 @@ export class EventosService {
   getEvento(id: string):Observable<any>{
     return this.http.get(`${this.baseURl}/${id}`);
   }
+
+  updateEvento(id: string, evento: Evento){
+    return this.http.put(`${this.baseURl}/${id}`, evento);
+  }
   
+  deleteEvento(id: string): any{
+    return this.http.delete(`${this.baseURl}/${id}`);
+  }
+
+  getNextEventos() {
+    return this.http.get<any[]>(`${this.baseURl}/next`);
+  }
 }

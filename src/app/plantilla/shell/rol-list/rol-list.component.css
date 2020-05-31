@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    width: 33%;
+    margin-left: auto;
+    margin-right: 33%;
+  }
+  
+  thead {
+    background-color: #2b6383;
+    color: #e9fef3;
+  }
+  tbody {
+    font-size: 0.9em;
+    color: lightgrey;
+  }
+  
+  th {
+    font-weight: bold;
+    color: darkslategray;
+  }
+  
+  thead > tr > th {
+    color: lightgrey;
+    font-size: 0.93em;
+  }
+  
+  tbody>tr:hover{
+      background-color:#1f5a46;
+  }
+  
+  tr {
+    padding-top: 0.2em;
+  }
+
+  h4{
+    margin-bottom: 2%;
+  }
+
+  .btn-details{
+    background-color:#2B6C81;
+    margin-right: 4px;
+    border: none;
+  }
+
+  .btn-details:hover{
+    background-color:rgb(31, 78, 94);
+  }

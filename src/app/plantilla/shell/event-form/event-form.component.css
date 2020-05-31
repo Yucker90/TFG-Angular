@@ -15,4 +15,20 @@ form {
     width: fit-content;
     background-color: #2B757F;
     border: none;
+    margin-right: 2%;
+  }
+
+  #submit:hover{
+    background-color: rgb(23, 64, 70);
+
+  }
+
+  #back{
+    margin-left: 2%;
+  }
+
+  #botonesForm{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
   }

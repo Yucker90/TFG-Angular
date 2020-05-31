@@ -7,8 +7,10 @@ import { Rol } from '../interfaces/rol';
   providedIn: 'root'
 })
 export class RolService {
+  
+  
 
-  private rolesURL = 'http://localhost:8080/api/v1/roles';
+  private rolesURL = 'http://localhost:8080/fenixapp/api/v1/roles';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +24,14 @@ export class RolService {
 
   getRol(id: string): Observable<any>{
     return this.http.get(`${this.rolesURL}/${id}`);
+  }
+
+  updateRol(id: string, rol: Rol) {
+    return this.http.put(`${this.rolesURL}/${id}`, rol);
+  }
+
+  deleteRol(idRol: string) {
+    return this.http.delete(`${this.rolesURL}/${idRol}`);
   }
 
 }

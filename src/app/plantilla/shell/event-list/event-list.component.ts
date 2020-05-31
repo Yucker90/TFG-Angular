@@ -5,6 +5,7 @@ import { Evento } from "src/app/interfaces/evento";
 import * as Cookies from "js-cookie";
 import { EncryptService } from "src/app/servicios/encrypt.service";
 import { isNullOrUndefined } from "util";
+import { resolve } from 'url';
 
 @Component({
   selector: "app-event-list",
@@ -13,8 +14,8 @@ import { isNullOrUndefined } from "util";
 })
 export class EventListComponent implements OnInit {
   adminPrivileges = false;
-
-  eventos: Observable<Evento[]>;
+  menuListado=true;
+  eventos: Evento[];
 
   constructor(
     private eventosService: EventosService,
@@ -23,17 +24,18 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
-      let token= this.encrypt.decrypt(Cookies.get("USER_ACCESS"));
-      console.log(token);
-
       this.adminPrivileges =
-        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 31;
-      console.log(this.adminPrivileges);
+        parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
-    this.eventos = this.eventosService.getEventos();
-  }
+    if(sessionStorage.getItem('reload') === "true"){
+      sessionStorage.removeItem('reload');
+      window.location.reload();
+    }
+    this.eventosService.getEventos().subscribe(
+      data => {this.eventos = data;
+        setTimeout(null, 900);
+      }
+    )
 
-  apuntarse(id: number) {
-    console.log(id);
   }
 }

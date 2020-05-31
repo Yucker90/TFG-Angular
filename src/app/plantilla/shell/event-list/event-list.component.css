@@ -54,14 +54,5 @@ table {
 
   .btn-details:hover{
     background-color:rgb(31, 78, 94);
-
   }
 
-  .btn-delete{
-    background-color: #2C5985;
-    margin-left: 4px;
-  }
-
-  .btn-delete:hover{
-    background-color: rgb(33, 66, 100);
-  }

@@ -1,0 +1,146 @@
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+thead {
+  background-color: #2b6383;
+  color: #e9fef3;
+}
+tbody {
+  font-size: 0.9em;
+  color: lightgrey;
+}
+
+th {
+  font-weight: bold;
+  color: darkslategray;
+}
+
+thead > tr > th {
+  color: lightgrey;
+  font-size: 0.93em;
+}
+
+tbody > tr:hover {
+  background-color: #1f5a46;
+  cursor: pointer;
+}
+
+tr {
+  padding-top: 0.2em;
+}
+
+h4 {
+  text-align: center;
+}
+
+#divDetalles {
+  margin-left: 10%;
+  text-align: left;
+}
+
+button {
+  width: fit-content;
+  border: none;
+}
+
+a {
+  color: rgb(0, 157, 219);
+}
+
+a:hover {
+  color: rgb(1, 85, 163);
+  text-decoration: none;
+}
+
+.back {
+  border: none;
+  background-color: #2b6d81;
+}
+
+.atributo {
+  display: flex;
+  flex-direction: row;
+}
+
+.titulo {
+  margin-right: 1%;
+  font-weight: bold;
+  color: rgb(236, 184, 167);
+}
+
+#modificarUser:hover{
+  background-color:rgb(31, 78, 94);
+}
+
+#submit{
+  background-color: #2B757F;
+}
+
+#submit:hover{
+  background-color:rgb(31, 78, 94);
+}
+
+#detalles{
+  background-color: #2B757F;
+}
+
+#detalles:hover{
+ background-color:rgb(31, 78, 94);
+}
+
+#modificarUser{
+  margin-left: 1%;
+  background-color:#2B6C81;
+  margin-right: 2%;
+}
+
+input{
+  width: fit-content;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#botones{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  align-content: center;
+  margin-top: 4%;
+}
+
+#submit{
+  margin-right: 4%;
+}
+
+#detalles{
+  margin-left: 4%;
+  margin-right: 6%;
+}
+
+.back{
+  margin-left: 2%;
+}
+
+.back:hover{
+  background-color: rgb(28, 72, 85);
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.textAdvise{
+  font-size: 85%;
+  color: lightcoral;
+}

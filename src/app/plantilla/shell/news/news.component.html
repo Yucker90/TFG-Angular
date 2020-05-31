@@ -1,7 +1,7 @@
 <div style="text-align: center;">
-  <h4>
+  <h3>
     Noticias
-  </h4>
+  </h3>
 
   <div *ngIf="collection.data">
     <div
@@ -9,10 +9,26 @@
       *ngFor="let item of collection.data | paginate: config"
     >
       <h5 class="titulo">{{ item.titulo }}</h5>
-      <a class="autor" [routerLink]="['/userdetails', item.autor.id]">{{ item.autor.nombre }}</a>
-      <p class="texto">{{ item.texto }}</p>
-    </div>
 
+      <div [hidden]="adminPrivileges">
+      <a class="autor" [routerLink]="['/userdetails', item.autor.id]">{{
+        item.autor.nombre
+      }}</a>
+    </div>
+    <div [hidden]="!adminPrivileges">
+      <p class="autor">{{
+        item.autor.nombre
+      }}</p>
+    </div>
+      <p class="texto">{{ item.texto }}</p>
+
+      <div id="adminControls" *ngIf="adminPrivileges">
+        <button [routerLink]="['/newsedit', item.id]" id="editNews">
+          Editar
+        </button>
+        <button (click)="borrarNews(item.id)" id="btnBorrar">Borrar</button>
+      </div>
+    </div>
     <pagination-template
       #p="paginationApi"
       [id]="config.id"
@@ -42,5 +58,12 @@
       </div>
     </pagination-template>
   </div>
-  <button class="btn btn-info" routerLink="/newsform">Crear noticia</button>
+  <button
+    class="btn btn-info"
+    routerLink="/newsform"
+    [hidden]="!adminPrivileges"
+    id="createNew"
+  >
+    Crear noticia
+  </button>
 </div>

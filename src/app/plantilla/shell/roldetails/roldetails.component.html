@@ -1,0 +1,85 @@
+<div class="container" *ngIf="rol">
+  <div *ngIf="!menuModificar; else modificar">
+    <div *ngIf="!menuBorrar; else borrar">
+      <h4>Detalles del rol</h4>
+      <div id="detalles">
+        <div class="atributo">
+          <div class="titulo">Nombre:</div>
+          {{ rol.nombre }}
+        </div>
+        <div class="atributo">
+          <div class="titulo">Sueldo:</div>
+          {{ rol.sueldo }} €/h
+        </div>
+      </div>
+
+      <div id="botonesEdit">
+        <button
+          class="btn btn-info"
+          id="btnModificar"
+          (click)="showModificar()"
+        >
+          Modificar</button
+        ><button class="btn btn-info btn-delete" (click)="showBorrar()">
+          Borrar</button
+        ><button class="btn btn-info back">Volver</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #borrar>
+    ¿Quiere borrar el rol '<b>{{ rol.nombre }}</b
+    >'?
+    <br />
+    Se borrarán todos los registros de trabajo asociados a él.
+    <div id="botonesBorrar">
+      <button
+        type="button"
+        id="borrarRol"
+        class="btn btn-info"
+        (click)="borrarRol()"
+      >
+        Borrar
+      </button>
+      <button type="button" (click)="showDetalles()" class="btn btn-info back">
+        Volver a Detalles
+      </button>
+    </div>
+  </ng-template>
+  <ng-template #modificar>
+    <form name="form" id="form" #f="ngForm" novalidate (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input
+          class="form-control"
+          type="text"
+          name="nombre"
+          [(ngModel)]="rol.nombre"
+          required
+
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="sueldo">Sueldo:</label>
+        <div id="sueldo">
+          <input
+            id="inpSueldo"
+            class="form-control"
+            type="text"
+            name="sueldo"
+            [(ngModel)]="rol.sueldo"
+            required
+
+          />
+          <p>€/h</p>
+        </div>
+      </div>
+      <div id="botonesModificar">
+        <button type="submit" id="submit" #submitBtn class="btn btn-info">Actualizar</button>
+        <button type="button" id="volverDetalles" (click)="showDetalles()" class="btn btn-info back">
+          Detalles
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</div>

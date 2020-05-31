@@ -1,0 +1,68 @@
+<div class="container" *ngIf="trabajo">
+  <h4>Modificación de trabajo</h4>
+
+  <form name="form" id="form" #f="ngForm" novalidate (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="usuario">Trabajador:</label>
+      <select
+        name="usuario"
+        id="usuario"
+        class="form-control"
+        [(ngModel)]="trabajo.usuario.id"
+      >
+        <option *ngFor="let user of users" value="{{ user.id }}">{{
+          user.nombre
+        }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="evento">Evento:</label>
+      <select
+        name="evento"
+        id="evento"
+        class="form-control"
+        [(ngModel)]="trabajo.evento.id"
+      >
+        <option *ngFor="let evento of eventos" value="{{ evento.id }}">{{
+          evento.nombre
+        }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="rol">Puesto:</label>
+      <select
+        name="rol"
+        id="rol"
+        class="form-control"
+        [(ngModel)]="trabajo.rol.id"
+      >
+        <option *ngFor="let rol of roles" value="{{ rol.id }}">{{
+          rol.nombre
+        }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="horas">Horas:</label>
+      <input
+        type="number"
+        min="1"
+        name="horas"
+        class="form-control"
+        [(ngModel)]="trabajo.horas"
+      />
+    </div>
+
+    <div>
+      <button type="submit" #submitBtn class="btn btn-info modify">Modificar</button>
+      <button
+        [routerLink]="['/eventdetails', trabajo.evento.id]"
+        class="btn btn-info back"
+      >
+        Volver
+      </button>
+    </div>
+  </form>
+</div>

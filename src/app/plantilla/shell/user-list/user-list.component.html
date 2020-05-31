@@ -4,23 +4,23 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col"*ngIf="adminPrivileges">#</th>
         <th scope="col" class="nombre">Nombre</th>
-        <th scope="col" class="login">Login</th>
-        <th scope="col">Password</th>
-        <th scope="col">Movil</th>
-        <th scope="col">Email</th>
+        <th scope="col"*ngIf="adminPrivileges" class="login">Login</th>
+        <th scope="col"*ngIf="adminPrivileges">Password</th>
+        <th scope="col" *ngIf="adminPrivileges">Movil</th>
+        <th scope="col" *ngIf="adminPrivileges">Email</th>
         <th scope="col">Acceso</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let usuario of usuarios | async" [routerLink]="['/userdetails', usuario.id]">
-            <th scope="row">{{usuario.id}}</th>
+            <th *ngIf="adminPrivileges" scope="row">{{usuario.id}}</th>
             <td class="nombre">{{usuario.nombre}}</td>
-            <td class="login">{{usuario.login}}</td>
-            <td>*********</td>
-            <td>{{usuario.movil}}</td>
-            <td>{{usuario.email}}</td>
+            <td *ngIf="adminPrivileges"class="login">{{usuario.login}}</td>
+            <td *ngIf="adminPrivileges">*********</td>
+            <td *ngIf="adminPrivileges">{{usuario.movil}}</td>
+            <td *ngIf="adminPrivileges">{{usuario.email}}</td>
             <td>{{getAcceso(usuario.acceso)}}</td>
           </tr>
      

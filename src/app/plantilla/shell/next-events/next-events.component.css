@@ -1,0 +1,11 @@
+#textoNoEventos{
+    margin-top: 5%;
+}
+
+.eventos{
+    text-align: left;
+}
+
+.eventos:hover{
+    color: lightblue;
+}

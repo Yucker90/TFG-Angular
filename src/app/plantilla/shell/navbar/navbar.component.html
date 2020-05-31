@@ -1,13 +1,11 @@
 <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#" id="inicio">Inicio</a>
-  <!--  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
   <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="news">Noticias</a>
     <a class="nav-item nav-link" routerLink="eventlist">Lista de Eventos</a>
     <a class="nav-item nav-link" routerLink="userlist">Lista de Usuarios</a>
+    <a class="nav-item nav-link" routerLink="profile" id="perfil" hidden>Mi perfil</a>
     <a class="nav-item nav-link" routerLink="login" id="login">Login</a>
     <a class="nav-item nav-link" id="crearCuenta"routerLink="userform">Crear Cuenta</a>
     <button class="nav-item nav-link" id="logout" (click)="logout()" hidden>Cerrar Sesión</button>
   </div>
-  <!-- </div>-->
 </nav>

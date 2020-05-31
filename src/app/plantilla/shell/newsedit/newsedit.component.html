@@ -1,0 +1,29 @@
+<div class="container" *ngIf="post">
+  <h4>Modificación de Noticias</h4>
+
+  <form name="form" id="form" #f="ngForm" novalidate (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input
+        class="form-control"
+        type="text"
+        id="titulo"
+        name="titulo"
+        [(ngModel)]="post.titulo"
+      />
+    </div>
+    <div class="form-group">
+      <label for="texto">Texto</label>
+      <textarea
+        class="form-control"
+        name="texto"
+        id="texto"
+        [(ngModel)]="post.texto"
+      ></textarea>
+    </div>
+    <div id="botonesNews">
+      <button type="submit" id="submit" #submitBtn class="btn btn-info">Actualizar</button
+      ><button type="button" id="back" class="btn btn-info back" routerLink="/news">Volver</button>
+    </div>
+  </form>
+</div>

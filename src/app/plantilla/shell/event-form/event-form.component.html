@@ -1,12 +1,12 @@
 <h3>Formulario de creación de evento</h3>
 <div class="container">
   <form
-  name="form"
-  id="form"
-  #f="ngForm"
-  novalidate
-  *ngIf="!submitted"
-  (ngSubmit)="f.valid && submit(submitBtn)"
+    name="form"
+    id="form"
+    #f="ngForm"
+    novalidate
+    *ngIf="!submitted"
+    (ngSubmit)="f.valid && submit()"
   >
     <div class="form-group">
       <label for="nombre">Nombre</label>
@@ -76,9 +76,13 @@
         <div *ngIf="capacidad.errors.required">Introduzca una capacidad</div>
       </div>
     </div>
-
-    <button id="submit" type="submit" #submitBtn class="btn btn-primary">
-      Enviar
-    </button>
+    <div id="botonesForm">
+      <button id="submit" type="submit" #submitBtn class="btn btn-primary">
+        Enviar
+      </button>
+      <button type="button" id="back" class="btn btn-info back" routerLink="/eventlist">
+        Volver
+      </button>
+    </div>
   </form>
 </div>

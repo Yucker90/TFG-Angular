@@ -4,7 +4,7 @@ form {
   justify-content: center;
 }
 
-input {
+.text {
   width: 10em;
 }
 
@@ -32,4 +32,22 @@ a{
 a:hover{
     color: #2C5386;
     text-decoration: none;
+}
+
+.form-check{
+  display: inline;
+}
+
+#divRemember{
+  display: flex;
+  flex-direction: row;
+}
+
+#form-check-input{
+  margin-left: 1%;
+  margin-right: 2%;
+}
+
+#remember{
+  margin-left: 1%;
 }

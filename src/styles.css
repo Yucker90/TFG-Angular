@@ -11,6 +11,9 @@ button{
 border: none;
 }
 
+.btn{
+  border: none;
+}
 .back{
     border: none;
     background-color: #2B6D81;

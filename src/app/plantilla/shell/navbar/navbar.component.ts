@@ -9,14 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
+  reload;
   constructor(private router: Router) {}
 
   ngOnInit() {
+    if(!isNullOrUndefined(sessionStorage.getItem('reload'))){
+      sessionStorage.setItem('reload', "true");
+    }
     if (!isNullOrUndefined(Cookies.get("TOKEN_ID"))) {
+      document.getElementById("perfil").hidden= false;
       document.getElementById("logout").hidden = false;
       document.getElementById("login").hidden=true;
       document.getElementById("crearCuenta").hidden=true;
-    }else{
+    }
+
+    if(sessionStorage.getItem('reload') === "true"){
+      sessionStorage.removeItem('reload');
       this.router.navigateByUrl('/login');
     }
   }
@@ -25,6 +33,7 @@ export class NavbarComponent implements OnInit {
     Cookies.remove("USER_ACCESS");
     Cookies.remove("USER_ID");
     Cookies.remove("TOKEN_ID");
+    sessionStorage.setItem('reload',"true");
     window.location.reload();
   }
 }

@@ -1,0 +1,22 @@
+<h4>Lista de roles</h4>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Sueldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rol of roles" [routerLink]="['/roldetails', rol.id]">
+        <th scope="row">{{ rol.id }}</th>
+        <td>{{ rol.nombre }}</td>
+        <td>{{ rol.sueldo }} €/h</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" routerLink="/rolform"  class="btn btn-info btn-details"
+  >Crear Rol</button>
+  <button routerLink="/eventlist" class="btn btn-info back">Volver</button>
+</div>

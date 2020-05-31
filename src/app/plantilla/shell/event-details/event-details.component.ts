@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EventosService } from "src/app/servicios/eventos.service";
 import { Evento } from "src/app/interfaces/evento";
 import { UsuarioService } from "src/app/servicios/usuario.service";
@@ -9,7 +9,8 @@ import { Trabajo } from "src/app/interfaces/trabajo";
 import * as Cookies from "js-cookie";
 import { Rol } from "src/app/interfaces/rol";
 import { Observable } from "rxjs";
-import { EncryptService } from 'src/app/servicios/encrypt.service';
+import { EncryptService } from "src/app/servicios/encrypt.service";
+import { isNullOrUndefined } from "util";
 
 @Component({
   selector: "app-event-details",
@@ -22,8 +23,15 @@ export class EventDetailsComponent implements OnInit {
   horas: number;
   seleccionado: any;
   roles: Observable<Rol[]>;
-  trabajos: Observable<Trabajo[]>;
+  trabajos: Trabajo[];
   puestosOcupados: number;
+  detalles = true;
+  menuDetalles = true;
+  adminPrivileges = false;
+  idTrabajo: string;
+  varBorrarTrabajo = false;
+  trabajo: Trabajo;
+  userPrivileges= false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +39,8 @@ export class EventDetailsComponent implements OnInit {
     private usuarioService: UsuarioService,
     private rolService: RolService,
     private trabajoService: TrabajoService,
-    private encrypt: EncryptService
+    private encrypt: EncryptService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,24 +48,20 @@ export class EventDetailsComponent implements OnInit {
     this.eventosService.getEvento(this.idEvento).subscribe(
       (data) => {
         this.evento = data;
-        console.log(data);
         this.trabajoService
           .getTrabajoByEvento(this.idEvento)
-          .subscribe((data) => {
-            this.trabajos = data;
-            console.log(data);
-          });
+          .subscribe((data) => (this.trabajos = data));
       },
       (error) => {
         console.log(error);
       }
     );
-
-    this.rolService.getRoles().subscribe((data) => (this.roles = data));
-    /* if trabajadores.count >= necesarios{
-        apuntarse.disabled
+    if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
+      let access = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")));
+      this.adminPrivileges = access == 1;
+      this.userPrivileges = access > 0;
     }
-    */
+    this.rolService.getRoles().subscribe((data) => (this.roles = data));
   }
 
   apuntarse() {
@@ -66,8 +71,8 @@ export class EventDetailsComponent implements OnInit {
   solicitud() {
     let trabajo: Trabajo = new Trabajo();
     trabajo.evento = this.evento;
-    let id = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID"))) -30;
-    console.log("Id del trabajador: " +id);
+    let id = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID"))) - 30;
+    console.log("Id del trabajador: " + id);
     this.usuarioService.getUsuario(id.toString()).subscribe((data) => {
       trabajo.usuario = data;
       console.log("Trabajador: " + data);
@@ -77,14 +82,74 @@ export class EventDetailsComponent implements OnInit {
         this.trabajoService
           .createTrabajo(trabajo)
           .subscribe((error) => console.log(error));
-      window.location.reload();
-        });
+        window.location.reload();
+      });
       /*trabajo.horas = this.horas;
       this.trabajoService
         .createTrabajo(trabajo)
         .subscribe((error) => console.log(error));*/
+    });
+  }
 
-      }
+  showModificar() {
+    this.detalles = false;
+  }
+
+  showBorrar() {
+    this.menuDetalles = false;
+  }
+
+  submit() {
+    this.actualizarEvento();
+  }
+
+  actualizarEvento() {
+    this.eventosService
+      .updateEvento(this.idEvento, this.evento)
+      .subscribe((data) => console.log(data));
+  }
+
+  submitBtn(submitBtn: HTMLButtonElement) {
+    submitBtn.disabled = true;
+    this.submit();
+    submitBtn.disabled = false;
+  }
+
+  borrarEvento() {
+    this.eventosService.deleteEvento(this.idEvento).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
     );
+    this.router.navigateByUrl("/eventlist");
+  }
+
+  cancelar() {
+    this.menuDetalles = true;
+  }
+
+  modificarTrabajo(id: string) {
+    this.router.navigateByUrl("/workedit/" + id);
+  }
+
+  showMenuBorrarTrabajo(id: string) {
+    this.varBorrarTrabajo = true;
+    this.trabajos.forEach((element) => {
+      if (element.id === id) {
+        this.trabajo = element;
+      }
+    });
+  }
+
+  borrarTrabajo(id: string) {
+    this.trabajoService.deleteTrabajo(id).subscribe(
+      (data) => console.log("Trabajo borrado:" + data),
+      (error) => console.log(error)
+    );
+    this.cancelarBorrarTrabajo();
+  }
+
+  cancelarBorrarTrabajo() {
+    this.varBorrarTrabajo = false;
+    window.location.reload();
   }
 }
