@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
       sessionStorage.setItem('reload', "true");
     }
     if (!isNullOrUndefined(Cookies.get("TOKEN_ID"))) {
+      document.getElementById("perfil").hidden= false;
       document.getElementById("logout").hidden = false;
       document.getElementById("login").hidden=true;
       document.getElementById("crearCuenta").hidden=true;

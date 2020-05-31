@@ -18,6 +18,7 @@ import { RoldetailsComponent } from './plantilla/shell/roldetails/roldetails.com
 import { NewseditComponent } from './plantilla/shell/newsedit/newsedit.component';
 import { WorkEditComponent } from './plantilla/shell/work-edit/work-edit.component';
 import { ResetPasswordComponent } from './plantilla/shell/reset-password/reset-password.component';
+import { ProfileComponent } from './plantilla/shell/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,11 @@ const routes: Routes = [
   {
     path: "rolform",
     component: RolFormComponent,
-  },
+  },{
+    path: 'profile',
+    component: ProfileComponent
+  }
+  ,
   {
     path: "error/:id",
     component: ErrorComponent,

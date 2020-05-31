@@ -10,9 +10,16 @@
     >
       <h5 class="titulo">{{ item.titulo }}</h5>
 
+      <div [hidden]="adminPrivileges">
       <a class="autor" [routerLink]="['/userdetails', item.autor.id]">{{
         item.autor.nombre
       }}</a>
+    </div>
+    <div [hidden]="!adminPrivileges">
+      <p class="autor">{{
+        item.autor.nombre
+      }}</p>
+    </div>
       <p class="texto">{{ item.texto }}</p>
 
       <div id="adminControls" *ngIf="adminPrivileges">

@@ -9,11 +9,13 @@ import * as Cookies from "js-cookie";
   providedIn: "root",
 })
 export class UsuarioService {
+  
   private baseURl = "http://localhost:8080/fenixapp/api/v1/usuarios";
   private loginURL = "http://localhost:8080/fenixapp/api/v1/auth";
   private registerURL = "http://localhost:8080/fenixapp/api/v1/register";
   private accessURL = "http://localhost:8080/fenixapp/api/v1/access";
   private stringUrl = "http://localhost:8080/fenixapp/api/v1/string";
+  private profileUrl = "http://localhost:8080/fenixapp/api/v1/profile";
 
   constructor(private http: HttpClient, private error: ErrorService) {}
 
@@ -37,12 +39,18 @@ export class UsuarioService {
   delete(usuarioId: number) {
     return this.http.delete(`${this.baseURl}/${usuarioId}`);
   }
-  
+
   getUsuarioByAccess(access: number): Observable<any> {
     return this.http.get(`${this.accessURL}/${access}`);
   }
 
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.profileUrl}`);
+  }
 
+  putProfile(usuario: Usuario) {
+    return this.http.put(`${this.profileUrl}`, usuario);
+  }
 
   postLogin(username: string, password: string) {
     return this.http.post(`${this.loginURL}`, { username, password });

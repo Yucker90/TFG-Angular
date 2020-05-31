@@ -110,7 +110,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   borrar() {
-    console.log("Usuario a borrar: " + this.iduser);
     this.usuarioService.delete(this.iduser).subscribe((data) => {});
     this.router.navigateByUrl("/userlist");
   }

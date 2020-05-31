@@ -29,6 +29,7 @@ import { NewseditComponent } from "./shell/newsedit/newsedit.component";
 import { WorkEditComponent } from './shell/work-edit/work-edit.component';
 import { ResetPasswordComponent } from './shell/reset-password/reset-password.component';
 import { NextEventsComponent } from './shell/next-events/next-events.component';
+import { ProfileComponent } from './shell/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NextEventsComponent } from './shell/next-events/next-events.component';
     WorkEditComponent,
     ResetPasswordComponent,
     NextEventsComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
