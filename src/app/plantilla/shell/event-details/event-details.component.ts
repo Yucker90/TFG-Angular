@@ -71,11 +71,9 @@ export class EventDetailsComponent implements OnInit {
   solicitud() {
     let trabajo: Trabajo = new Trabajo();
     trabajo.evento = this.evento;
-    let id = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID"))) - 30;
-    console.log("Id del trabajador: " + id);
-    this.usuarioService.getUsuario(id.toString()).subscribe((data) => {
+/*     let id = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID")));
+ */    this.usuarioService.getProfile().subscribe((data) => {
       trabajo.usuario = data;
-      console.log("Trabajador: " + data);
       this.rolService.getRol(this.seleccionado).subscribe((rol) => {
         trabajo.rol = rol;
         trabajo.horas = this.horas;

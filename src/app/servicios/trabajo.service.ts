@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class TrabajoService {
-  private trabajoURL = "http://localhost:8080/fenixapp/api/v1/trabajos";
+  private trabajoURL = "http://127.0.0.1:8080/fenixapp/api/v1/trabajos";
 
   constructor(private http: HttpClient) {}
 

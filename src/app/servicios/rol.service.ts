@@ -10,7 +10,7 @@ export class RolService {
   
   
 
-  private rolesURL = 'http://localhost:8080/fenixapp/api/v1/roles';
+  private rolesURL = 'http://127.0.0.1:8080/fenixapp/api/v1/roles';
 
   constructor(private http: HttpClient) { }
 

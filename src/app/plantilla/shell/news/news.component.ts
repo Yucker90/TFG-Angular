@@ -54,7 +54,7 @@ export class NewsComponent implements OnInit {
 
   borrarNews(id: string) {
     this.newsService.deleteNew(id).subscribe(
-      (data) => console.log(data),
+      (data) => data,
       (error) => console.log(error)
     );
     window.location.reload();

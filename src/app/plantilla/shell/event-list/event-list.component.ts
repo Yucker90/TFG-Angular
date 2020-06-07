@@ -33,7 +33,6 @@ export class EventListComponent implements OnInit {
     }
     this.eventosService.getEventos().subscribe(
       data => {this.eventos = data;
-        setTimeout(null, 900);
       }
     )
 

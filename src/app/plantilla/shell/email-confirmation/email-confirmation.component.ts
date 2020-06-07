@@ -9,7 +9,7 @@ import { isUndefined } from "util";
   styleUrls: ["./email-confirmation.component.css"],
 })
 export class EmailConfirmationComponent implements OnInit {
-  token: any;
+  token= "";
   public tokenOk = false;
 
   constructor(
@@ -17,19 +17,21 @@ export class EmailConfirmationComponent implements OnInit {
     private emailService: EmailService,
     private router: Router
   ) {
+  }
+
+  // Recupero el token de confirmación de email y compruebo que es correcto
+  ngOnInit() {
+    this.token = "";
     this.activatedRoute.queryParams.subscribe((params) => {
       this.token = params["token"];
     });
-    if (!(isUndefined(this.token) || this.token == "")) {
-      this.emailService.comprobarToken(this.token);
-      this.tokenOk = true;
-    }
-  }
 
-  ngOnInit() {
+    // Si es correcto, muestro un mensaje de confirmación, si no, 'token es nulo'
     if (!isUndefined(this.token) || this.token !== "") {
-      this.emailService.comprobarToken(this.token);
-      this.tokenOk = true;
+      console.log(this.token);
+      this.emailService
+        .comprobarToken(this.token)
+        .subscribe(() => (this.tokenOk = true));
     } else this.tokenOk = false;
   }
 

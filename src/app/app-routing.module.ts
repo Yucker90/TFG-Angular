@@ -26,10 +26,6 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: "news",
-    component: NewsComponent,
-  },
-  {
     path: "eventlist",
     component: EventListComponent,
   },
