@@ -26,7 +26,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/js-cookie/src/js.cookie.js"]
+            "scripts": ["./node_modules/js-cookie/src/js.cookie.js",
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
