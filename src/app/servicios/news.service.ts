@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  private newsURl = 'http://127.0.0.1:8080/fenixapp/api/v1/news';
+  private newsURl = 'https://api.josejoaquinmaglop.es/api/v1/news';
 
   constructor(private http: HttpClient) { }
 
