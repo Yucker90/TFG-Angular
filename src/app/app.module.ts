@@ -24,12 +24,12 @@ registerLocaleData(localeEsEs);
     AppRoutingModule,
     PlantillaModule,
     HttpClientModule,
-    HttpClientXsrfModule.withOptions({
+    /* HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-CSRF-TOKEN'
-    }),
+    }), */
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true },
+  providers: [/* { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }, */
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
