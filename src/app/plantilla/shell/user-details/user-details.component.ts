@@ -9,7 +9,7 @@ import { Trabajo } from "src/app/interfaces/trabajo";
 import * as Cookies from "js-cookie";
 import { EncryptService } from "src/app/servicios/encrypt.service";
 import { isNullOrUndefined } from "util";
-import { PdfMakeWrapper, Txt, Table } from "pdfmake-wrapper";
+import { PdfMakeWrapper, Txt, Table, Cell } from "pdfmake-wrapper";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
@@ -121,6 +121,7 @@ export class UserDetailsComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     let pdf: PdfMakeWrapper = new PdfMakeWrapper();
 
+    pdf.add(pdf.ln(1));
     pdf.header(
       new Txt("Hoja de registro").alignment("center").fontSize(20).bold().end
     );
@@ -132,16 +133,39 @@ export class UserDetailsComponent implements OnInit {
     pdf.add("Teléfono: " + this.usuario.movil);
     pdf.add("Email: " + this.usuario.email);
     pdf.add("Acceso: " + this.getAcceso(this.usuario.acceso));
+    pdf.add(
+    pdf.ln(4));
 
     pdf.styles({
       style1: { bold: true },
       style2: { italics: true },
     });
 
+    pdf.add(
+      new Txt("Registro de eventos").alignment("center").fontSize(16).bold().end
+    );
+
+    pdf.add(pdf.ln(2));
     let sueldo = 0;
 
-    let fecha;
-    this.trabajos.forEach((trabajo) => {
+    let fecha;    
+
+    let tableBody = [];
+
+    tableBody.push([new Txt("Evento").bold().end, new Txt("Fecha").bold().end,new Txt("Lugar").bold().end,new Txt("Puesto").bold().end, new Txt("Sueldo").bold().end, new Txt("Horas").bold().end]);
+    let index = 0;
+    this.trabajos.forEach((trabajo) =>
+    {
+      fecha = formatDate(trabajo.evento.fecha, "dd/MM/yyyy", "es_EA");
+      tableBody.push([trabajo.evento.nombre,fecha, trabajo.evento.lugar, trabajo.rol.nombre, trabajo.rol.sueldo, trabajo.horas]);
+      index++;
+      sueldo = sueldo + trabajo.horas * trabajo.rol.sueldo;
+
+    })
+
+
+
+   /*  this.trabajos.forEach((trabajo) => {
       fecha = formatDate(trabajo.evento.fecha, "dd/MM/yyyy", "es_EA");
       pdf.add(
         new Txt(
@@ -159,9 +183,12 @@ export class UserDetailsComponent implements OnInit {
         ).fontSize(10).end
       );
       sueldo = sueldo + trabajo.horas * trabajo.rol.sueldo;
-    });
+    }); */
 
-    pdf.ln(2);
+
+    pdf.add(new Table(tableBody).layout('headerLineOnly').alignment('justify').end);
+
+    pdf.add(pdf.ln(2));
     pdf.add(new Txt("Total a cobrar: " + sueldo + "€").alignment("right").end);
 
     pdf.ln(5);
