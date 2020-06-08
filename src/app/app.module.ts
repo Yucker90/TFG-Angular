@@ -5,12 +5,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { PlantillaModule } from "./plantilla/plantilla.module";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientXsrfModule } from "@angular/common/http";
 import { AuthInterceptor } from "./interceptors/authintercerptor";
 import localeEsEs from "@angular/common/locales/es-EA";
 import { registerLocaleData } from "@angular/common";
 import { ErrorInterceptor } from "./interceptors/errorinterceptor";
 import { Router } from '@angular/router';
+import { HttpXsrfInterceptor } from './interceptors/HttpXsrInterceptor';
 
 registerLocaleData(localeEsEs);
 
@@ -23,8 +24,12 @@ registerLocaleData(localeEsEs);
     AppRoutingModule,
     PlantillaModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-CSRF-TOKEN'
+    }),
   ],
-  providers: [
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
