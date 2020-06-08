@@ -10,12 +10,12 @@ import * as Cookies from "js-cookie";
 })
 export class UsuarioService {
   
-  private baseURl = "http://localhost:8080/fenixapp/api/v1/usuarios";
-  private loginURL = "http://localhost:8080/fenixapp/api/v1/auth";
-  private registerURL = "http://localhost:8080/fenixapp/api/v1/register";
-  private accessURL = "http://localhost:8080/fenixapp/api/v1/access";
-  private stringUrl = "http://localhost:8080/fenixapp/api/v1/string";
-  private profileUrl = "http://localhost:8080/fenixapp/api/v1/profile";
+  private baseURl = "https://api.josejoaquinmaglop.es/api/v1/usuarios";
+  private loginURL = "https://api.josejoaquinmaglop.es/api/v1/auth";
+  private registerURL = "https://api.josejoaquinmaglop.es/api/v1/register";
+  private accessURL = "https://api.josejoaquinmaglop.es/api/v1/access";
+  private stringUrl = "https://api.josejoaquinmaglop.es/api/v1/string";
+  private profileUrl = "https://api.josejoaquinmaglop.es/api/v1/profile";
 
   constructor(private http: HttpClient, private error: ErrorService) {}
 

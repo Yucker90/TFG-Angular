@@ -8,7 +8,7 @@ import { Evento } from '../interfaces/evento';
 })
 export class EventosService {
 
-  private baseURl = "http://localhost:8080/fenixapp/api/v1/eventos";
+  private baseURl = "https://api.josejoaquinmaglop.es/api/v1/eventos";
   
   constructor(private http: HttpClient) { }
 

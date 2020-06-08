@@ -13,6 +13,7 @@ export class ErrorComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Location) {}
 
+  // Dependiendo de qué tipo de error tengamos, muestro un mensaje de error u otro
   ngOnInit() {
     this.tipoError = this.route.snapshot.paramMap.get("id");
     switch (this.tipoError) {
@@ -31,7 +32,7 @@ export class ErrorComponent implements OnInit {
       case "404":
         this.errorNotFound();
         break;
-      case "500":
+      case "500": case "0":
         this.errorServer();
         break;
       case "403": case "401":

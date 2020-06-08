@@ -29,13 +29,11 @@ export class NewsFormComponent implements OnInit {
   }
 
   submit() {
-    console.log("submit");
     this.crearPost();
     this.submitted = true;
   }
 
   submitBtn(submitBtn: HTMLButtonElement) {
-    console.log("submitBtn");
 
     submitBtn.disabled = true;
     this.submit();
@@ -43,18 +41,17 @@ export class NewsFormComponent implements OnInit {
   }
 
   crearPost() {
-    console.log("crearPost");
 
     let usuarioid = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID")));
     this.usuarioService.getUsuario(usuarioid.toString()).subscribe((data) => {
       this.post.autor = data;
       console.log(this.post);
       this.newsService.enviarNews(this.post).subscribe(
-        (data) => console.log(data),
+        (data) => data,
         (error) => console.log(error)
       );
     });
-    this.router.navigateByUrl("/news");
+    this.router.navigateByUrl("/");
   }
 
   volver() {

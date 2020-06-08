@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Location} from '@angular/common';
 import { Rol } from "src/app/interfaces/rol";
 import { RolService } from "src/app/servicios/rol.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -14,7 +15,7 @@ export class RoldetailsComponent implements OnInit {
   menuModificar= false;
   menuBorrar= false;
 
-  constructor(private rolService: RolService,private router: Router, private route: ActivatedRoute) {}
+  constructor(private rolService: RolService,private router: Router, private route: ActivatedRoute, private location: Location) {}
 
   ngOnInit() {
     this.idRol = this.route.snapshot.paramMap.get("id");
@@ -60,4 +61,8 @@ export class RoldetailsComponent implements OnInit {
     submitBtn.disabled = false;
   }
   
+
+  volver(){
+    this.location.back();
+  }
 }

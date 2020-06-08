@@ -22,7 +22,8 @@ export class NewseditComponent implements OnInit {
     this.idPost = this.route.snapshot.paramMap.get("id");
     this.postService
       .getNew(this.idPost)
-      .subscribe((data) => (this.post = data));
+      .subscribe((data) => (this.post = data),
+      error => error);
   }
 
   submit() {

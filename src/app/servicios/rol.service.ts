@@ -10,7 +10,7 @@ export class RolService {
   
   
 
-  private rolesURL = 'http://localhost:8080/fenixapp/api/v1/roles';
+  private rolesURL = 'https://api.josejoaquinmaglop.es/api/v1/roles';
 
   constructor(private http: HttpClient) { }
 
