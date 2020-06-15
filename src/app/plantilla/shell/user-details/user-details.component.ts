@@ -192,6 +192,6 @@ export class UserDetailsComponent implements OnInit {
     pdf.add(new Txt("Total a cobrar: " + sueldo + "€").alignment("right").end);
 
     pdf.ln(5);
-    pdf.create().download();
+    pdf.create().download(this.usuario.nombre.split(',')[0].trim() + this.usuario.nombre.split(',')[1].trim() + formatDate(new Date, "dd/MM/yyyy", "es_EA")+".pdf");
   }
 }
