@@ -12,6 +12,7 @@ export class NextEventsComponent implements OnInit {
   events = [];
   showEvents = false;
 
+  // Obtenemos los próximos 3 eventos. Si no hay eventos, mostraremos un mensaje
   ngOnInit() {
     this.eventoService.getNextEventos().subscribe((data) => {
       this.events = data;

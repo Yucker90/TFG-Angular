@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   submit(){
-
+// Enviamos el email para la petición de reestablecimiento de la contraseña
      this.resetService.resetPassword(this.email).subscribe(
       () => {
         this.emailEnviadoOk = true;

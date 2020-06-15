@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class EventFormComponent implements OnInit {
   evento: Evento = new Evento();
-  submitted = false;
+  submitted = false; // Variable que nos permite controlar si se ha intentado enviar el evento (para validación)
 
   constructor(private eventoService: EventosService, private router: Router, private location: Location) {}
 
@@ -30,6 +30,7 @@ export class EventFormComponent implements OnInit {
 
   crearEvento() {
     this.eventoService.createEvento(this.evento).subscribe(
+      // Creo una variable en el storage para recargar la página (a veces no se cargan bien los datos y hay que recargar)
       (data) =>(sessionStorage.setItem('reload', 'true')),
       (error) => console.log(error)
     );

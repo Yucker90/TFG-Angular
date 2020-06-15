@@ -35,6 +35,7 @@ export class EmailConfirmationComponent implements OnInit {
     } else this.tokenOk = false;
   }
 
+  // Navega a la página principal
   volver() {
     this.router.navigateByUrl("/");
   }

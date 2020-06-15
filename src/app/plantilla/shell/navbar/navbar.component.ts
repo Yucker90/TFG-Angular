@@ -13,9 +13,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    // Si hemos guardado una variable en las sessionStorage, la ponemos a true
     if(!isNullOrUndefined(sessionStorage.getItem('reload'))){
       sessionStorage.setItem('reload', "true");
     }
+
+    // Si nos hemos logueado, ocultamos "Crear cuenta" y "Login" y mostramos "Logout" y "Perfil"
     if (!isNullOrUndefined(Cookies.get("TOKEN_ID"))) {
       document.getElementById("perfil").hidden= false;
       document.getElementById("logout").hidden = false;
@@ -23,12 +26,14 @@ export class NavbarComponent implements OnInit {
       document.getElementById("crearCuenta").hidden=true;
     }
 
+    // Si tenemos en el sessionStorage 'reload', la borramos y recargamos la página, así controlamos bucles de recarga infinitos
     if(sessionStorage.getItem('reload') === "true"){
       sessionStorage.removeItem('reload');
       this.router.navigateByUrl('/login');
     }
   }
 
+  // Al cerrar sesión, borramos el Acceso del Usuario, el ID, el JWT y guardamos 'reload' en el sessionStorage
   logout(){
     Cookies.remove("USER_ACCESS");
     Cookies.remove("USER_ID");

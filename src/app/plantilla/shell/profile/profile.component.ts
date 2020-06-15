@@ -28,19 +28,23 @@ export class ProfileComponent implements OnInit {
   adminPrivileges = false;
 
   ngOnInit() {
+    // Obtenemos los privilegios del usuario (y si se ha logueado)
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       this.adminPrivileges =
         parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
+
+// Obtenemos el perfil del Usuario y sus trabajos
     this.usuarioService.getProfile().subscribe((data) => {
       this.usuario = data;
       this.trabajoService
         .getTrabajoByUser(this.usuario.id)
-        .subscribe((data) => (this.trabajos = data));
+        .subscribe((datos) => (this.trabajos = datos));
     });
   
   }
 
+  // Dependiendo del acceso (numérico), lo traducimos a un string
   getAcceso(acceso: number) {
     switch (acceso) {
       case 0:
@@ -52,10 +56,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  // Mostramos el menú de edición
   showModificar() {
     this.detalles = false;
   }
 
+
+  // Mostramos el menú de detalles
   showDetalles() {
     this.detalles = true;
   }
@@ -64,10 +71,12 @@ export class ProfileComponent implements OnInit {
     this.location.back();
   }
 
+  // Llamamos al método de actualización del Usuario
   submit() {
     this.actualizarUsuario();
   }
 
+  // Actualizamos el usuario
   actualizarUsuario() {
     this.usuario.apellidos = this.usuario.nombre.split(",")[0];
     this.usuario.password = this.encrypt.encrypt(this.usuario.password);

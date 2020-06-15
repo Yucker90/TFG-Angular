@@ -17,14 +17,18 @@ export class NewsComponent implements OnInit {
   adminPrivileges = false;
 
   ngOnInit() {
+    // Obtenemos todas las noticias
     this.newsService
       .getNews()
-      .subscribe((data) => (data = this.collection.data = data));
+      .subscribe((data) => (this.collection.data = data));
+      // Obtenemos el acceso del usuario para mostrar más o menos información
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       this.adminPrivileges =
         parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
   }
+
+  // Establecemos los parámetros del paginator
   public maxSize: number = 7;
   public directionLinks: boolean = true;
   public autoHide: boolean = false;
@@ -52,6 +56,7 @@ export class NewsComponent implements OnInit {
     this.config.currentPage = event;
   }
 
+  // Método para borrar la noticia seleccionada
   borrarNews(id: string) {
     this.newsService.deleteNew(id).subscribe(
       (data) => data,

@@ -20,6 +20,7 @@ import { WorkEditComponent } from './plantilla/shell/work-edit/work-edit.compone
 import { ResetPasswordComponent } from './plantilla/shell/reset-password/reset-password.component';
 import { ProfileComponent } from './plantilla/shell/profile/profile.component';
 
+// Array de rutas-componentes
 const routes: Routes = [
   {
     path: "login",

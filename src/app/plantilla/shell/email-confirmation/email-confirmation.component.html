@@ -1,4 +1,5 @@
 <div class="container">
+    <!-- Si el token es correcto, lo indica; si no, muestra un mensaje de error -->
     <p *ngIf="tokenOk; else tokenNoOk">Gracias por registrarse.</p>
     <ng-template #tokenNoOk>
         <p>Token no válido</p>

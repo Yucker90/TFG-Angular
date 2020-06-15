@@ -19,22 +19,25 @@ export class NewseditComponent implements OnInit {
   post: Post;
 
   ngOnInit() {
+    // Obtengo el id de la noticia de la URL y la recojo de la base de datos
     this.idPost = this.route.snapshot.paramMap.get("id");
-    this.postService
-      .getNew(this.idPost)
-      .subscribe((data) => (this.post = data),
-      error => error);
+    this.postService.getNew(this.idPost).subscribe(
+      (data) => (this.post = data),
+      (error) => error
+    );
   }
 
   submit() {
     this.actualizarNew();
   }
+
+  // Enviamos la nueva noticia para actualizarla
   actualizarNew() {
     this.postService.updateNew(this.idPost, this.post).subscribe(
-      (data) => console.log(data),
+      (data) => data,
       (error) => console.log(error)
     );
-this.router.navigateByUrl('/news');
+    this.router.navigateByUrl("/news");
   }
 
   submitBtn(submitBtn: HTMLButtonElement) {

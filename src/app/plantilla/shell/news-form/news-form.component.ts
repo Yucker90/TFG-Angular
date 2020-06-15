@@ -24,15 +24,19 @@ export class NewsFormComponent implements OnInit {
     private location: Location
   ) {}
 
+
+  // Asigno al Post vacío un texto vacío
   ngOnInit() {
     this.post.texto = "";
   }
 
+  // Llamo al método de crear un Post e indico que se ha intentado enviar al backend (para validación)
   submit() {
     this.crearPost();
     this.submitted = true;
   }
 
+  // Este método evita que el botón de "Submit" se bloquee
   submitBtn(submitBtn: HTMLButtonElement) {
 
     submitBtn.disabled = true;
@@ -42,12 +46,13 @@ export class NewsFormComponent implements OnInit {
 
   crearPost() {
 
+    // Obtengo el ID del Usuario que crea la noticia y lo obtengo de la BD
     let usuarioid = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID")));
     this.usuarioService.getUsuario(usuarioid.toString()).subscribe((data) => {
+      // Asigno dicho Usuario al Post y lo envío
       this.post.autor = data;
-      console.log(this.post);
       this.newsService.enviarNews(this.post).subscribe(
-        (data) => data,
+        (datos) => datos,
         (error) => console.log(error)
       );
     });
