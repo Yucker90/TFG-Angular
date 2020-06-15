@@ -31,7 +31,7 @@ export class EventDetailsComponent implements OnInit {
   idTrabajo: string;
   varBorrarTrabajo = false;
   trabajo: Trabajo;
-  userPrivileges= false;
+  userPrivileges = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,35 +44,42 @@ export class EventDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Tomamos el parámetro id de la URL
     this.idEvento = this.route.snapshot.paramMap.get("id");
+    // Obtenemos el evento desde el backend
     this.eventosService.getEvento(this.idEvento).subscribe(
       (data) => {
         this.evento = data;
+        // Obtenemos todos los trabajos de ese evento
         this.trabajoService
           .getTrabajoByEvento(this.idEvento)
-          .subscribe((data) => (this.trabajos = data));
+          .subscribe((datos) => (this.trabajos = datos));
       },
       (error) => {
         console.log(error);
       }
     );
+    // Obtenemos de las cookies la llamada 'User_access' que nos indica el acceso
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
+      // La desencriptamos y comprobamos el acceso del usuario para mostrar más o menos información
       let access = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")));
       this.adminPrivileges = access == 1;
       this.userPrivileges = access > 0;
     }
+    // Obtenemos todos los roles
     this.rolService.getRoles().subscribe((data) => (this.roles = data));
   }
 
+  // Si el usuario ha pulsado el botón de "Quiero ir", le mostramos el formulario
   apuntarse() {
     document.getElementById("formTrabajo").hidden = false;
   }
 
+  // Enviamos la información (qué Evento, qué Usuario, en qué Rol, cuantas Horas)
   solicitud() {
     let trabajo: Trabajo = new Trabajo();
     trabajo.evento = this.evento;
-/*     let id = parseInt(this.encrypt.decrypt(Cookies.get("USER_ID")));
- */    this.usuarioService.getProfile().subscribe((data) => {
+    this.usuarioService.getProfile().subscribe((data) => {
       trabajo.usuario = data;
       this.rolService.getRol(this.seleccionado).subscribe((rol) => {
         trabajo.rol = rol;
@@ -80,55 +87,61 @@ export class EventDetailsComponent implements OnInit {
         this.trabajoService
           .createTrabajo(trabajo)
           .subscribe((error) => console.log(error));
+        // Recargamos la página para volver a la página por defecto
         window.location.reload();
       });
-      /*trabajo.horas = this.horas;
-      this.trabajoService
-        .createTrabajo(trabajo)
-        .subscribe((error) => console.log(error));*/
     });
   }
 
+  // Mostramos los detalles del evento
   showModificar() {
     this.detalles = false;
   }
 
+  // Mostramos el menú de borrado
   showBorrar() {
     this.menuDetalles = false;
   }
 
+  // Llamamos al método para actualizar un evento
   submit() {
     this.actualizarEvento();
   }
 
   actualizarEvento() {
-    this.eventosService
-      .updateEvento(this.idEvento, this.evento)
-      .subscribe((data) => console.log(data));
+    this.eventosService.updateEvento(this.idEvento, this.evento);
   }
 
+
+  // Método auxiliar para poder pulsar varias veces el botón de enviar
   submitBtn(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
     this.submit();
     submitBtn.disabled = false;
   }
 
+  // Método para borrar un evento. Cuando se ejecute, se navega hasta la página de listado
   borrarEvento() {
     this.eventosService.deleteEvento(this.idEvento).subscribe(
-      (data) => console.log(data),
+      (data) => data,
       (error) => console.log(error)
     );
     this.router.navigateByUrl("/eventlist");
   }
 
+  // Ocultamos el menú de detalle
   cancelar() {
     this.menuDetalles = true;
   }
 
+  // Navegamos al menú de edición de trabajo
   modificarTrabajo(id: string) {
     this.router.navigateByUrl("/workedit/" + id);
   }
 
+  // Mostramos el menú de borrar trabajo
+  // Recorremos el listado de trabajos y nos quedamos el que tenga esa id
+  // He obtado por esto para evitar una llamada casi innecesaria a la base de datos
   showMenuBorrarTrabajo(id: string) {
     this.varBorrarTrabajo = true;
     this.trabajos.forEach((element) => {
@@ -138,14 +151,16 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  // Borramos el trabajo que hemos seleccionado
   borrarTrabajo(id: string) {
     this.trabajoService.deleteTrabajo(id).subscribe(
-      (data) => console.log("Trabajo borrado:" + data),
+      (data) => console.log("Trabajo borrado"),
       (error) => console.log(error)
     );
     this.cancelarBorrarTrabajo();
   }
 
+  // Cambiamos la variable de borrado de trabajo (permite ver el menú de borrado) y recargamos la página
   cancelarBorrarTrabajo() {
     this.varBorrarTrabajo = false;
     window.location.reload();

@@ -1,11 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { EventosService } from "src/app/servicios/eventos.service";
-import { Observable } from "rxjs";
 import { Evento } from "src/app/interfaces/evento";
 import * as Cookies from "js-cookie";
 import { EncryptService } from "src/app/servicios/encrypt.service";
 import { isNullOrUndefined } from "util";
-import { resolve } from 'url';
 
 @Component({
   selector: "app-event-list",
@@ -14,7 +12,7 @@ import { resolve } from 'url';
 })
 export class EventListComponent implements OnInit {
   adminPrivileges = false;
-  menuListado=true;
+  menuListado = true;
   eventos: Evento[];
 
   constructor(
@@ -23,18 +21,21 @@ export class EventListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Obtenemos el acceso del Usuario desde las cookies, desencriptándolo
     if (!isNullOrUndefined(Cookies.get("USER_ACCESS"))) {
       this.adminPrivileges =
         parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS"))) == 1;
     }
-    if(sessionStorage.getItem('reload') === "true"){
-      sessionStorage.removeItem('reload');
+
+    // Si existe la variable en el storage, recargo la página y la elimino (si venimos desde el formulario de creación de eventos)
+    if (sessionStorage.getItem("reload") === "true") {
+      sessionStorage.removeItem("reload");
       window.location.reload();
     }
-    this.eventosService.getEventos().subscribe(
-      data => {this.eventos = data;
-      }
-    )
 
+    // Obtenemos los eventos
+    this.eventosService.getEventos().subscribe((data) => {
+      this.eventos = data;
+    });
   }
 }

@@ -20,12 +20,15 @@ export class UserListComponent implements OnInit {
   constructor(private usuariosService: UsuarioService, private encrypt: EncryptService) {}
 
   ngOnInit() {
+    // Obtenemos todos los usuarios
     this.usuarios = this.usuariosService.getUsuarios();
+    // Obtenemos de las cookies el acceso
     if(!isNullOrUndefined(Cookies.get("USER_ACCESS"))){
       this.adminPrivileges = parseInt(this.encrypt.decrypt(Cookies.get("USER_ACCESS")))== 1;
     }
   }
 
+  // Según la opción elegida del desplegable, obtenemos los usuarios según un filtro u otro
   onChange(event) {
     if (event > 2) {
       this.usuarios = this.usuariosService.getUsuarios();
@@ -34,10 +37,12 @@ export class UserListComponent implements OnInit {
     }
   }
 
+  // Buscamos los usuarios según el string del parámetro
   buscar() {
     this.usuarios = this.usuariosService.getUsuariosByNombre(this.busqueda);
   }
 
+  // Traducimos el acceso de un dígito a letras
   getAcceso(acceso: number) {
     switch (acceso) {
       case 0:

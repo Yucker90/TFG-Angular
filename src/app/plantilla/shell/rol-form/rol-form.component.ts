@@ -16,7 +16,6 @@ export class RolFormComponent implements OnInit {
   constructor(
     private rolService: RolService,
     private location: Location,
-    private router: Router
   ) {}
 
   ngOnInit() {}

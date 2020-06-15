@@ -5,17 +5,17 @@ export function MustMatch(controlName: string, matchingControlName: string) {
         const control = formGroup.controls[controlName];
         const matchingControl = formGroup.controls[matchingControlName];
 
-        // return null if controls haven't initialised yet
+        // Devuelve null si los controles aún no se han inicializado
         if (!control || !matchingControl) {
           return null;
         }
 
-        // return null if another validator has already found an error on the matchingControl
+        // Devuelve null si algún otro validador ha encontrado un error
         if (matchingControl.errors && !matchingControl.errors.mustMatch) {
             return null;
         }
 
-        // set error on matchingControl if validation fails
+        // Controla el error
         if (control.value !== matchingControl.value) {
             matchingControl.setErrors({ mustMatch: true });
         } else {

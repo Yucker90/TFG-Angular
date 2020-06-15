@@ -32,23 +32,31 @@ export class WorkEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Obtenemos el id del trabajo de la URL, y con él, el trabajo del backend
     this.idTrabajo = this.route.snapshot.paramMap.get("id");
     this.trabajoService
       .getTrabajo(this.idTrabajo)
       .subscribe((data) => (this.trabajo = data));
+      // Obtenemos todos los usuarios
     this.userService.getUsuarios().subscribe((data) => (this.users = data));
+    // Obtenemos todos los eventos
     this.eventoService.getEventos().subscribe((data) => (this.eventos = data));
+    // Obtenemos todos los roles
     this.rolService.getRoles().subscribe((data) => (this.roles = data));
+
+    // NOTA: Se obtienen todos estas listas para mostrarlas en los desplegables del html,
+    // para modificar cualquiera de esos campos por un valor existente en la BD
   }
 
   submit() {
     this.actualizarTrabajo();
   }
 
+  // Actualizo el trabajo
   actualizarTrabajo() {
     this.trabajoService
       .updateTrabajo(this.idTrabajo, this.trabajo)
-      .subscribe((data) => console.log(data));
+      .subscribe((data) =>(data));
   this.location.back();    
   }
 

@@ -1,9 +1,8 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "src/app/interfaces/usuario";
-import { UsuarioService } from "src/app/servicios/usuario.service";
-import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { EncryptService } from 'src/app/servicios/encrypt.service';
+import { UsuarioService } from "src/app/servicios/usuario.service";
 
 @Component({
   selector: "app-user-form",
@@ -17,7 +16,6 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private router: Router,
     private location: Location,
     private encrypt: EncryptService
   ) {}
